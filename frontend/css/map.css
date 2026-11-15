@@ -120,15 +120,15 @@
 }
 
 .status-active {
-  background: #50e0a4;
+  background: var(--status-active);
 }
 
 .status-historic {
-  background: #ffbd5c;
+  background: var(--status-ended);
 }
 
 .status-planned {
-  background: #b7a4ff;
+  background: var(--status-transit);
 }
 
 .legend-dot.status-historic {
@@ -214,8 +214,8 @@
 .site-list-button:hover,
 .site-list-button:focus-visible,
 .site-list-button.is-selected {
-  border-color: rgba(183, 164, 255, 0.45);
-  background: rgba(183, 164, 255, 0.1);
+  border-color: var(--line-accent);
+  background: rgba(210, 248, 67, 0.08);
 }
 
 .site-list-dot {
@@ -265,17 +265,17 @@
 }
 
 .site-status.status-active {
-  color: #50e0a4;
+  color: var(--status-active);
   background: none;
 }
 
 .site-status.status-historic {
-  color: #ffbd5c;
+  color: var(--status-ended);
   background: none;
 }
 
 .site-status.status-planned {
-  color: #b7a4ff;
+  color: var(--status-transit);
   background: none;
 }
 
@@ -345,18 +345,18 @@
 }
 
 .planet-marker--active {
-  color: #50e0a4;
-  background: #50e0a4;
+  color: var(--status-active);
+  background: var(--status-active);
 }
 
 .planet-marker--historic {
-  color: #ffbd5c;
-  background: #ffbd5c;
+  color: var(--status-ended);
+  background: var(--status-ended);
 }
 
 .planet-marker--planned {
-  color: #b7a4ff;
-  background: #b7a4ff;
+  color: var(--status-transit);
+  background: var(--status-transit);
   border-radius: 2px;
   transform: rotate(45deg) scale(0.82);
 }

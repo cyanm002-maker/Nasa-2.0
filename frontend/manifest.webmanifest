@@ -1,11 +1,11 @@
 {
-  "name": "Abandoned but Not Forgotten (ABNF)",
-  "short_name": "ABNF Space",
-  "description": "Explore the stories, signals, and legacies of space missions time almost forgot.",
+  "name": "MISSION ATLAS",
+  "short_name": "Mission Atlas",
+  "description": "Big missions. Human stories. Explore the stories, signals, and legacies of deep space missions.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#080b16",
-  "theme_color": "#080b16",
+  "background_color": "#050811",
+  "theme_color": "#050811",
   "orientation": "portrait-primary",
   "icons": [
     {

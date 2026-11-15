@@ -26,7 +26,7 @@
   max-width: 680px;
   margin: 0;
   padding-left: 0.8rem;
-  border-left: 2px solid rgba(183, 164, 255, 0.65);
+  border-left: 2px solid var(--accent);
   color: #c4c9da;
   font-size: 0.83rem;
   line-height: 1.6;
@@ -124,8 +124,8 @@
 }
 
 .story-choice.is-selected {
-  border-color: rgba(183, 164, 255, 0.4);
-  background: rgba(183, 164, 255, 0.1);
+  border-color: var(--line-accent);
+  background: rgba(210, 248, 67, 0.08);
 }
 
 .story-choice-number {
@@ -219,9 +219,9 @@
   bottom: -11rem;
   width: 22rem;
   height: 22rem;
-  border: 1px solid rgba(183, 164, 255, 0.08);
+  border: 1px solid rgba(210, 248, 67, 0.08);
   border-radius: 50%;
-  box-shadow: 0 0 0 2.4rem rgba(183, 164, 255, 0.025), 0 0 0 5rem rgba(183, 164, 255, 0.018);
+  box-shadow: 0 0 0 2.4rem rgba(210, 248, 67, 0.02), 0 0 0 5rem rgba(210, 248, 67, 0.012);
   content: "";
   pointer-events: none;
 }
@@ -340,7 +340,7 @@
 .story-rule {
   height: 1px;
   margin: 1.6rem 0 1.45rem;
-  background: linear-gradient(90deg, rgba(183, 164, 255, 0.5), rgba(213, 220, 255, 0.06));
+  background: linear-gradient(90deg, rgba(210, 248, 67, 0.6), rgba(255, 255, 255, 0.06));
 }
 
 .story-rule span {
@@ -454,11 +454,11 @@
   margin-top: 1.25rem;
   padding: clamp(1.25rem, 4vw, 2.5rem);
   overflow: hidden;
-  border: 1px solid rgba(183, 164, 255, 0.28);
-  border-radius: 1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
   background:
-    radial-gradient(ellipse at 86% 0%, rgba(84, 71, 156, 0.24), transparent 28rem),
-    linear-gradient(135deg, rgba(20, 26, 48, 0.97), rgba(8, 11, 22, 0.98));
+    radial-gradient(ellipse at 86% 0%, rgba(20, 38, 70, 0.35), transparent 28rem),
+    var(--panel);
 }
 
 .voyager-heading {
@@ -544,11 +544,11 @@
   font-weight: 750;
   letter-spacing: -0.065em;
   line-height: 1.1;
-  text-shadow: 0 0 2.5rem rgba(183, 164, 255, 0.2);
+  text-shadow: 0 0 2.5rem rgba(210, 248, 67, 0.25);
 }
 
 .voyager-distance-unit {
-  color: #c9c1ff;
+  color: var(--accent);
   font-size: 1rem;
   font-weight: 650;
 }
@@ -667,7 +667,7 @@
     gap: 0.5rem;
     padding-bottom: 0.2rem;
     overflow-x: auto;
-    scrollbar-color: rgba(183, 164, 255, 0.35) transparent;
+    scrollbar-color: rgba(210, 248, 67, 0.35) transparent;
   }
 
   .story-choice {

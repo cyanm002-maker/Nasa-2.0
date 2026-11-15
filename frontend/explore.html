@@ -7,7 +7,7 @@
       name="description"
       content="Explore historic and active mission sites on the Moon and Mars."
     />
-    <title>Planetary map | ABNF</title>
+    <title>Planetary Map | MISSION ATLAS</title>
     <link rel="stylesheet" href="css/auth.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="css/map.css" />
@@ -21,25 +21,37 @@
   <body data-page="explore">
     <a class="skip-link" href="#main-content">Skip to main content</a>
     <header class="site-header">
-      <a class="brand" href="/">ABNF<span>.</span></a>
-      <nav class="header-actions" aria-label="Main navigation">
-        <a class="button button-quiet" href="/" data-i18n="nav_home">Home</a>
-        <a class="button button-primary" href="explore.html" aria-current="page" data-i18n="nav_explore">Explore</a>
-        <a class="button button-quiet" href="mission.html" data-i18n="nav_stories">Stories</a>
-        <a class="button button-quiet" href="quiz.html" data-i18n="nav_quiz">Quiz</a>
-        <a class="button button-quiet" href="signal.html" data-i18n="nav_signal">Signal Delay</a>
-        <a class="button button-quiet" href="ask.html" data-i18n="nav_ask">Ask Machine</a>
-        <button class="button button-quiet" type="button" data-pwa-install hidden data-i18n="nav_install">📱 Install App</button>
+      <a class="brand" href="index.html">
+        <svg class="brand-star" width="22" height="22" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="3.5" fill="#D2F843" />
+          <path
+            d="M12 2v4M12 18v4M2 12h4M18 12h4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"
+            stroke="#D2F843"
+            stroke-width="2.2"
+            stroke-linecap="round"
+          />
+        </svg>
+        <span>MISSION ATLAS</span>
+      </a>
+      <nav class="header-actions" aria-label="Main Navigation">
+        <div class="header-nav-links">
+          <a class="nav-link" href="mission.html" data-i18n="nav_stories">MISSIONS</a>
+          <a class="nav-link" href="signal.html" data-i18n="nav_signal">LIVE TRACKER</a>
+          <a class="nav-link" href="quiz.html" data-i18n="nav_quiz">CHALLENGE</a>
+          <a class="nav-link is-active" href="explore.html" aria-current="page" data-i18n="nav_explore">MAP</a>
+          <a class="nav-link" href="ask.html" data-i18n="nav_ask">ASK AI</a>
+        </div>
+        <a class="button button-primary" href="mission.html">EXPLORE STORIES ↗</a>
+        <button class="button button-quiet" type="button" data-pwa-install hidden data-i18n="nav_install">📱 App</button>
       </nav>
     </header>
 
     <main class="map-page" id="main-content" tabindex="-1">
       <section class="map-heading" aria-labelledby="map-title">
-        <p class="eyebrow">WORLDS, WALKED BY ROBOTS</p>
+        <p class="eyebrow">FIELD GUIDE / PLANETARY RECON</p>
         <h1 id="map-title">Every landing leaves a story.</h1>
         <p class="hero-copy">
-          Explore mission sites across the Moon and Mars. Select a marker to see
-          what happened there.
+          Explore mission sites across the Moon and Mars. Select a marker to see what happened there.
         </p>
       </section>
 
@@ -91,15 +103,23 @@
             <h3 data-detail-name></h3>
             <p class="site-detail-location" data-detail-location></p>
             <p data-detail-description></p>
-            <a data-detail-link target="_blank" rel="noreferrer">Read the mission story ↗</a>
+            <a data-detail-link target="_blank" rel="noreferrer" class="button button-quiet" style="margin-top: 0.75rem;">Read mission dossier ↗</a>
           </article>
         </aside>
       </section>
     </main>
 
     <footer class="site-footer">
-      <span>ABNF · A home for forgotten space stories</span>
-      <span>Explore. Remember. Wonder.</span>
+      <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
+        <a href="index.html">Home</a>
+        <a href="mission.html">Missions</a>
+        <a href="signal.html">Signal Delay</a>
+        <a href="quiz.html">Challenge</a>
+        <a href="teachers.html">Educator Hub</a>
+      </div>
+      <div>
+        <span>MISSION ATLAS · Human stories of deep space exploration</span>
+      </div>
     </footer>
   </body>
 </html>

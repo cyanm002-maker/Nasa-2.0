@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Explore the stories, signal delays, interactive comparisons, and legacies of space missions that time almost forgot."
+      content="Mission Atlas: Explore the stories, signal delays, planetary landing sites, and human legacies of space missions."
     />
-    <title>Abandoned but Not Forgotten | Space Mission Stories & Tools</title>
+    <title>MISSION ATLAS | Big missions. Human stories.</title>
     <link rel="stylesheet" href="css/auth.css" />
     <link rel="stylesheet" href="css/tools.css" />
     <link rel="manifest" href="manifest.webmanifest" />
@@ -17,177 +17,516 @@
   </head>
   <body data-page="home">
     <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <!-- Top Navigation Header -->
     <header class="site-header">
-      <a class="brand" href="/">ABNF<span>.</span></a>
-      <nav class="header-actions" aria-label="Account">
-        <a class="button button-quiet" href="explore.html" data-i18n="nav_explore">Explore</a>
-        <a class="button button-quiet" href="mission.html" data-i18n="nav_stories">Stories</a>
-        <a class="button button-quiet" href="quiz.html" data-i18n="nav_quiz">Quiz</a>
-        <a class="button button-quiet" href="signal.html" data-i18n="nav_signal">Signal Delay</a>
-        <a class="button button-quiet" href="ask.html" data-i18n="nav_ask">Ask Machine</a>
+      <a class="brand" href="index.html">
+        <svg class="brand-star" width="22" height="22" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="3.5" fill="#D2F843" />
+          <path
+            d="M12 2v4M12 18v4M2 12h4M18 12h4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"
+            stroke="#D2F843"
+            stroke-width="2.2"
+            stroke-linecap="round"
+          />
+        </svg>
+        <span>MISSION ATLAS</span>
+      </a>
+
+      <nav class="header-actions" aria-label="Main Navigation">
+        <div class="header-nav-links">
+          <a class="nav-link" href="mission.html" data-i18n="nav_stories">MISSIONS</a>
+          <a class="nav-link" href="signal.html" data-i18n="nav_signal">LIVE TRACKER</a>
+          <a class="nav-link" href="quiz.html" data-i18n="nav_quiz">CHALLENGE</a>
+          <a class="nav-link" href="explore.html" data-i18n="nav_explore">MAP</a>
+          <a class="nav-link" href="ask.html" data-i18n="nav_ask">ASK AI</a>
+        </div>
+
+        <!-- Auth & Start CTA -->
         <a class="button button-quiet" href="login.html" data-signed-out data-i18n="nav_login">Log in</a>
-        <a class="button button-primary" href="signup.html" data-signed-out data-i18n="nav_signup">
-          Join mission
-        </a>
-        <a class="button button-primary" href="dashboard.html" data-signed-in hidden data-i18n="nav_dashboard">
-          My dashboard
-        </a>
-        <button class="button button-quiet" type="button" data-logout data-signed-in hidden data-i18n="nav_logout">
-          Log out
-        </button>
-        <button class="button button-quiet" type="button" data-pwa-install hidden data-i18n="nav_install">
-          📱 Install App
-        </button>
+        <a class="button button-primary" href="explore.html">START EXPLORING ↗</a>
+        <a class="button button-quiet" href="dashboard.html" data-signed-in hidden data-i18n="nav_dashboard">Dashboard</a>
+        <button class="button button-quiet" type="button" data-logout data-signed-in hidden data-i18n="nav_logout">Log out</button>
+        <button class="button button-quiet" type="button" data-pwa-install hidden data-i18n="nav_install">📱 App</button>
       </nav>
     </header>
 
     <main class="hero" id="main-content" tabindex="-1">
-      <p class="eyebrow" data-i18n="hero_eyebrow">THE STORIES BEYOND THE HEADLINES</p>
-      <h1>Some missions end.<br /><span>Their stories don’t.</span></h1>
-      <p class="hero-copy" data-i18n="hero_copy">
-        Discover the spacecraft, rovers, and bold ideas left behind in humanity’s exploration of space.
-      </p>
-      <div class="hero-actions" style="flex-wrap: wrap;">
-        <a class="button button-primary button-large" href="signup.html" data-signed-out data-i18n="nav_signup">
-          Start exploring
-        </a>
-        <a class="button button-primary button-large" href="dashboard.html" data-signed-in hidden data-i18n="nav_dashboard">
-          Go to your dashboard
-        </a>
-        <a class="button button-quiet button-large" href="explore.html" data-i18n="hero_btn_explore">
-          Explore the map
-        </a>
-        <a class="button button-quiet button-large" href="mission.html" data-i18n="hero_btn_stories">
-          Hear their stories
-        </a>
-        <a class="button button-primary button-large" href="quiz.html" data-i18n="hero_btn_quiz">
-          Take the quiz
-        </a>
+      <!-- Hero Top Row: Headline + Stats -->
+      <div class="atlas-hero-wrap">
+        <div class="atlas-hero-left">
+          <p class="eyebrow" data-i18n="hero_eyebrow">THE UNIVERSE ISN'T THAT FAR AWAY</p>
+          <h1 class="hero-title">Big missions. Human<br />stories.</h1>
+          <p class="hero-copy" data-i18n="hero_copy">
+            Travel across the solar system through the eyes of the explorers who went there—and the discoveries they brought home.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary button-large" href="explore.html" data-i18n="hero_btn_explore">
+              Explore the map ↗
+            </a>
+            <a class="button button-quiet button-large" href="mission.html" id="surpriseMeBtn">
+              Surprise me ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="atlas-hero-stat">
+          <div class="stat-number">06</div>
+          <div class="stat-meta">
+            <span class="stat-line-1">MISSIONS TO DISCOVER</span>
+            <span class="stat-line-2">MORE STORIES COMING SOON</span>
+          </div>
+        </div>
       </div>
+
       <p class="status-message" role="status" aria-live="polite" data-status></p>
 
-      <!-- Interactive Discovery Tools Grid Showcase -->
-      <section style="width: min(100%, 1140px); margin: 3.5rem auto 1rem; text-align: left;">
-        <div style="border-top: 1px solid var(--line); padding-top: 2.5rem; margin-bottom: 1.5rem;">
-          <p class="eyebrow" style="margin-bottom: 0.25rem;">INTERACTIVE EXPLORATION EXPERIENCES</p>
-          <h2 style="font-size: clamp(1.8rem, 4vw, 2.5rem); margin: 0 0 0.5rem;">
+      <!-- Featured Interactive Two-Card Showcase (Matching the image) -->
+      <section class="atlas-showcase-grid" aria-label="Interactive Mission Showcase">
+        <!-- Left Card: FIELD GUIDE / 01 -->
+        <div class="atlas-card field-guide-card">
+          <div class="card-head">
+            <div class="card-titles">
+              <span class="card-eyebrow">FIELD GUIDE / 01</span>
+              <h3 class="card-title">Choose your world</h3>
+            </div>
+            <div class="world-pills" role="tablist" aria-label="Choose Celestial World">
+              <button class="world-pill is-active" id="tabMars" data-world="mars" role="tab" aria-selected="true">MARS</button>
+              <button class="world-pill" id="tabMoon" data-world="moon" role="tab" aria-selected="false">MOON</button>
+            </div>
+          </div>
+
+          <!-- Stylized Shaded 3D Sphere & Orbit System -->
+          <div class="sphere-viewport" id="sphereViewport">
+            <div class="planet-sphere mars-sphere" id="planetGlobe">
+              <div class="crater c1"></div>
+              <div class="crater c2"></div>
+              <div class="crater c3"></div>
+            </div>
+
+            <!-- Orbital Perspective Ellipse -->
+            <svg class="orbital-svg" viewBox="0 0 400 240" aria-hidden="true">
+              <ellipse cx="200" cy="120" rx="160" ry="60" class="orbit-path" />
+            </svg>
+
+            <!-- Dynamic Interactive Beacons -->
+            <div id="beaconLayer" class="beacon-layer">
+              <!-- Injected by JavaScript -->
+            </div>
+          </div>
+
+          <div class="card-foot">
+            <div class="foot-left">
+              <span class="foot-bold" id="worldMissionCount">Mars · 3 missions</span>
+              <span class="foot-sub">Tap a marker to uncover a story</span>
+            </div>
+            <div class="foot-legend">
+              <span class="legend-item"><span class="legend-box box-active"></span>ACTIVE</span>
+              <span class="legend-item"><span class="legend-box box-ended"></span>ENDED</span>
+              <span class="legend-item"><span class="legend-box box-transit"></span>IN TRANSIT</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Card: MISSION FILE / 004 -->
+        <div class="atlas-card mission-file-card" id="missionFileCard">
+          <div>
+            <div class="card-head">
+              <span class="card-eyebrow" id="mfEyebrow">MISSION FILE / 004</span>
+              <span class="badge-pill" id="mfBadge">MISSION COMPLETE</span>
+            </div>
+            <div class="card-body">
+              <h3 class="mission-file-title" id="mfTitle">Opportunity kept going.</h3>
+              <p class="mission-file-desc" id="mfDesc">
+                Built to last 90 days. It explored Mars for nearly 15 years—and kept sending home clues about the planet's watery past.
+              </p>
+              <blockquote class="mission-quote">
+                <p class="quote-text" id="mfQuote">“My battery is low and it's getting dark.”</p>
+                <cite class="quote-cite" id="mfCite">— A poetic farewell inspired by the rover's final transmission</cite>
+              </blockquote>
+            </div>
+          </div>
+
+          <div class="card-foot">
+            <div class="mf-meta">
+              <span class="mf-dates" id="mfDates">2004 — 2018</span>
+              <span class="mf-code" id="mfCode">MER-B</span>
+            </div>
+            <a href="mission.html?id=opportunity" class="play-circle-btn" id="mfPlayBtn" aria-label="Open Opportunity Story">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="7,4 20,12 7,20" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Bottom Two Wide Widgets (Matching the image) -->
+      <section class="atlas-widget-grid" aria-label="Live Spacecraft & Missions">
+        <!-- Widget 1: Where is Voyager 1? -->
+        <a href="signal.html" class="atlas-card widget-card voyager-widget" style="text-decoration: none;">
+          <div class="widget-content">
+            <span class="card-eyebrow">A LITTLE FURTHER, EVERY SECOND</span>
+            <h3 class="widget-title">Where is Voyager 1?</h3>
+            <p class="widget-desc">Humanity's farthest spacecraft is still moving through interstellar space.</p>
+          </div>
+          <div class="widget-metric">
+            <div class="metric-val" id="heroVoyagerDist">25.4 billion</div>
+            <div class="metric-sub"><span class="live-dot"></span> KM FROM EARTH · LIVE DATA</div>
+          </div>
+        </a>
+
+        <!-- Widget 2: Ready to earn your Explorer Card? -->
+        <div class="atlas-card widget-card quiz-widget">
+          <div class="widget-content">
+            <span class="card-eyebrow">YOUR NEXT MISSION</span>
+            <h3 class="widget-title">Ready to earn your Explorer Card?</h3>
+            <p class="widget-desc">Three quick questions. One very shareable achievement.</p>
+          </div>
+          <div class="widget-action">
+            <a href="quiz.html" class="button button-primary">Take the quiz ↗</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Deep Space Discovery Tools Grid -->
+      <section id="discovery-tools" style="margin-top: 4rem;">
+        <div style="border-top: 1px solid var(--line); padding-top: 2.5rem; margin-bottom: 2rem;">
+          <p class="eyebrow">INTERACTIVE EXPLORATION EXPERIENCES</p>
+          <h2 style="font-size: clamp(1.8rem, 4vw, 2.5rem); margin: 0 0 0.5rem; font-weight: 800;">
             Deep Space <span>Discovery Tools</span>
           </h2>
-          <p style="color: var(--muted); font-size: 0.95rem; max-width: 650px; margin: 0 0 1.5rem;">
+          <p style="color: var(--muted); font-size: 0.95rem; max-width: 650px; margin: 0;">
             Simulate real speed-of-light communication delays, compare spacecraft before and after decades in space, converse with probes via AI, and pilot your own descent module.
           </p>
         </div>
 
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem;">
           <!-- Card 1: Signal Delay -->
-          <a href="signal.html" class="signal-control-card" style="display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.2s, border-color 0.2s;">
+          <a href="signal.html" class="atlas-card" style="transition: transform 0.2s, border-color 0.2s;">
             <div>
-              <div style="font-size: 2rem; margin-bottom: 0.5rem;">📡</div>
-              <h3 style="font-size: 1.2rem; margin: 0 0 0.4rem; color: #fff;">Signal-Delay Tool</h3>
+              <div style="font-size: 2rem; margin-bottom: 0.65rem;">📡</div>
+              <h3 style="font-size: 1.2rem; margin: 0 0 0.4rem; color: #fff; font-weight: 800;">Signal-Delay Tool</h3>
               <p style="font-size: 0.85rem; color: var(--muted); line-height: 1.5; margin: 0;">
                 Experience the real physics of communicating across light-hours with Voyager 1, Mars rovers, and Cassini via the Deep Space Network.
               </p>
             </div>
-            <div style="margin-top: 1.25rem; font-size: 0.82rem; font-weight: 700; color: var(--accent);">
-              Launch Simulator →
+            <div style="margin-top: 1.5rem; font-size: 0.82rem; font-weight: 800; color: var(--accent);">
+              Launch Simulator ↗
             </div>
           </a>
 
           <!-- Card 2: Then & Now -->
-          <a href="then-now.html" class="signal-control-card" style="display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.2s, border-color 0.2s;">
+          <a href="then-now.html" class="atlas-card" style="transition: transform 0.2s, border-color 0.2s;">
             <div>
-              <div style="font-size: 2rem; margin-bottom: 0.5rem;">⏱️</div>
-              <h3 style="font-size: 1.2rem; margin: 0 0 0.4rem; color: #fff;">Then and Now Slider</h3>
+              <div style="font-size: 2rem; margin-bottom: 0.65rem;">⏱️</div>
+              <h3 style="font-size: 1.2rem; margin: 0 0 0.4rem; color: #fff; font-weight: 800;">Then and Now Slider</h3>
               <p style="font-size: 0.85rem; color: var(--muted); line-height: 1.5; margin: 0;">
                 Dual-layer interactive slider comparing launch cleanrooms with decades of weathering on Mars, the Moon, and Saturn.
               </p>
             </div>
-            <div style="margin-top: 1.25rem; font-size: 0.82rem; font-weight: 700; color: var(--accent);">
-              Compare Images →
+            <div style="margin-top: 1.5rem; font-size: 0.82rem; font-weight: 800; color: var(--accent);">
+              Compare Images ↗
             </div>
           </a>
 
           <!-- Card 3: Ask the Machine -->
-          <a href="ask.html" class="signal-control-card" style="display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.2s, border-color 0.2s;">
+          <a href="ask.html" class="atlas-card" style="transition: transform 0.2s, border-color 0.2s;">
             <div>
-              <div style="font-size: 2rem; margin-bottom: 0.5rem;">🤖</div>
-              <h3 style="font-size: 1.2rem; margin: 0 0 0.4rem; color: #fff;">Ask the Machine (AI)</h3>
+              <div style="font-size: 2rem; margin-bottom: 0.65rem;">🤖</div>
+              <h3 style="font-size: 1.2rem; margin: 0 0 0.4rem; color: #fff; font-weight: 800;">Ask the Machine (AI)</h3>
               <p style="font-size: 0.85rem; color: var(--muted); line-height: 1.5; margin: 0;">
                 Converse directly with Opportunity, Voyager 1, Cassini, Spirit, or the Apollo Lunar Rover. Powered by Gemini AI.
               </p>
             </div>
-            <div style="margin-top: 1.25rem; font-size: 0.82rem; font-weight: 700; color: var(--accent);">
-              Start Transmission →
+            <div style="margin-top: 1.5rem; font-size: 0.82rem; font-weight: 800; color: var(--accent);">
+              Start Transmission ↗
             </div>
           </a>
 
           <!-- Card 4: Landing Mini-Game -->
-          <a href="lander.html" class="signal-control-card" style="display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.2s, border-color 0.2s;">
+          <a href="lander.html" class="atlas-card" style="transition: transform 0.2s, border-color 0.2s;">
             <div>
-              <div style="font-size: 2rem; margin-bottom: 0.5rem;">🚀</div>
-              <h3 style="font-size: 1.2rem; margin: 0 0 0.4rem; color: #fff;">Landing Mini-Game</h3>
+              <div style="font-size: 2rem; margin-bottom: 0.65rem;">🚀</div>
+              <h3 style="font-size: 1.2rem; margin: 0 0 0.4rem; color: #fff; font-weight: 800;">Landing Mini-Game</h3>
               <p style="font-size: 0.85rem; color: var(--muted); line-height: 1.5; margin: 0;">
                 Pilot your lunar or martian lander through gravity wells and craters. Conserve fuel and touch down safely.
               </p>
             </div>
-            <div style="margin-top: 1.25rem; font-size: 0.82rem; font-weight: 700; color: var(--accent);">
-              Play Mini-Game →
+            <div style="margin-top: 1.5rem; font-size: 0.82rem; font-weight: 800; color: var(--accent);">
+              Play Mini-Game ↗
             </div>
           </a>
 
           <!-- Card 5: Farewell Wall -->
-          <a href="farewell.html" class="signal-control-card" style="display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.2s, border-color 0.2s;">
+          <a href="farewell.html" class="atlas-card" style="transition: transform 0.2s, border-color 0.2s;">
             <div>
-              <div style="font-size: 2rem; margin-bottom: 0.5rem;">💌</div>
-              <h3 style="font-size: 1.2rem; margin: 0 0 0.4rem; color: #fff;">The Farewell Wall</h3>
+              <div style="font-size: 2rem; margin-bottom: 0.65rem;">💌</div>
+              <h3 style="font-size: 1.2rem; margin: 0 0 0.4rem; color: #fff; font-weight: 800;">The Farewell Wall</h3>
               <p style="font-size: 0.85rem; color: var(--muted); line-height: 1.5; margin: 0;">
                 A community memorial wall. Read heartfelt tributes and leave your own note to humanity’s robotic pioneers.
               </p>
             </div>
-            <div style="margin-top: 1.25rem; font-size: 0.82rem; font-weight: 700; color: var(--accent);">
-              Leave a Tribute →
+            <div style="margin-top: 1.5rem; font-size: 0.82rem; font-weight: 800; color: var(--accent);">
+              Leave a Tribute ↗
             </div>
           </a>
 
           <!-- Card 6: AR Hologram -->
-          <a href="ar.html" class="signal-control-card" style="display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.2s, border-color 0.2s;">
+          <a href="ar.html" class="atlas-card" style="transition: transform 0.2s, border-color 0.2s;">
             <div>
-              <div style="font-size: 2rem; margin-bottom: 0.5rem;">🛰️</div>
-              <h3 style="font-size: 1.2rem; margin: 0 0 0.4rem; color: #fff;">AR 3D Hologram Viewer</h3>
+              <div style="font-size: 2rem; margin-bottom: 0.65rem;">🛰️</div>
+              <h3 style="font-size: 1.2rem; margin: 0 0 0.4rem; color: #fff; font-weight: 800;">AR 3D Hologram Viewer</h3>
               <p style="font-size: 0.85rem; color: var(--muted); line-height: 1.5; margin: 0;">
                 Rotate and inspect interactive 3D wireframe models of Voyager 1 and Opportunity. Supports mobile gyroscope.
               </p>
             </div>
-            <div style="margin-top: 1.25rem; font-size: 0.82rem; font-weight: 700; color: var(--accent);">
-              View Hologram →
+            <div style="margin-top: 1.5rem; font-size: 0.82rem; font-weight: 800; color: var(--accent);">
+              View Hologram ↗
             </div>
           </a>
 
           <!-- Card 7: Teacher Pack -->
-          <a href="teachers.html" class="signal-control-card" style="display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.2s, border-color 0.2s;">
+          <a href="teachers.html" class="atlas-card" style="transition: transform 0.2s, border-color 0.2s;">
             <div>
-              <div style="font-size: 2rem; margin-bottom: 0.5rem;">📚</div>
-              <h3 style="font-size: 1.2rem; margin: 0 0 0.4rem; color: #fff;">Teacher & Educator Pack</h3>
+              <div style="font-size: 2rem; margin-bottom: 0.65rem;">📚</div>
+              <h3 style="font-size: 1.2rem; margin: 0 0 0.4rem; color: #fff; font-weight: 800;">Teacher & Educator Pack</h3>
               <p style="font-size: 0.85rem; color: var(--muted); line-height: 1.5; margin: 0;">
                 Free classroom STEM lessons, student physics problem sets, discussion prompts, and printable certificates.
               </p>
             </div>
-            <div style="margin-top: 1.25rem; font-size: 0.82rem; font-weight: 700; color: var(--accent);">
-              Open Educator Hub →
+            <div style="margin-top: 1.5rem; font-size: 0.82rem; font-weight: 800; color: var(--accent);">
+              Open Educator Hub ↗
             </div>
           </a>
         </div>
       </section>
     </main>
 
+    <!-- Site Footer -->
     <footer class="site-footer">
-      <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.5rem;">
-        <a href="timeline.html" style="text-decoration: underline;">Mission Timeline</a>
-        <a href="about.html" style="text-decoration: underline;">About ABNF</a>
-        <a href="teachers.html" style="text-decoration: underline;">Educator Hub</a>
+      <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
+        <a href="mission.html">Missions</a>
+        <a href="explore.html">Planetary Map</a>
+        <a href="signal.html">Signal Delay</a>
+        <a href="quiz.html">Challenge Quiz</a>
+        <a href="timeline.html">Timeline</a>
+        <a href="teachers.html">Educator Hub</a>
+        <a href="about.html">About Mission Atlas</a>
       </div>
-      <span data-i18n="footer_tag">ABNF · A home for forgotten space stories</span>
-      <span data-i18n="footer_motto">Explore. Remember. Wonder.</span>
+      <div>
+        <span data-i18n="footer_tag">MISSION ATLAS · Human stories of deep space exploration</span>
+      </div>
     </footer>
+
+    <!-- Interactive Logic for Field Guide & Planet Globe -->
+    <script>
+      (function () {
+        const WORLDS = {
+          mars: {
+            name: "Mars",
+            missionCountText: "Mars · 3 missions",
+            sphereClass: "mars-sphere",
+            missions: [
+              {
+                id: "opportunity",
+                fileNumber: "004",
+                status: "MISSION COMPLETE",
+                statusClass: "beacon-ended",
+                title: "Opportunity kept going.",
+                desc: "Built to last 90 days. It explored Mars for nearly 15 years—and kept sending home clues about the planet's watery past.",
+                quote: "“My battery is low and it's getting dark.”",
+                cite: "— A poetic farewell inspired by the rover's final transmission",
+                dates: "2004 — 2018",
+                code: "MER-B",
+                posX: "32%",
+                posY: "68%"
+              },
+              {
+                id: "perseverance",
+                fileNumber: "005",
+                status: "OPERATIONAL",
+                statusClass: "beacon-active",
+                title: "Perseverance caches the past.",
+                desc: "Drilling Martian river deltas in Jezero crater to prepare core samples for future retrieval missions to Earth.",
+                quote: "“Dare mighty things.”",
+                cite: "— Binary code hidden in Perseverance’s supersonic parachute",
+                dates: "2021 — PRESENT",
+                code: "MARS-2020",
+                posX: "68%",
+                posY: "36%"
+              },
+              {
+                id: "curiosity",
+                fileNumber: "006",
+                status: "IN TRANSIT / ACTIVE",
+                statusClass: "beacon-transit",
+                title: "Curiosity studies ancient water.",
+                desc: "Ascending Mount Sharp inside Gale Crater, revealing that fresh lakes and organic chemistry persisted for millions of years.",
+                quote: "“Every grain of sand tells of a living, shifting world.”",
+                cite: "— Mars Science Laboratory team summary",
+                dates: "2012 — PRESENT",
+                code: "MSL",
+                posX: "82%",
+                posY: "54%"
+              }
+            ]
+          },
+          moon: {
+            name: "Moon",
+            missionCountText: "Moon · 3 missions",
+            sphereClass: "moon-sphere",
+            missions: [
+              {
+                id: "apollo-11",
+                fileNumber: "001",
+                status: "HISTORIC",
+                statusClass: "beacon-ended",
+                title: "Apollo 11 made the first footprint.",
+                desc: "Neil Armstrong and Buzz Aldrin explored the Sea of Tranquility while Michael Collins stood vigil in lunar orbit.",
+                quote: "“That's one small step for man, one giant leap for mankind.”",
+                cite: "— Neil Armstrong, July 20, 1969",
+                dates: "JULY 1969",
+                code: "LM-5 EAGLE",
+                posX: "38%",
+                posY: "48%"
+              },
+              {
+                id: "chandrayaan-3",
+                fileNumber: "002",
+                status: "HISTORIC",
+                statusClass: "beacon-active",
+                title: "Chandrayaan-3 reached the South Pole.",
+                desc: "India's Vikram lander and Pragyan rover achieved humanity's first landing near the Moon's rugged south polar region.",
+                quote: "“India reached its destination—and the Moon embraced us.”",
+                cite: "— ISRO mission control transmission",
+                dates: "AUGUST 2023",
+                code: "VIKRAM",
+                posX: "62%",
+                posY: "76%"
+              },
+              {
+                id: "chang-e-4",
+                fileNumber: "003",
+                status: "OPERATIONAL",
+                statusClass: "beacon-transit",
+                title: "Chang'e 4 opened the far side.",
+                desc: "First historic landing on the hidden lunar far side in Von Kármán crater, communicating via lunar relay satellite.",
+                quote: "“Looking where sunlight never shines from Earth.”",
+                cite: "— CNSA exploration log",
+                dates: "2019 — PRESENT",
+                code: "YUTU-2",
+                posX: "74%",
+                posY: "42%"
+              }
+            ]
+          }
+        };
+
+        let currentWorld = "mars";
+        const planetGlobe = document.getElementById("planetGlobe");
+        const beaconLayer = document.getElementById("beaconLayer");
+        const worldCountEl = document.getElementById("worldMissionCount");
+        const tabMars = document.getElementById("tabMars");
+        const tabMoon = document.getElementById("tabMoon");
+
+        // Mission file elements
+        const mfEyebrow = document.getElementById("mfEyebrow");
+        const mfBadge = document.getElementById("mfBadge");
+        const mfTitle = document.getElementById("mfTitle");
+        const mfDesc = document.getElementById("mfDesc");
+        const mfQuote = document.getElementById("mfQuote");
+        const mfCite = document.getElementById("mfCite");
+        const mfDates = document.getElementById("mfDates");
+        const mfCode = document.getElementById("mfCode");
+        const mfPlayBtn = document.getElementById("mfPlayBtn");
+
+        function updateMissionFile(m) {
+          mfEyebrow.textContent = `MISSION FILE / ${m.fileNumber}`;
+          mfBadge.textContent = m.status;
+          mfTitle.textContent = m.title;
+          mfDesc.textContent = m.desc;
+          mfQuote.textContent = m.quote;
+          mfCite.textContent = m.cite;
+          mfDates.textContent = m.dates;
+          mfCode.textContent = m.code;
+          mfPlayBtn.href = `mission.html?id=${m.id}`;
+        }
+
+        function renderWorld(worldKey) {
+          currentWorld = worldKey;
+          const data = WORLDS[worldKey];
+
+          if (worldKey === "mars") {
+            tabMars.classList.add("is-active");
+            tabMars.setAttribute("aria-selected", "true");
+            tabMoon.classList.remove("is-active");
+            tabMoon.setAttribute("aria-selected", "false");
+            planetGlobe.className = "planet-sphere mars-sphere";
+          } else {
+            tabMoon.classList.add("is-active");
+            tabMoon.setAttribute("aria-selected", "true");
+            tabMars.classList.remove("is-active");
+            tabMars.setAttribute("aria-selected", "false");
+            planetGlobe.className = "planet-sphere moon-sphere";
+          }
+
+          worldCountEl.textContent = data.missionCountText;
+
+          // Render beacons
+          beaconLayer.innerHTML = "";
+          data.missions.forEach((m, idx) => {
+            const beacon = document.createElement("div");
+            beacon.className = `beacon-point ${m.statusClass}`;
+            beacon.style.left = m.posX;
+            beacon.style.top = m.posY;
+            beacon.setAttribute("title", `${m.title} (${m.code})`);
+            beacon.addEventListener("click", () => updateMissionFile(m));
+            beaconLayer.appendChild(beacon);
+
+            if (idx === 0) {
+              updateMissionFile(m);
+            }
+          });
+        }
+
+        tabMars?.addEventListener("click", () => renderWorld("mars"));
+        tabMoon?.addEventListener("click", () => renderWorld("moon"));
+
+        // Initialize with Mars
+        renderWorld("mars");
+
+        // Dynamic Voyager 1 Distance calculation & live tick
+        const distEl = document.getElementById("heroVoyagerDist");
+        function updateVoyagerDist() {
+          fetch("/api/voyager")
+            .then((r) => (r.ok ? r.json() : null))
+            .then((data) => {
+              if (data && data.distanceKm) {
+                const billions = (data.distanceKm / 1e9).toFixed(1);
+                distEl.textContent = `${billions} billion`;
+              }
+            })
+            .catch(() => {
+              // Fallback based on real astronomical expansion rate
+              const km = 24.8e9 + (Date.now() - Date.UTC(2024, 0, 1)) * 0.017;
+              distEl.textContent = `${(km / 1e9).toFixed(1)} billion`;
+            });
+        }
+        updateVoyagerDist();
+        setInterval(updateVoyagerDist, 15000);
+
+        // Surprise Me button randomly jumps to a mission story
+        const surpriseBtn = document.getElementById("surpriseMeBtn");
+        if (surpriseBtn) {
+          const missionIds = ["opportunity", "spirit", "voyager-1", "cassini", "curiosity", "apollo-11"];
+          surpriseBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            const pick = missionIds[Math.floor(Math.random() * missionIds.length)];
+            window.location.href = `mission.html?id=${pick}`;
+          });
+        }
+      })();
+    </script>
   </body>
 </html>
