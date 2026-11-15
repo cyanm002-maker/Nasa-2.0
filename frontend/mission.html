@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Hear six space missions retold in the first person, grounded in NASA history."
+    />
+    <title>Field notes from space | ABNF</title>
+    <link rel="stylesheet" href="css/auth.css" />
+    <link rel="stylesheet" href="css/story.css" />
+    <link rel="stylesheet" href="css/tools.css" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <script defer src="js/i18n.js"></script>
+    <script defer src="js/pwa.js"></script>
+    <script defer src="js/story.js"></script>
+  </head>
+  <body data-page="stories">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <header class="site-header">
+      <a class="brand" href="/">ABNF<span>.</span></a>
+      <nav class="header-actions" aria-label="Main navigation">
+        <a class="button button-quiet" href="/" data-i18n="nav_home">Home</a>
+        <a class="button button-quiet" href="explore.html" data-i18n="nav_explore">Explore map</a>
+        <a class="button button-quiet" href="quiz.html" data-i18n="nav_quiz">Quiz</a>
+        <a class="button button-primary" href="mission.html" aria-current="page" data-i18n="nav_stories">Stories</a>
+        <a class="button button-quiet" href="signal.html" data-i18n="nav_signal">Signal Delay</a>
+        <a class="button button-quiet" href="ask.html" data-i18n="nav_ask">Ask Machine</a>
+        <button class="button button-quiet" type="button" data-pwa-install hidden data-i18n="nav_install">📱 Install App</button>
+      </nav>
+    </header>
+
+    <main class="story-page" id="main-content" tabindex="-1">
+      <section class="story-intro" aria-labelledby="story-title">
+        <p class="eyebrow">TRANSMISSIONS FROM THE EDGE</p>
+        <h1 id="story-title">The machines that <span>kept going.</span></h1>
+        <p class="hero-copy">
+          Six journeys, retold from the point of view of the machines that made
+          them. Choose a voice; stay for the miles it traveled.
+        </p>
+        <p class="story-disclaimer">
+          These are imaginative, first-person retellings based on documented
+          mission events—not quotes, testimony, or thoughts recorded by the
+          spacecraft.
+        </p>
+      </section>
+
+      <section class="story-layout" aria-label="Mission story reader">
+        <nav class="story-index" aria-label="Choose a mission story">
+          <div class="story-index-heading">
+            <p class="eyebrow">THE ARCHIVE</p>
+            <span data-story-count>6 STORIES</span>
+          </div>
+          <div class="story-list" data-story-list></div>
+        </nav>
+
+        <article class="story-panel" aria-labelledby="story-mission-name">
+          <div class="story-panel-topline">
+            <span class="story-kicker" data-story-era>FIELD NOTE 01</span>
+            <span class="story-state"><i></i> HISTORICAL RETELLING</span>
+          </div>
+          <p class="story-location" data-story-location></p>
+          <h2 id="story-mission-name" data-story-name>Loading story…</h2>
+          <p class="story-subtitle" data-story-subtitle></p>
+
+          <figure class="story-figure" data-story-figure hidden>
+            <a class="story-image-link" data-story-image-link target="_blank" rel="noreferrer">
+              <img class="story-image" data-story-image alt="" />
+            </a>
+            <figcaption class="story-image-caption">
+              <a data-story-image-catalog target="_blank" rel="noreferrer"></a>
+              <span>Credit: <span data-story-image-credit></span></span>
+            </figcaption>
+            <p class="story-image-fallback" data-story-image-fallback hidden>
+              Image unavailable right now. Open the NASA image catalog link above to view it.
+            </p>
+          </figure>
+
+          <div class="story-rule" aria-hidden="true"><span></span></div>
+          <div class="story-prose" data-story-prose aria-hidden="true"></div>
+          <div class="story-cursor" data-story-cursor aria-hidden="true"></div>
+          <div class="visually-hidden" data-story-accessible></div>
+
+          <div class="story-controls">
+            <button class="button button-quiet" type="button" data-typewriter>
+              Skip the typewriter
+            </button>
+            <span data-story-progress aria-live="polite">Preparing transmission…</span>
+          </div>
+          <div class="story-audio-controls" role="group" aria-label="Story audio narration">
+            <button class="button button-primary" type="button" data-narrate>
+              Listen to story
+            </button>
+            <button class="button button-quiet" type="button" data-narration-pause disabled>
+              Pause
+            </button>
+            <button class="button button-quiet" type="button" data-narration-stop disabled>
+              Stop
+            </button>
+            <span data-narration-status role="status" aria-live="polite">
+              Narration uses your browser’s built-in voice.
+            </span>
+          </div>
+          <footer class="story-source">
+            <span>Grounded in mission records</span>
+            <a data-story-source target="_blank" rel="noreferrer">Read the NASA mission history ↗</a>
+          </footer>
+        </article>
+      </section>
+    </main>
+
+    <section class="voyager-card" aria-labelledby="voyager-heading" data-voyager-card>
+      <div class="voyager-heading">
+        <div>
+          <p class="eyebrow">A SIGNAL FROM INTERSTELLAR SPACE</p>
+          <h2 id="voyager-heading">Where is Voyager 1 now?</h2>
+        </div>
+        <span class="voyager-live"><i data-voyager-indicator></i> LIVE EPHEMERIS</span>
+      </div>
+      <p class="voyager-lead">
+        More than forty-nine years from launch, and still moving away from home.
+      </p>
+      <div class="voyager-distance-block">
+        <span class="voyager-distance-label">DISTANCE FROM EARTH</span>
+        <p class="voyager-distance" data-voyager-miles>Connecting to JPL Horizons…</p>
+        <span class="voyager-distance-unit">miles</span>
+      </div>
+      <div class="voyager-stats" aria-label="Voyager telemetry">
+        <div>
+          <span class="voyager-stat-label">Kilometers</span>
+          <strong data-voyager-kilometers>—</strong>
+        </div>
+        <div>
+          <span class="voyager-stat-label">Astronomical units</span>
+          <strong data-voyager-au>—</strong>
+        </div>
+        <div>
+          <span class="voyager-stat-label">One-way light time</span>
+          <strong data-voyager-light-time>—</strong>
+        </div>
+      </div>
+      <div class="voyager-footer">
+        <p data-voyager-status role="status" aria-live="polite">
+          Requesting the latest ephemeris…
+        </p>
+        <a href="https://ssd.jpl.nasa.gov/horizons/" target="_blank" rel="noreferrer">
+          Source: NASA/JPL Horizons ↗
+        </a>
+      </div>
+      <p class="voyager-method">
+        Horizons reports Voyager’s apparent Earth range and range rate. The
+        counter estimates the changing distance between refreshes and requests
+        a fresh ephemeris every five minutes.
+      </p>
+    </section>
+
+    <footer class="site-footer">
+      <span>ABNF · A home for forgotten space stories</span>
+      <span>Explore. Remember. Wonder.</span>
+    </footer>
+  </body>
+</html>
