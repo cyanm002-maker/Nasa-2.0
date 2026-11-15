@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Hear six space missions retold in the first person, grounded in NASA history."
+      content="Explore 206 first-person space mission stories grounded in documented mission history."
     />
     <title>Field notes from space | ABNF</title>
     <link rel="stylesheet" href="css/auth.css" />
@@ -36,8 +36,8 @@
         <p class="eyebrow">TRANSMISSIONS FROM THE EDGE</p>
         <h1 id="story-title">The machines that <span>kept going.</span></h1>
         <p class="hero-copy">
-          Six journeys, retold from the point of view of the machines that made
-          them. Choose a voice; stay for the miles it traveled.
+          Explore six in-depth journeys and 200 short field notes from 50 more
+          missions. Search the archive, choose a voice, and follow the evidence.
         </p>
         <p class="story-disclaimer">
           These are imaginative, first-person retellings based on documented
@@ -50,9 +50,27 @@
         <nav class="story-index" aria-label="Choose a mission story">
           <div class="story-index-heading">
             <p class="eyebrow">THE ARCHIVE</p>
-            <span data-story-count>6 STORIES</span>
+            <span data-story-count>206 STORIES</span>
           </div>
+          <label class="visually-hidden" for="story-search">Search mission stories</label>
+          <input
+            class="story-search"
+            id="story-search"
+            data-story-search
+            type="search"
+            placeholder="Search missions or destinations"
+            autocomplete="off"
+          />
           <div class="story-list" data-story-list></div>
+          <div class="story-pagination">
+            <button class="button button-quiet" type="button" data-story-previous disabled>
+              Previous
+            </button>
+            <span data-story-page role="status" aria-live="polite">Loading archive…</span>
+            <button class="button button-quiet" type="button" data-story-next disabled>
+              Next
+            </button>
+          </div>
         </nav>
 
         <article class="story-panel" aria-labelledby="story-mission-name">

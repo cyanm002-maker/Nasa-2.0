@@ -1,5 +1,5 @@
 // ABNF Service Worker - Offline Shell & Deep Space Cache
-const CACHE_NAME = "abnf-v1-shell";
+const CACHE_NAME = "abnf-v3-shell";
 
 const PRECACHE_URLS = [
   "/",
@@ -23,6 +23,7 @@ const PRECACHE_URLS = [
   "/css/quiz.css",
   "/js/i18n.js",
   "/js/pwa.js",
+  "/js/story.js",
   "/js/signal.js",
   "/js/then-now.js",
   "/js/ask.js",
@@ -30,6 +31,7 @@ const PRECACHE_URLS = [
   "/js/farewell.js",
   "/js/ar.js",
   "/data/stories.json",
+  "/data/stories-bank.json",
   "/data/sites.json",
   "/data/quiz.json",
   "/data/quiz-bank.json",

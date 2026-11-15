@@ -1,0 +1,594 @@
+[
+  {
+    "category": "Mars",
+    "sourceLabel": "NASA · Mars exploration",
+    "sourceUrl": "https://science.nasa.gov/mars/",
+    "missions": [
+      {
+        "id": "mariner-4",
+        "name": "Mariner 4",
+        "type": "Mars flyby probe",
+        "year": "1965",
+        "place": "Mars",
+        "purpose": "make the first close-up observations of Mars",
+        "finding": "a cratered surface that looked more like the Moon than the canals once imagined",
+        "challenge": "a single fast flyby with a limited number of images and a long-distance data link",
+        "legacy": "return the first close-up images of another planet"
+      },
+      {
+        "id": "viking-1",
+        "name": "Viking 1",
+        "type": "Mars lander and orbiter",
+        "year": "1976",
+        "place": "Chryse Planitia, Mars",
+        "purpose": "orbit Mars, land safely, and investigate the surface and atmosphere",
+        "finding": "a rocky plain, a thin atmosphere, and soil chemistry tested by experiments searching for signs of life",
+        "challenge": "landing safely on an unfamiliar surface while operating science instruments for far longer than the planned primary mission",
+        "legacy": "make the first successful U.S. landing on Mars and return years of surface measurements"
+      },
+      {
+        "id": "viking-2",
+        "name": "Viking 2",
+        "type": "Mars lander and orbiter",
+        "year": "1976",
+        "place": "Utopia Planitia, Mars",
+        "purpose": "study the Martian surface, atmosphere, and possible signs of life",
+        "finding": "a broad northern plain, seasonal frost, and soil results that remained difficult to interpret as evidence of life",
+        "challenge": "working through a cold, dusty environment while sending data across the distance between Mars and Earth",
+        "legacy": "show that Mars has varied surface conditions and that life-detection results require careful interpretation"
+      },
+      {
+        "id": "mars-pathfinder",
+        "name": "Mars Pathfinder",
+        "type": "Mars lander",
+        "year": "1997",
+        "place": "Ares Vallis, Mars",
+        "purpose": "demonstrate an affordable landing system and deploy the Sojourner rover",
+        "finding": "rocks and soil in a flood-carved region, including evidence that water had shaped the landscape",
+        "challenge": "surviving entry, descent, and landing with airbags before beginning surface operations",
+        "legacy": "prove that a small rover and an innovative landing system could explore Mars together"
+      },
+      {
+        "id": "mars-odyssey",
+        "name": "Mars Odyssey",
+        "type": "Mars orbiter",
+        "year": "2001",
+        "place": "orbit around Mars",
+        "purpose": "map the planet's elements and minerals and look for evidence of water",
+        "finding": "hydrogen-rich regions beneath the surface that pointed to widespread water ice",
+        "challenge": "turning global measurements from orbit into detailed maps useful to later landing missions",
+        "legacy": "create a long-running communications relay and guide the search for water on Mars"
+      },
+      {
+        "id": "mars-global-surveyor",
+        "name": "Mars Global Surveyor",
+        "type": "Mars orbiter",
+        "year": "1997",
+        "place": "orbit around Mars",
+        "purpose": "map the planet's surface, atmosphere, and magnetic environment",
+        "finding": "a global topographic picture, signs of ancient water-carved terrain, and localized crustal magnetic fields",
+        "challenge": "using aerobraking to gradually reshape its orbit while protecting the spacecraft and its instruments",
+        "legacy": "provide a detailed global baseline that transformed how scientists understood Martian geology"
+      },
+      {
+        "id": "mars-reconnaissance-orbiter",
+        "name": "Mars Reconnaissance Orbiter",
+        "type": "Mars orbiter",
+        "year": "2006",
+        "place": "orbit around Mars",
+        "purpose": "study the planet's climate and geology and scout safe landing sites",
+        "finding": "high-resolution terrain and mineral evidence showing that liquid water shaped many ancient environments",
+        "challenge": "balancing detailed science observations with the work of relaying data for surface missions",
+        "legacy": "help scientists choose landing sites and deliver a vast, detailed archive of Mars observations"
+      },
+      {
+        "id": "phoenix",
+        "name": "Phoenix",
+        "type": "Mars lander",
+        "year": "2008",
+        "place": "Vastitas Borealis, Mars",
+        "purpose": "dig into northern Martian soil and examine the local water cycle",
+        "finding": "water ice just beneath the surface and soil chemistry that included perchlorate",
+        "challenge": "using a robotic arm to dig and deliver samples in a harsh polar environment",
+        "legacy": "confirm that accessible water ice lies in the Martian arctic soil"
+      },
+      {
+        "id": "curiosity",
+        "name": "Curiosity",
+        "type": "Mars rover",
+        "year": "2012",
+        "place": "Gale Crater, Mars",
+        "purpose": "assess whether ancient Mars had conditions that could support microbial life",
+        "finding": "evidence that an ancient lake in Gale Crater had chemistry suitable for microbial life",
+        "challenge": "landing a large rover with a sky-crane system and navigating a rocky landscape",
+        "legacy": "show that ancient Mars once offered long-lived habitable environments"
+      },
+      {
+        "id": "maven",
+        "name": "MAVEN",
+        "type": "Mars orbiter",
+        "year": "2014",
+        "place": "the upper atmosphere of Mars",
+        "purpose": "investigate how Mars lost much of its atmosphere to space",
+        "finding": "solar wind and radiation strip gas from the upper atmosphere, with loss rates changing over time",
+        "challenge": "sampling a variable upper atmosphere while coordinating orbital science and communications",
+        "legacy": "connect atmospheric escape to the long-term climate history of Mars"
+      },
+      {
+        "id": "insight",
+        "name": "InSight",
+        "type": "Mars lander",
+        "year": "2018",
+        "place": "Elysium Planitia, Mars",
+        "purpose": "measure marsquakes and probe the planet's internal structure",
+        "finding": "marsquakes and seismic signals that revealed details about the crust, mantle, and core",
+        "challenge": "placing sensitive instruments on the ground and keeping solar panels clear enough to power them",
+        "legacy": "make Mars the first planet beyond Earth whose deep interior was measured with seismology"
+      },
+      {
+        "id": "perseverance",
+        "name": "Perseverance",
+        "type": "Mars rover",
+        "year": "2021",
+        "place": "Jezero Crater, Mars",
+        "purpose": "search for signs of ancient microbial life and collect samples for possible return",
+        "finding": "igneous and sedimentary rocks in a crater that once held a lake and river delta",
+        "challenge": "landing in rugged terrain and selecting which rock samples are most valuable to preserve",
+        "legacy": "assemble the first carefully selected Mars sample collection for a possible future return to Earth"
+      }
+    ]
+  },
+  {
+    "category": "Planetary exploration",
+    "sourceLabel": "NASA · Solar System exploration",
+    "sourceUrl": "https://science.nasa.gov/solar-system/",
+    "missions": [
+      {
+        "id": "mariner-2",
+        "name": "Mariner 2",
+        "type": "Venus flyby probe",
+        "year": "1962",
+        "place": "Venus and interplanetary space",
+        "purpose": "measure Venus and study the solar environment between Earth and the planet",
+        "finding": "an intensely hot Venus and a continuous solar wind flowing through interplanetary space",
+        "challenge": "reaching another planet with early deep-space technology and maintaining a reliable radio link",
+        "legacy": "complete the first successful mission to another planet"
+      },
+      {
+        "id": "mariner-10",
+        "name": "Mariner 10",
+        "type": "Mercury and Venus flyby probe",
+        "year": "1974",
+        "place": "Mercury",
+        "purpose": "use a Venus gravity assist to make repeated close observations of Mercury",
+        "finding": "a heavily cratered surface, a thin atmosphere, and a global magnetic field",
+        "challenge": "withstanding intense solar heat while revisiting Mercury on a carefully timed orbit",
+        "legacy": "provide the first close-up view of Mercury and reveal its unexpectedly strong magnetic field"
+      },
+      {
+        "id": "pioneer-10",
+        "name": "Pioneer 10",
+        "type": "Jupiter flyby probe",
+        "year": "1973",
+        "place": "Jupiter",
+        "purpose": "make the first close study of Jupiter and test a route through the asteroid belt",
+        "finding": "Jupiter's cloud bands, large moons, and intense radiation environment",
+        "challenge": "crossing the asteroid belt and surviving Jupiter's powerful radiation belts",
+        "legacy": "open the way for spacecraft to travel safely through the outer Solar System"
+      },
+      {
+        "id": "pioneer-11",
+        "name": "Pioneer 11",
+        "type": "Jupiter and Saturn flyby probe",
+        "year": "1979",
+        "place": "Saturn",
+        "purpose": "use a Jupiter encounter to reach Saturn and examine its rings and magnetic environment",
+        "finding": "new views of Saturn's rings and measurements of the planet's magnetosphere",
+        "challenge": "threading a safe path past Saturn while navigating a radiation-rich region",
+        "legacy": "perform the first close flyby of Saturn and help plan later outer-planet missions"
+      },
+      {
+        "id": "voyager-2",
+        "name": "Voyager 2",
+        "type": "Outer planets probe",
+        "year": "1986",
+        "place": "Uranus",
+        "purpose": "explore the giant planets and continue outward on a trajectory beyond them",
+        "finding": "Uranus's unusual magnetic field, dark rings, and previously unseen moons",
+        "challenge": "making one fast encounter count, with limited chances to aim instruments and transmit observations",
+        "legacy": "become the only spacecraft to visit Uranus and later Neptune up close"
+      },
+      {
+        "id": "galileo",
+        "name": "Galileo",
+        "type": "Jupiter orbiter and atmospheric probe",
+        "year": "1995",
+        "place": "the Jupiter system",
+        "purpose": "study Jupiter's atmosphere, magnetosphere, rings, and large moons",
+        "finding": "evidence of subsurface oceans at Europa and active volcanism on Io",
+        "challenge": "operating after its main high-gain antenna failed and returning data through a slower backup link",
+        "legacy": "reveal a dynamic Jupiter system and strengthen the case for ocean worlds"
+      },
+      {
+        "id": "juno",
+        "name": "Juno",
+        "type": "Jupiter orbiter",
+        "year": "2016",
+        "place": "orbit around Jupiter",
+        "purpose": "map Jupiter's gravity, magnetic field, atmosphere, and interior",
+        "finding": "deep atmospheric flows, complex polar storms, and clues to Jupiter's core",
+        "challenge": "flying close to Jupiter's radiation belts while protecting sensitive instruments",
+        "legacy": "reshape the picture of how Jupiter formed and how its deep atmosphere behaves"
+      },
+      {
+        "id": "messenger",
+        "name": "MESSENGER",
+        "type": "Mercury orbiter",
+        "year": "2011",
+        "place": "orbit around Mercury",
+        "purpose": "map Mercury and investigate its geology, magnetic field, and volatile materials",
+        "finding": "water ice in permanently shadowed polar craters and a large iron-rich core",
+        "challenge": "managing extreme heat and repeated orbital passes close to the Sun",
+        "legacy": "transform Mercury from a briefly visited world into a mapped planet"
+      },
+      {
+        "id": "magellan",
+        "name": "Magellan",
+        "type": "Venus radar mapper",
+        "year": "1990",
+        "place": "orbit around Venus",
+        "purpose": "map the cloud-hidden surface of Venus with synthetic aperture radar",
+        "finding": "volcanoes, vast lava plains, impact craters, and a surface shaped by geologic activity",
+        "challenge": "seeing through dense clouds and managing the spacecraft's changing orbit",
+        "legacy": "map most of Venus in detail for the first time"
+      },
+      {
+        "id": "pioneer-venus-orbiter",
+        "name": "Pioneer Venus Orbiter",
+        "type": "Venus orbiter",
+        "year": "1978",
+        "place": "orbit around Venus",
+        "purpose": "study Venus's atmosphere, ionosphere, and interaction with the solar wind",
+        "finding": "a complex atmosphere, changing cloud patterns, and a long, comet-like ion tail",
+        "challenge": "gathering observations through a hot, corrosive planetary environment from orbit",
+        "legacy": "build a broad picture of Venus's atmosphere over more than a decade"
+      },
+      {
+        "id": "new-horizons",
+        "name": "New Horizons",
+        "type": "Kuiper Belt probe",
+        "year": "2015",
+        "place": "the Pluto system",
+        "purpose": "make the first close reconnaissance of Pluto and its large moon Charon",
+        "finding": "mountains, glaciers, hazes, and a surprisingly active surface on Pluto",
+        "challenge": "collecting detailed data during one brief flyby after a journey of nearly a decade",
+        "legacy": "give humanity its first close look at Pluto and open a path to the Kuiper Belt"
+      },
+      {
+        "id": "dawn",
+        "name": "Dawn",
+        "type": "Asteroid belt orbiter",
+        "year": "2015",
+        "place": "Ceres",
+        "purpose": "orbit two large bodies in the asteroid belt and study the early Solar System",
+        "finding": "bright salt deposits and evidence of a past briny environment on Ceres",
+        "challenge": "using ion propulsion to travel between and orbit two distant worlds",
+        "legacy": "become the first spacecraft to orbit two extraterrestrial destinations"
+      },
+      {
+        "id": "rosetta",
+        "name": "Rosetta",
+        "type": "Comet orbiter and lander",
+        "year": "2014",
+        "place": "Comet 67P/Churyumov–Gerasimenko",
+        "purpose": "escort a comet around the Sun and deliver the Philae lander to its surface",
+        "finding": "a two-lobed comet releasing gas and dust as sunlight warmed its surface",
+        "challenge": "matching the comet's motion and operating in its weak, changing gravity",
+        "legacy": "make the first long-term study of a comet from orbit and the first landing on one"
+      },
+      {
+        "id": "dart",
+        "name": "DART",
+        "type": "Asteroid deflection test",
+        "year": "2022",
+        "place": "Dimorphos, in the Didymos system",
+        "purpose": "test whether a spacecraft impact could measurably change an asteroid moonlet's orbit",
+        "finding": "the impact shortened Dimorphos's orbital period around Didymos",
+        "challenge": "autonomously targeting a small moonlet millions of miles away in the final minutes",
+        "legacy": "demonstrate a tested technique for changing the motion of a near-Earth asteroid"
+      }
+    ]
+  },
+  {
+    "category": "The Moon",
+    "sourceLabel": "NASA · Lunar exploration",
+    "sourceUrl": "https://science.nasa.gov/moon/",
+    "missions": [
+      {
+        "id": "ranger-7",
+        "name": "Ranger 7",
+        "type": "Lunar impact probe",
+        "year": "1964",
+        "place": "the Moon",
+        "purpose": "send close-up images of the lunar surface before the spacecraft reached it",
+        "finding": "craters and fine surface details that could not be resolved from Earth",
+        "challenge": "capturing and transmitting images during a one-way approach ending in impact",
+        "legacy": "return the first successful close-up photographs from a U.S. lunar mission"
+      },
+      {
+        "id": "surveyor-1",
+        "name": "Surveyor 1",
+        "type": "Lunar lander",
+        "year": "1966",
+        "place": "Oceanus Procellarum, the Moon",
+        "purpose": "make a soft landing and examine the lunar surface for future crewed missions",
+        "finding": "a firm but navigable surface and close-up views of lunar soil",
+        "challenge": "slowing down and landing gently on a world with no atmosphere to cushion the descent",
+        "legacy": "show that a spacecraft could land safely and work on the Moon"
+      },
+      {
+        "id": "lunar-orbiter-1",
+        "name": "Lunar Orbiter 1",
+        "type": "Lunar mapping orbiter",
+        "year": "1966",
+        "place": "the Moon",
+        "purpose": "photograph potential landing regions and map the lunar surface from orbit",
+        "finding": "terrain details that helped identify safe sites for the Apollo landings",
+        "challenge": "developing and transmitting film images while circling the Moon",
+        "legacy": "help prepare the way for human exploration by surveying candidate landing sites"
+      },
+      {
+        "id": "clementine",
+        "name": "Clementine",
+        "type": "Lunar mapping orbiter",
+        "year": "1994",
+        "place": "the Moon",
+        "purpose": "map the Moon in multiple wavelengths and test compact spacecraft technology",
+        "finding": "polar regions that radar observations suggested could contain water ice",
+        "challenge": "operating a compact spacecraft through changing lighting and demanding orbital observations",
+        "legacy": "produce a new global lunar map and renew interest in polar resources"
+      },
+      {
+        "id": "lunar-prospector",
+        "name": "Lunar Prospector",
+        "type": "Lunar orbiter",
+        "year": "1998",
+        "place": "the Moon",
+        "purpose": "map lunar composition, gravity, and magnetic fields from a low polar orbit",
+        "finding": "enhanced hydrogen near the poles and evidence for small magnetic anomalies",
+        "challenge": "turning measurements from orbit into a global view of a varied surface",
+        "legacy": "improve knowledge of lunar resources and the Moon's internal structure"
+      },
+      {
+        "id": "lunar-reconnaissance-orbiter",
+        "name": "Lunar Reconnaissance Orbiter",
+        "type": "Lunar orbiter",
+        "year": "2009",
+        "place": "the Moon",
+        "purpose": "map the surface, measure radiation, and investigate potential landing sites",
+        "finding": "detailed terrain, temperature extremes, and evidence of water-bearing materials near the poles",
+        "challenge": "combining high-resolution mapping with long-term measurements from orbit",
+        "legacy": "create a detailed atlas that supports science and future lunar missions"
+      },
+      {
+        "id": "grail",
+        "name": "GRAIL",
+        "type": "Lunar gravity mapping mission",
+        "year": "2012",
+        "place": "the Moon",
+        "purpose": "map the Moon's gravity field using two spacecraft flying in formation",
+        "finding": "a crust shaped by ancient impacts and a thinner, more fractured structure than expected",
+        "challenge": "measuring tiny changes in the distance between two orbiters as they passed over lunar features",
+        "legacy": "produce the highest-resolution lunar gravity map of its time"
+      },
+      {
+        "id": "ladee",
+        "name": "LADEE",
+        "type": "Lunar atmosphere orbiter",
+        "year": "2013",
+        "place": "the Moon's tenuous exosphere",
+        "purpose": "study the Moon's thin exosphere and the dust environment near its surface",
+        "finding": "a very thin lunar exosphere containing gases including neon and argon",
+        "challenge": "working in a low orbit while avoiding dust and managing limited fuel",
+        "legacy": "characterize the Moon's tenuous atmosphere before renewed surface activity"
+      }
+    ]
+  },
+  {
+    "category": "Space telescopes",
+    "sourceLabel": "NASA · Universe exploration",
+    "sourceUrl": "https://science.nasa.gov/universe/",
+    "missions": [
+      {
+        "id": "hubble",
+        "name": "Hubble Space Telescope",
+        "type": "Space observatory",
+        "year": "1990",
+        "place": "low Earth orbit",
+        "purpose": "observe the universe above the blurring effects of Earth's atmosphere",
+        "finding": "deep-field galaxies, star-forming regions, and precise measurements that helped constrain the universe's expansion",
+        "challenge": "correcting an early mirror flaw and maintaining stable observations from orbit",
+        "legacy": "make precision space astronomy a lasting part of modern science"
+      },
+      {
+        "id": "chandra",
+        "name": "Chandra X-ray Observatory",
+        "type": "Space observatory",
+        "year": "1999",
+        "place": "high Earth orbit",
+        "purpose": "study high-energy objects and events through their X-ray emissions",
+        "finding": "hot gas around galaxies, supernova remnants, and X-ray sources near black holes",
+        "challenge": "focusing X-rays with nested mirrors and operating far above the radiation belts",
+        "legacy": "reveal energetic processes that visible-light telescopes cannot directly show"
+      },
+      {
+        "id": "spitzer",
+        "name": "Spitzer Space Telescope",
+        "type": "Infrared space observatory",
+        "year": "2003",
+        "place": "an Earth-trailing solar orbit",
+        "purpose": "observe cool, dusty, and distant objects in infrared light",
+        "finding": "hidden star formation, distant galaxies, and planets orbiting other stars",
+        "challenge": "keeping infrared instruments cold as its supply of liquid helium ran out",
+        "legacy": "extend infrared astronomy and complement observations across the electromagnetic spectrum"
+      },
+      {
+        "id": "kepler",
+        "name": "Kepler Space Telescope",
+        "type": "Planet-hunting observatory",
+        "year": "2009",
+        "place": "Earth-trailing solar orbit",
+        "purpose": "measure tiny dips in starlight to find planets crossing in front of their stars",
+        "finding": "thousands of confirmed exoplanets, showing that planets are common in the galaxy",
+        "challenge": "detecting minute brightness changes across a huge field of stars for years",
+        "legacy": "change the search for planets beyond our Solar System from a handful of discoveries to a population study"
+      },
+      {
+        "id": "tess",
+        "name": "TESS",
+        "type": "Exoplanet survey observatory",
+        "year": "2018",
+        "place": "high Earth orbit",
+        "purpose": "survey nearby bright stars for transiting planets",
+        "finding": "a growing collection of nearby exoplanets suited to follow-up observations",
+        "challenge": "covering most of the sky in sectors while keeping precise watch on stellar brightness",
+        "legacy": "identify nearby worlds for detailed study by telescopes on the ground and in space"
+      },
+      {
+        "id": "james-webb",
+        "name": "James Webb Space Telescope",
+        "type": "Infrared space observatory",
+        "year": "2022",
+        "place": "Sun-Earth Lagrange point 2",
+        "purpose": "observe the early universe, stellar nurseries, and the atmospheres of exoplanets",
+        "finding": "early galaxies, forming stars, and chemical signatures in distant planetary atmospheres",
+        "challenge": "unfolding a large sunshield and mirror through a complex sequence after launch",
+        "legacy": "open a powerful new infrared view of the universe's earliest eras and distant worlds"
+      },
+      {
+        "id": "fermi",
+        "name": "Fermi Gamma-ray Space Telescope",
+        "type": "High-energy space observatory",
+        "year": "2008",
+        "place": "low Earth orbit",
+        "purpose": "survey the sky for gamma rays from the most energetic cosmic sources",
+        "finding": "pulsars, active galaxies, gamma-ray bursts, and a changing high-energy sky",
+        "challenge": "distinguishing fleeting cosmic signals from background events across the whole sky",
+        "legacy": "make gamma-ray astronomy a continuous, all-sky exploration"
+      },
+      {
+        "id": "wise",
+        "name": "WISE",
+        "type": "Infrared sky survey telescope",
+        "year": "2010",
+        "place": "Earth orbit",
+        "purpose": "scan the entire sky in infrared wavelengths",
+        "finding": "hundreds of millions of infrared sources, including cool stars and distant galaxies",
+        "challenge": "keeping its detectors cold enough to survey the faint infrared sky",
+        "legacy": "create an all-sky infrared catalog used to find and study objects near and far"
+      }
+    ]
+  },
+  {
+    "category": "The Sun",
+    "sourceLabel": "NASA · Sun and space weather",
+    "sourceUrl": "https://science.nasa.gov/sun/",
+    "missions": [
+      {
+        "id": "parker-solar-probe",
+        "name": "Parker Solar Probe",
+        "type": "Solar probe",
+        "year": "2021",
+        "place": "the Sun's corona",
+        "purpose": "sample the solar wind and trace how energy moves through the Sun's outer atmosphere",
+        "finding": "switchbacks and changing structures in the solar wind close to the Sun",
+        "challenge": "surviving extreme heat while repeatedly diving close to the Sun behind a protective shield",
+        "legacy": "make the first direct measurements from within the Sun's outer atmosphere"
+      },
+      {
+        "id": "solar-dynamics-observatory",
+        "name": "Solar Dynamics Observatory",
+        "type": "Solar observatory",
+        "year": "2010",
+        "place": "geosynchronous Earth orbit",
+        "purpose": "continuously observe the Sun's magnetic activity and changing atmosphere",
+        "finding": "how magnetic fields drive solar flares, eruptions, and waves through the solar atmosphere",
+        "challenge": "capturing the Sun in many wavelengths at high cadence without interruption",
+        "legacy": "provide an uninterrupted record that supports space-weather research and forecasting"
+      },
+      {
+        "id": "soho",
+        "name": "SOHO",
+        "type": "Solar and heliosphere observatory",
+        "year": "1995",
+        "place": "Sun-Earth Lagrange point 1",
+        "purpose": "study the Sun's interior, atmosphere, and the solar wind",
+        "finding": "the structure of the solar corona and thousands of comets passing near the Sun",
+        "challenge": "maintaining a steady view of the Sun from a distant operating point",
+        "legacy": "transform solar physics and become one of the most prolific comet-discovering observatories"
+      },
+      {
+        "id": "ulysses",
+        "name": "Ulysses",
+        "type": "Solar polar mission",
+        "year": "1994",
+        "place": "high-latitude regions above the Sun",
+        "purpose": "measure the solar wind and magnetic field far above and below the Sun's equator",
+        "finding": "a three-dimensional picture of the solar wind and its changes over the solar cycle",
+        "challenge": "using a Jupiter gravity assist to reach an orbit unlike the planets' nearly flat paths",
+        "legacy": "provide the first direct measurements of the Sun's polar environment"
+      }
+    ]
+  },
+  {
+    "category": "Earth observation",
+    "sourceLabel": "NASA · Earth science",
+    "sourceUrl": "https://science.nasa.gov/earth/",
+    "missions": [
+      {
+        "id": "landsat-1",
+        "name": "Landsat 1",
+        "type": "Earth-observing satellite",
+        "year": "1972",
+        "place": "Earth orbit",
+        "purpose": "repeatedly image Earth's land surfaces to track natural and human-driven change",
+        "finding": "a consistent, growing record of forests, farms, coastlines, and expanding cities",
+        "challenge": "turning satellite images into comparable observations collected over many years",
+        "legacy": "begin the longest continuous space-based record of Earth's changing land"
+      },
+      {
+        "id": "terra",
+        "name": "Terra",
+        "type": "Earth-observing satellite",
+        "year": "1999",
+        "place": "Earth orbit",
+        "purpose": "study how land, oceans, atmosphere, and clouds interact as one Earth system",
+        "finding": "global patterns in aerosols, clouds, vegetation, and surface temperature",
+        "challenge": "coordinating multiple instruments to observe connected Earth processes",
+        "legacy": "help researchers study the planet as an integrated and changing system"
+      },
+      {
+        "id": "aqua",
+        "name": "Aqua",
+        "type": "Earth-observing satellite",
+        "year": "2002",
+        "place": "Earth orbit",
+        "purpose": "measure the water cycle across the atmosphere, oceans, and land",
+        "finding": "global patterns in water vapor, clouds, precipitation, and sea-surface temperature",
+        "challenge": "collecting consistent measurements across a planet where weather changes by the hour",
+        "legacy": "improve understanding of the global water cycle and climate"
+      },
+      {
+        "id": "oco-2",
+        "name": "OCO-2",
+        "type": "Carbon-observing satellite",
+        "year": "2014",
+        "place": "Earth orbit",
+        "purpose": "map atmospheric carbon dioxide and identify its major sources and sinks",
+        "finding": "seasonal changes in carbon dioxide and regional patterns in its distribution",
+        "challenge": "separating a faint carbon dioxide signal from reflected sunlight and clouds",
+        "legacy": "provide precise global measurements that help scientists study the carbon cycle"
+      }
+    ]
+  }
+]

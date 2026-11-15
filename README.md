@@ -77,13 +77,15 @@ for the Leaflet assets and NASA map tiles.
 
 ## Mission stories
 
-Open `http://localhost:3000/mission.html` for six first-person, typewritten
-retellings of Opportunity, Spirit, Voyager 1, Ingenuity, the Apollo Lunar
-Roving Vehicle, and Cassini. These are original creative interpretations of
-documented mission histories, not real spacecraft testimony. The stories are
-loaded from `frontend/data/stories.json` and link to NASA sources. Mission
-images and their credits come from the public NASA Image and Video Library;
-that catalog does not require an API key.
+Open `http://localhost:3000/mission.html` for 206 first-person mission stories:
+six in-depth, typewritten retellings and 200 short field notes spanning 50
+additional missions. Search and page through the archive. These are original
+creative interpretations of documented mission histories, not real spacecraft
+testimony. The six in-depth stories are loaded from
+`frontend/data/stories.json`; the additional mission facts are in
+`frontend/data/stories-bank.json`. Stories link to NASA topic or mission
+sources. The in-depth story images and credits come from the public NASA Image
+and Video Library; that catalog does not require an API key.
 Stories can also be played, paused, resumed, and stopped with the browser's
 built-in `speechSynthesis` voice. Narration reads the complete selected story
 independently of the typewriter animation; it requires no API key or `.env`

@@ -21,10 +21,15 @@ const voyagerAu = document.querySelector("[data-voyager-au]");
 const voyagerLightTime = document.querySelector("[data-voyager-light-time]");
 const voyagerStatus = document.querySelector("[data-voyager-status]");
 const voyagerIndicator = document.querySelector(".voyager-live");
+const storySearch = document.querySelector("[data-story-search]");
+const storyPageStatus = document.querySelector("[data-story-page]");
+const previousStoriesButton = document.querySelector("[data-story-previous]");
+const nextStoriesButton = document.querySelector("[data-story-next]");
 
 const MILES_PER_KILOMETER = 0.621371;
 const SPEED_OF_LIGHT_KM_S = 299792.458;
 const EPHEMERIS_REFRESH_MS = 5 * 60 * 1000;
+const STORIES_PER_PAGE = 10;
 const distanceFormatter = new Intl.NumberFormat(undefined, { maximumFractionDigits: 0 });
 const auFormatter = new Intl.NumberFormat(undefined, {
   minimumFractionDigits: 3,
@@ -34,6 +39,8 @@ let voyagerEphemeris;
 let voyagerReceivedAt;
 
 let stories = [];
+let filteredStories = [];
+let storyPage = 0;
 let currentStory;
 let typingTimer;
 let typingToken = 0;
@@ -44,6 +51,106 @@ let currentUtterance;
 const narrationSupported =
   typeof window.speechSynthesis !== "undefined" &&
   typeof window.SpeechSynthesisUtterance === "function";
+
+function createMissionStories(categories) {
+  const perspectives = [
+    {
+      id: "first-look",
+      title: "The First Look",
+      type: "Arrival log",
+      subtitle: (mission) => `A first-person field note from ${mission.place}.`,
+      paragraphs: (mission) => [
+        `My assignment was to ${mission.purpose}. In ${mission.year}, I reached ${mission.place}. From Earth, this destination had been a point on a screen and a question in a notebook; arrival made it possible to measure the place directly.`,
+        `My measurements revealed ${mission.finding}. Each reading was only one part of a larger picture, limited by my route, my instruments, and the time available. The team compared those signals with observations made from Earth and from other spacecraft.`,
+        `The hardest part was ${mission.challenge}. Even so, the mission helped ${mission.legacy}. A first look is never the whole story, but it gives the next explorer a better place to begin.`,
+      ],
+    },
+    {
+      id: "field-notes",
+      title: "Reading the Data",
+      type: "Science log",
+      subtitle: (mission) => `What ${mission.name} could learn at ${mission.place}.`,
+      paragraphs: (mission) => [
+        `I was sent to ${mission.place} to ${mission.purpose}. The questions were written before launch, but the useful answers depended on what my instruments could actually record once I arrived in ${mission.year}.`,
+        `The measurements pointed to ${mission.finding}. No single signal explained everything. Scientists checked the evidence, compared it with other observations, and kept the uncertainties visible instead of asking the data to say more than it could.`,
+        `My work had to contend with ${mission.challenge}. The careful record nevertheless helped ${mission.legacy}. It is a small chapter in a much longer investigation, built from measurements that other missions can revisit.`,
+      ],
+    },
+    {
+      id: "at-the-limits",
+      title: "At the Limits",
+      type: "Operations log",
+      subtitle: (mission) => `The practical challenge of working at ${mission.place}.`,
+      paragraphs: (mission) => [
+        `A destination is only part of a mission plan. In ${mission.year}, I was operating at ${mission.place}, carrying instruments meant to ${mission.purpose}. Commands had to be planned carefully, and the science team had to make each observation count.`,
+        `The central difficulty was ${mission.challenge}. Spacecraft cannot improvise like people in a field, so engineers and scientists tested possible responses, watched the telemetry, and adjusted the plan when the evidence allowed.`,
+        `Within those limits, I still recorded ${mission.finding}. That work helped ${mission.legacy}. The achievement was not that every obstacle disappeared; it was that the mission returned useful evidence despite them.`,
+      ],
+    },
+    {
+      id: "long-echo",
+      title: "The Long Echo",
+      type: "Legacy log",
+      subtitle: (mission) => `What the mission left behind after ${mission.year}.`,
+      paragraphs: (mission) => [
+        `Long after ${mission.year}, the record from ${mission.name} can still be opened and examined. I went to ${mission.place} to ${mission.purpose}, but a mission's work does not end when its last command is sent.`,
+        `The observations describe ${mission.finding}. They are not a complete portrait of the destination; they are evidence gathered from one path, with all the strengths and limits of the instruments that traveled it.`,
+        `The mission also had to work through ${mission.challenge}. Its longer legacy is that it helped ${mission.legacy}. Future explorers begin with that record, ask new questions, and carry the investigation farther.`,
+      ],
+    },
+  ];
+
+  return categories.flatMap((category) =>
+    category.missions.flatMap((mission) =>
+      perspectives.map((perspective) => ({
+        id: `${mission.id}-${perspective.id}`,
+        name: `${mission.name} — ${perspective.title}`,
+        type: `${mission.type} · ${perspective.type}`,
+        era: `${mission.year} · ${mission.place}`,
+        location: mission.place.toLocaleUpperCase(),
+        subtitle: perspective.subtitle(mission),
+        paragraphs: perspective.paragraphs(mission),
+        sourceLabel: category.sourceLabel,
+        sourceUrl: category.sourceUrl,
+      })),
+    ),
+  );
+}
+
+function renderStoryList() {
+  storyList.replaceChildren();
+  const start = storyPage * STORIES_PER_PAGE;
+  const pageStories = filteredStories.slice(start, start + STORIES_PER_PAGE);
+
+  pageStories.forEach((story) => {
+    storyList.append(createStoryChoice(story, stories.indexOf(story)));
+  });
+
+  const end = Math.min(start + STORIES_PER_PAGE, filteredStories.length);
+  storyPageStatus.textContent = filteredStories.length
+    ? `${start + 1}–${end} of ${filteredStories.length}`
+    : "No matching stories";
+  previousStoriesButton.disabled = storyPage === 0;
+  nextStoriesButton.disabled = end >= filteredStories.length;
+
+  if (!pageStories.length) {
+    const emptyState = document.createElement("p");
+    emptyState.className = "story-list-empty";
+    emptyState.textContent = "No stories match your search.";
+    storyList.append(emptyState);
+  }
+}
+
+function filterStories() {
+  const searchTerm = storySearch.value.trim().toLocaleLowerCase();
+  filteredStories = stories.filter((story) =>
+    `${story.name} ${story.type} ${story.era} ${story.location} ${story.subtitle}`
+      .toLocaleLowerCase()
+      .includes(searchTerm),
+  );
+  storyPage = 0;
+  renderStoryList();
+}
 
 function stopNarration(message = "Narration stopped.") {
   narrationToken += 1;
@@ -179,7 +286,7 @@ function createStoryChoice(story, index) {
 
   const number = document.createElement("span");
   number.className = "story-choice-number";
-  number.textContent = String(index + 1).padStart(2, "0");
+  number.textContent = String(index + 1).padStart(3, "0");
 
   const copy = document.createElement("span");
   copy.className = "story-choice-copy";
@@ -189,17 +296,23 @@ function createStoryChoice(story, index) {
   const meta = document.createElement("span");
   meta.className = "story-choice-meta";
   meta.textContent = story.type;
-  const image = document.createElement("img");
-  image.className = "story-choice-image";
-  image.src = story.image.url;
-  image.alt = "";
-  image.loading = "lazy";
-  image.setAttribute("aria-hidden", "true");
-  image.addEventListener("error", () => {
-    image.hidden = true;
-  });
   copy.append(name, meta);
-  button.append(number, image, copy);
+  button.append(number);
+  if (story.image) {
+    const image = document.createElement("img");
+    image.className = "story-choice-image";
+    image.src = story.image.url;
+    image.alt = "";
+    image.loading = "lazy";
+    image.setAttribute("aria-hidden", "true");
+    image.addEventListener("error", () => {
+      image.hidden = true;
+    });
+    button.append(image);
+  } else {
+    button.classList.add("story-choice-no-image");
+  }
+  button.append(copy);
   button.addEventListener("click", () => selectStory(story.id, true));
   return button;
 }
@@ -207,12 +320,20 @@ function createStoryChoice(story, index) {
 function selectStory(storyId, updateUrl) {
   const story = stories.find((item) => item.id === storyId);
   if (!story) return;
+  const filteredIndex = filteredStories.indexOf(story);
+  if (filteredIndex >= 0) {
+    const targetPage = Math.floor(filteredIndex / STORIES_PER_PAGE);
+    if (targetPage !== storyPage) {
+      storyPage = targetPage;
+      renderStoryList();
+    }
+  }
   if (currentUtterance || window.speechSynthesis?.speaking) {
     stopNarration("Narration stopped because you selected another story.");
   }
   currentStory = story;
   document.querySelector("[data-story-era]").textContent =
-    `FIELD NOTE ${String(stories.indexOf(story) + 1).padStart(2, "0")} · ${story.era}`;
+    `FIELD NOTE ${String(stories.indexOf(story) + 1).padStart(3, "0")} · ${story.era}`;
   document.querySelector("[data-story-location]").textContent = story.location;
   storyName.textContent = story.name;
   document.querySelector("[data-story-subtitle]").textContent = story.subtitle;
@@ -222,27 +343,29 @@ function selectStory(storyId, updateUrl) {
   source.href = story.sourceUrl;
   source.textContent = `Read ${story.sourceLabel} ↗`;
 
-  storyFigure.hidden = false;
-  storyImage.hidden = false;
-  storyImageFallback.hidden = true;
-  storyImage.alt = story.image.alt;
   imageToken += 1;
   const selectedImageToken = imageToken;
-  storyImage.onload = () => {
-    if (selectedImageToken !== imageToken) return;
+  storyFigure.hidden = !story.image;
+  if (story.image) {
     storyImage.hidden = false;
     storyImageFallback.hidden = true;
-  };
-  storyImage.onerror = () => {
-    if (selectedImageToken !== imageToken) return;
-    storyImage.hidden = true;
-    storyImageFallback.hidden = false;
-  };
-  storyImageLink.href = story.image.catalogUrl;
-  storyImageCatalog.href = story.image.catalogUrl;
-  storyImageCatalog.textContent = story.image.title;
-  storyImageCredit.textContent = story.image.credit;
-  storyImage.src = story.image.url;
+    storyImage.alt = story.image.alt;
+    storyImage.onload = () => {
+      if (selectedImageToken !== imageToken) return;
+      storyImage.hidden = false;
+      storyImageFallback.hidden = true;
+    };
+    storyImage.onerror = () => {
+      if (selectedImageToken !== imageToken) return;
+      storyImage.hidden = true;
+      storyImageFallback.hidden = false;
+    };
+    storyImageLink.href = story.image.catalogUrl;
+    storyImageCatalog.href = story.image.catalogUrl;
+    storyImageCatalog.textContent = story.image.title;
+    storyImageCredit.textContent = story.image.credit;
+    storyImage.src = story.image.url;
+  }
 
   storyList.querySelectorAll("[data-story-id]").forEach((button) => {
     const selected = button.dataset.storyId === story.id;
@@ -314,6 +437,16 @@ async function loadVoyagerEphemeris() {
 }
 
 async function start() {
+  storySearch.addEventListener("input", filterStories);
+  previousStoriesButton.addEventListener("click", () => {
+    storyPage -= 1;
+    renderStoryList();
+  });
+  nextStoriesButton.addEventListener("click", () => {
+    storyPage += 1;
+    renderStoryList();
+  });
+
   if (!narrationSupported) {
     narrationButton.disabled = true;
     narrationPauseButton.disabled = true;
@@ -351,22 +484,90 @@ async function start() {
   window.setInterval(loadVoyagerEphemeris, EPHEMERIS_REFRESH_MS);
 
   try {
-    const response = await fetch("data/stories.json");
-    if (!response.ok) {
-      throw new Error(`Could not load mission stories (${response.status}).`);
+    const [storiesResponse, bankResponse] = await Promise.all([
+      fetch("data/stories.json"),
+      fetch("data/stories-bank.json"),
+    ]);
+    if (!storiesResponse.ok) {
+      throw new Error(`Could not load mission stories (${storiesResponse.status}).`);
     }
-    stories = await response.json();
-    if (!Array.isArray(stories) || stories.length !== 6) {
+    if (!bankResponse.ok) {
+      throw new Error(`Could not load the extended story archive (${bankResponse.status}).`);
+    }
+    const originalStories = await storiesResponse.json();
+    const storyCategories = await bankResponse.json();
+    const missionRecords = Array.isArray(storyCategories)
+      ? storyCategories.flatMap((category) =>
+          Array.isArray(category?.missions) ? category.missions : [],
+        )
+      : [];
+    const missionIds = missionRecords.map((mission) => mission?.id);
+    const requiredMissionFields = [
+      "id",
+      "name",
+      "type",
+      "year",
+      "place",
+      "purpose",
+      "finding",
+      "challenge",
+      "legacy",
+    ];
+    if (
+      !Array.isArray(originalStories) ||
+      originalStories.length !== 6 ||
+      !Array.isArray(storyCategories) ||
+      storyCategories.some(
+        (category) =>
+          !category ||
+          typeof category.category !== "string" ||
+          !Array.isArray(category.missions) ||
+          typeof category.sourceLabel !== "string" ||
+          typeof category.sourceUrl !== "string" ||
+          !category.sourceUrl.startsWith("https://"),
+      ) ||
+      missionRecords.length !== 50 ||
+      missionRecords.some(
+        (mission) =>
+          !mission ||
+          requiredMissionFields.some(
+            (field) =>
+              typeof mission[field] !== "string" || !mission[field].trim(),
+          ),
+      ) ||
+      new Set(missionIds).size !== missionIds.length
+    ) {
+      throw new Error("The mission story archive is incomplete.");
+    }
+    const additionalStories = createMissionStories(storyCategories);
+    stories = [...originalStories, ...additionalStories];
+    if (
+      additionalStories.length !== 200 ||
+      stories.length !== 206 ||
+      stories.some(
+        (story) =>
+          typeof story.id !== "string" ||
+          !story.name ||
+          !Array.isArray(story.paragraphs) ||
+          story.paragraphs.length !== 3 ||
+          story.paragraphs.some((paragraph) => !paragraph.trim()),
+      ) ||
+      new Set(stories.map((story) => story.id)).size !== stories.length
+    ) {
       throw new Error("The mission story archive is incomplete.");
     }
 
-    stories.forEach((story, index) => storyList.append(createStoryChoice(story, index)));
     document.querySelector("[data-story-count]").textContent =
       `${stories.length} STORIES`;
+    filteredStories = stories;
     const requestedStory = new URLSearchParams(window.location.search).get("story");
     const initialStory = stories.some((story) => story.id === requestedStory)
       ? requestedStory
       : stories[0].id;
+    storyPage = Math.floor(
+      stories.findIndex((story) => story.id === initialStory) / STORIES_PER_PAGE,
+    );
+    renderStoryList();
     selectStory(initialStory, false);
   } catch (error) {
     console.error("Mission stories could not be loaded:", error);
