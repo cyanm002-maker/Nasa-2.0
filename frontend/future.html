@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Explore humanity's active deep-space voyages and upcoming future missions: Europa Clipper, Artemis, Dragonfly, Nancy Grace Roman, and Mars Sample Return."
+    />
+    <title>Ongoing & Future Missions | MISSION ATLAS Horizon</title>
+    <link rel="stylesheet" href="css/auth.css" />
+    <link rel="stylesheet" href="css/tools.css" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <script defer src="js/i18n.js"></script>
+    <script defer src="js/pwa.js"></script>
+    <script defer src="js/future.js"></script>
+  </head>
+  <body data-page="future">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <!-- Top Navigation Header -->
+    <header class="site-header">
+      <a class="brand" href="index.html">
+        <svg class="brand-star" width="22" height="22" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="3.5" fill="#D2F843" />
+          <path
+            d="M12 2v4M12 18v4M2 12h4M18 12h4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"
+            stroke="#D2F843"
+            stroke-width="2.2"
+            stroke-linecap="round"
+          />
+        </svg>
+        <span>MISSION ATLAS</span>
+      </a>
+
+      <nav class="header-actions" aria-label="Main Navigation">
+        <div class="header-nav-links">
+          <a class="nav-link" href="mission.html" data-i18n="nav_stories">MISSIONS</a>
+          <a class="nav-link is-active" href="future.html">HORIZON</a>
+          <a class="nav-link" href="graveyard.html">ORBITAL GRAVEYARD</a>
+          <a class="nav-link" href="signal.html" data-i18n="nav_signal">LIVE TRACKER</a>
+          <a class="nav-link" href="quiz.html" data-i18n="nav_quiz">CHALLENGE</a>
+          <a class="nav-link" href="explore.html" data-i18n="nav_explore">MAP</a>
+          <a class="nav-link" href="ask.html" data-i18n="nav_ask">ASK AI</a>
+        </div>
+        <a class="button button-primary" href="explore.html">START EXPLORING ↗</a>
+        <button class="button button-quiet" type="button" data-pwa-install hidden data-i18n="nav_install">📱 App</button>
+      </nav>
+    </header>
+
+    <main class="future-page-wrap" id="main-content" tabindex="-1">
+      <!-- Title Header -->
+      <div class="tool-header" style="margin-bottom: 1.75rem;">
+        <p class="eyebrow">DEEP SPACE EXPLORATION HORIZON</p>
+        <h1>Ongoing & <span>Future Missions</span></h1>
+        <p>
+          From robotic probes cruising toward Jupiter’s ocean moons to the astronauts preparing for the lunar South Pole.
+          Select any mission to inspect its flight trajectory, scientific payloads, and real-time mission clock.
+        </p>
+      </div>
+
+      <!-- Filter & Search Toolbar Card -->
+      <section class="future-toolbar-card" aria-label="Mission Filters">
+        <div class="future-toolbar-row1">
+          <div class="world-pills" role="tablist" aria-label="Flight Status">
+            <button class="world-pill is-active" data-cat-filter="all" type="button">ALL MISSIONS</button>
+            <button class="world-pill" data-cat-filter="ongoing" type="button">🚀 ONGOING IN-FLIGHT</button>
+            <button class="world-pill" data-cat-filter="future" type="button">⏳ FUTURE LAUNCHES</button>
+          </div>
+
+          <div class="future-search-input-wrap">
+            <span class="future-search-icon">🔍</span>
+            <input
+              type="search"
+              class="future-search-input"
+              id="missionSearchInput"
+              placeholder="Search by mission, target, or instrument..."
+              aria-label="Search missions"
+            />
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
+          <div class="future-dest-chips" role="group" aria-label="Destination Filter">
+            <span style="font-size: 0.74rem; font-weight: 800; color: var(--muted); margin-right: 0.25rem;">DESTINATION:</span>
+            <button class="dest-chip is-active" data-dest-filter="all" type="button">All Worlds</button>
+            <button class="dest-chip" data-dest-filter="moon" type="button">🌙 The Moon</button>
+            <button class="dest-chip" data-dest-filter="mars" type="button">🔴 Mars</button>
+            <button class="dest-chip" data-dest-filter="ocean-worlds" type="button">🌊 Ocean Worlds</button>
+            <button class="dest-chip" data-dest-filter="deep-space" type="button">🌌 Deep Space / Asteroids</button>
+          </div>
+
+          <div style="font-size: 0.72rem; font-weight: 800; letter-spacing: 0.1em; color: var(--accent);" id="resultsCount">
+            10 MISSIONS
+          </div>
+        </div>
+      </section>
+
+      <!-- Two-Column Interactive Split Layout -->
+      <section class="future-split-layout" aria-label="Mission Directory">
+        <!-- Left: Mission Cards List -->
+        <div class="future-list-column" id="missionListContainer" role="region" aria-label="Mission List">
+          <!-- Populated by future.js -->
+        </div>
+
+        <!-- Right: Detail Inspector Column -->
+        <aside class="future-detail-column" id="missionDetailPanel" aria-label="Mission Dossier" aria-live="polite">
+          <!-- Populated by future.js -->
+        </aside>
+      </section>
+    </main>
+
+    <!-- Site Footer -->
+    <footer class="site-footer">
+      <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
+        <a href="index.html">Home</a>
+        <a href="mission.html">Missions Archive</a>
+        <a href="future.html">Ongoing & Future</a>
+        <a href="graveyard.html">Orbital Graveyard</a>
+        <a href="explore.html">Planetary Map</a>
+        <a href="signal.html">Signal Delay</a>
+        <a href="quiz.html">Challenge</a>
+      </div>
+      <div>
+        <span>MISSION ATLAS · Human stories of deep space exploration</span>
+      </div>
+    </footer>
+  </body>
+</html>

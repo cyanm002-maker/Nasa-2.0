@@ -1,0 +1,316 @@
+[
+  {
+    "id": "europa-clipper",
+    "name": "Europa Clipper",
+    "agency": "NASA",
+    "category": "ongoing",
+    "target": "Jupiter / Moon Europa",
+    "destinationType": "ocean-worlds",
+    "launchDate": "October 14, 2024",
+    "arrivalDate": "April 2030",
+    "status": "In Transit to Jupiter",
+    "statusBadge": "ONGOING IN TRANSIT",
+    "statusClass": "active",
+    "summary": "Investigating whether Jupiter's icy moon Europa has conditions suitable to support life beneath its global saltwater ocean.",
+    "quote": "“We are voyagers across the dark, seeking an ocean beneath the ice.”",
+    "cite": "— U.S. Poet Laureate Ada Limón (engraved on the spacecraft vault)",
+    "description": "Europa Clipper is the largest spacecraft NASA has ever built for a planetary mission. It carries an ice-penetrating radar, high-resolution cameras, an infrared spectrometer, and dust/gas analyzers to perform dozens of close flybys of Europa, mapping its ice shell thickness and scouting for subsurface ocean plumes.",
+    "specs": {
+      "launchVehicle": "SpaceX Falcon Heavy",
+      "distanceTraveled": "Cruising heliocentric trajectory",
+      "powerSource": "Massive 30.5m Solar Arrays (largest ever for deep space)",
+      "payloadMass": "6,000 kg (wet)",
+      "primaryInstruments": "REASON Ice Radar, PIMS Plasma, MASPEX Mass Spectrometer, EIS Cameras"
+    },
+    "timeline": [
+      { "phase": "Launch", "date": "Oct 2024", "detail": "Successful launch from Kennedy Space Center" },
+      { "phase": "Mars Gravity Assist", "date": "Feb 2025", "detail": "High-speed slingshot around Mars" },
+      { "phase": "Earth Gravity Assist", "date": "Dec 2026", "detail": "Final orbital acceleration boost" },
+      { "phase": "Jupiter Arrival", "date": "Apr 2030", "detail": "Jupiter Orbit Insertion (JOI)" },
+      { "phase": "Europa Flyby Campaign", "date": "2030 — 2034", "detail": "49 precision flybys down to 25 km altitude" }
+    ],
+    "externalUrl": "https://europa.nasa.gov/"
+  },
+  {
+    "id": "artemis-2",
+    "name": "Artemis II",
+    "agency": "NASA / CSA",
+    "category": "future",
+    "target": "The Moon (Crewed Lunar Flyby)",
+    "destinationType": "moon",
+    "launchDate": "September 2025",
+    "arrivalDate": "10-Day Mission",
+    "status": "Preparing for Launch",
+    "statusBadge": "CREWED LAUNCH PREP",
+    "statusClass": "crewed",
+    "summary": "First crewed spacecraft to fly beyond low Earth orbit since Apollo 17 in 1972, sending four astronauts around the Moon.",
+    "quote": "“We are going to live and work in deep space to prepare for the leap to Mars.”",
+    "cite": "— Artemis II Crew Commander Reid Wiseman",
+    "description": "Artemis II will carry NASA astronauts Reid Wiseman, Victor Glover, Christina Koch, and Canadian Space Agency astronaut Jeremy Hansen on a high-stakes 10-day test flight around the far side of the Moon and back, validating Orion's life support systems with humans aboard.",
+    "specs": {
+      "launchVehicle": "Space Launch System (SLS) Block 1",
+      "crewSize": "4 Astronauts (including first woman and person of color on lunar mission)",
+      "maxDistance": "370,000+ km from Earth",
+      "spacecraft": "Orion Spacecraft & European Service Module",
+      "missionDuration": "10 Days, hybrid free-return trajectory"
+    },
+    "timeline": [
+      { "phase": "Rollout & Stacking", "date": "Early 2025", "detail": "Core stage assembly at Vehicle Assembly Building" },
+      { "phase": "Launch Window", "date": "Sept 2025", "detail": "Liftoff from Launch Pad 39B" },
+      { "phase": "High Earth Orbit Test", "date": "Day 1 — 2", "detail": "Manual proximity operations & life support checkout" },
+      { "phase": "Lunar Far Side Flyby", "date": "Day 5 — 6", "detail": "Loop around lunar far side beyond radio horizon" },
+      { "phase": "Pacific Splashdown", "date": "Day 10", "detail": "High-speed 40,000 km/h atmospheric reentry" }
+    ],
+    "externalUrl": "https://www.nasa.gov/mission/artemis-ii/"
+  },
+  {
+    "id": "dragonfly",
+    "name": "Dragonfly",
+    "agency": "NASA",
+    "category": "future",
+    "target": "Saturn / Moon Titan",
+    "destinationType": "ocean-worlds",
+    "launchDate": "July 2028",
+    "arrivalDate": "2034",
+    "status": "Final Design & Fabrication",
+    "statusBadge": "PLANNED FLAGSHIP",
+    "statusClass": "future",
+    "summary": "A nuclear-powered rotorcraft that will fly between organic dunes and impact craters on Saturn's giant moon Titan.",
+    "quote": "“Titan has all the ingredients needed for life—frozen in prebiotic time.”",
+    "cite": "— Dr. Elizabeth Turtle, Dragonfly Principal Investigator",
+    "description": "Dragonfly will be humanity's first multi-rotor vehicle to fly scientific payloads across an alien world. Capitalizing on Titan's dense nitrogen atmosphere and one-seventh Earth gravity, the drone will hop tens of kilometers between landing sites to examine prebiotic chemistry in organic sand dunes and the Shangri-La impact crater.",
+    "specs": {
+      "launchVehicle": "Heavy Lift Rocket (TBD)",
+      "flightMode": "Coaxial Octocopter (8 Rotors, ~450 kg)",
+      "powerSource": "Multi-Mission Radioisotope Thermoelectric Generator (MMRTG)",
+      "flightRange": "Hundreds of kilometers throughout mission",
+      "sciencePayload": "DraMS Mass Spectrometer, DraGNS Gamma-Ray Spectrometer, Seismometer"
+    },
+    "timeline": [
+      { "phase": "Final Assembly", "date": "2026 — 2027", "detail": "Aeroshell & autonomous flight testing" },
+      { "phase": "Launch", "date": "July 2028", "detail": "Departure from Earth" },
+      { "phase": "Interplanetary Cruise", "date": "2028 — 2034", "detail": "6-year trajectory to Saturnian system" },
+      { "phase": "Atmospheric Entry", "date": "2034", "detail": "Parachute descent through Titan's golden smog" },
+      { "phase": "Autonomous Flight", "date": "2034 — 2037+", "detail": "3+ years of aerial exploration across Titan" }
+    ],
+    "externalUrl": "https://dragonfly.jhuapl.edu/"
+  },
+  {
+    "id": "artemis-3",
+    "name": "Artemis III",
+    "agency": "NASA / Commercial Partners",
+    "category": "future",
+    "target": "The Moon (South Pole Lunar Landing)",
+    "destinationType": "moon",
+    "launchDate": "September 2026",
+    "arrivalDate": "7-Day Surface Stay",
+    "status": "In Development",
+    "statusBadge": "CREWED SURFACE LANDING",
+    "statusClass": "crewed",
+    "summary": "Humanity's return to the surface of the Moon, targeting the water-ice laden craters of the lunar South Pole.",
+    "quote": "“We are going to step onto a world where water ice has waited billions of years for us.”",
+    "cite": "— NASA Exploration Systems Mission Directorate",
+    "description": "Artemis III will mark the first human footsteps on the Moon in more than half a century. Two crew members will descend to the rugged lunar South Pole in a commercial Human Landing System (Starship HLS), conducting moonwalks in permanently shadowed craters to sample primordial water ice.",
+    "specs": {
+      "launchVehicle": "SLS Block 1B & Starship HLS",
+      "landingSite": "Permanently shadowed crater rims at Lunar South Pole",
+      "spacesuits": "Axiom Space Next-Gen Extravehicular Mobility Unit (AxEMU)",
+      "surfaceDuration": "Up to 6.5 days",
+      "scienceGoals": "Water-ice core sample extraction, volatile analysis, cold-trap prospecting"
+    },
+    "timeline": [
+      { "phase": "Starship HLS Orbital Fueling", "date": "Mid 2026", "detail": "Propellant transfer in low Earth orbit" },
+      { "phase": "Launch & Trans-Lunar Injection", "date": "Sept 2026", "detail": "SLS launches Orion crew to lunar orbit" },
+      { "phase": "Lunar Surface Touchdown", "date": "Sept 2026", "detail": "Descent to South Pole landing site" },
+      { "phase": "South Pole Moonwalks", "date": "6-Day Campaign", "detail": "4 EVA excursions collecting ice and rock samples" },
+      { "phase": "Ascent & Return", "date": "Day 12", "detail": "Docking with Orion and splashdown on Earth" }
+    ],
+    "externalUrl": "https://www.nasa.gov/mission/artemis-iii/"
+  },
+  {
+    "id": "roman-space-telescope",
+    "name": "Nancy Grace Roman Space Telescope",
+    "agency": "NASA",
+    "category": "future",
+    "target": "Deep Space / Sun-Earth L2",
+    "destinationType": "deep-space",
+    "launchDate": "May 2027",
+    "arrivalDate": "Mid 2027",
+    "status": "Spacecraft Integration",
+    "statusBadge": "NEXT-GEN OBSERVATORY",
+    "statusClass": "future",
+    "summary": "NASA's next flagship observatory with a field of view 100 times greater than Hubble, surveying dark energy and billions of galaxies.",
+    "quote": "“Hubble gave us a microscope; Roman will give us a wide-angle lens on the cosmic tapestry.”",
+    "cite": "— Dr. Julie McEnery, Roman Senior Project Scientist",
+    "description": "Equipped with a 2.4-meter mirror and a 300-megapixel Wide Field Instrument, Roman will map the large-scale distribution of dark matter and dark energy, hunt for microlensed exoplanets in the galactic bulge, and test high-contrast starlight-blocking coronagraph technology to image alien solar systems directly.",
+    "specs": {
+      "fieldOfView": "100x Hubble Space Telescope view per image",
+      "primaryMirror": "2.4-meter aperture (NRO donated optics)",
+      "orbit": "Sun-Earth L2 Lagrange Point",
+      "instruments": "Wide Field Instrument (WFI) & Starlight Coronagraph (CGI)",
+      "scienceFocus": "Dark Energy equation of state, Exoplanet census, Infrared galactic survey"
+    },
+    "timeline": [
+      { "phase": "Optics & Detector Testing", "date": "2025", "detail": "Cryogenic thermal vacuum chamber certification" },
+      { "phase": "Spacecraft Integration", "date": "2026", "detail": "Final instrument mating at Goddard Space Flight Center" },
+      { "phase": "Launch", "date": "May 2027", "detail": "SpaceX Falcon Heavy launch from Florida" },
+      { "phase": "L2 Orbit Insertion", "date": "June 2027", "detail": "Commissioning 1.5 million km from Earth" },
+      { "phase": "5-Year Survey", "date": "2027 — 2032+", "detail": "Scanning billions of galaxies across cosmic time" }
+    ],
+    "externalUrl": "https://roman.gsfc.nasa.gov/"
+  },
+  {
+    "id": "juice",
+    "name": "JUICE (JUpiter ICy moons Explorer)",
+    "agency": "ESA",
+    "category": "ongoing",
+    "target": "Jupiter / Ganymede, Callisto, Europa",
+    "destinationType": "ocean-worlds",
+    "launchDate": "April 14, 2023",
+    "arrivalDate": "July 2031",
+    "status": "In Transit to Jupiter",
+    "statusBadge": "ONGOING IN TRANSIT",
+    "statusClass": "active",
+    "summary": "Europe's flagship mission to study Ganymede (the largest moon in the Solar System) and its massive sub-surface ocean.",
+    "quote": "“Ganymede is the only moon with its own magnetic shield—protecting a deep saltwater sea.”",
+    "cite": "— European Space Agency Science Directorate",
+    "description": "JUICE is currently cruising across the solar system, having performed the first-ever Lunar-Earth gravitational assist flyby. In 2031, it will enter orbit around Jupiter before eventually entering orbit around Ganymede—making it the first spacecraft ever to orbit a moon other than our own.",
+    "specs": {
+      "launchVehicle": "Ariane 5 (final flight for European science)",
+      "destination": "Ganymede, Callisto, and Europa ocean systems",
+      "powerSource": "85 square meters of solar panels (massive cross wings)",
+      "payload": "10 state-of-the-art instruments including JANUS camera and RIME radar",
+      "milestone": "First spacecraft to orbit a moon around another planet"
+    },
+    "timeline": [
+      { "phase": "Launch", "date": "Apr 2023", "detail": "Ariane 5 liftoff from Kourou, French Guiana" },
+      { "phase": "Moon-Earth Double Flyby", "date": "Aug 2024", "detail": "World-first lunar-terrestrial gravity brake" },
+      { "phase": "Venus Flyby", "date": "Aug 2025", "detail": "Solar system interior slingshot" },
+      { "phase": "Jupiter Insertion", "date": "July 2031", "detail": "Enter Jovian orbital resonance" },
+      { "phase": "Ganymede Orbit", "date": "Dec 2034", "detail": "Dedicated low-altitude orbit around Ganymede" }
+    ],
+    "externalUrl": "https://www.esa.int/Science_Exploration/Space_Science/Juice"
+  },
+  {
+    "id": "mars-sample-return",
+    "name": "Mars Sample Return (MSR)",
+    "agency": "NASA / ESA",
+    "category": "future",
+    "target": "Mars / Jezero Crater to Earth",
+    "destinationType": "mars",
+    "launchDate": "Early 2030s",
+    "arrivalDate": "Mid 2030s",
+    "status": "Architecture Refinement",
+    "statusBadge": "PLANNED RETRIEVAL",
+    "statusClass": "future",
+    "summary": "Retrieving the rock and soil core samples drilled by Perseverance and rocketing them back to laboratories on Earth.",
+    "quote": "“The only way to answer whether life existed on Mars is to bring the rocks home.”",
+    "cite": "— Mars Sample Return Independent Review Board",
+    "description": "Perseverance has already cached dozens of hermetically sealed titanium sample tubes in Jezero Crater. Mars Sample Return will land a rocket (Mars Ascent Vehicle) on Mars, collect the sample cache, launch into Martian orbit, and rendezvous with an Earth Return Orbiter to bring the tubes home for mass spectrometry analysis.",
+    "specs": {
+      "components": "Sample Retrieval Lander, Mars Ascent Vehicle (MAV), Earth Return Orbiter",
+      "sampleCount": "Up to 30 titanium sample tubes filled with core sediments",
+      "returnFacility": "Bio-safety Level 4 Curation Facility on Earth",
+      "historicFirst": "First rocket launch from the surface of another planet"
+    },
+    "timeline": [
+      { "phase": "Core Caching", "date": "Current — 2026", "detail": "Perseverance seals core samples in Jezero delta" },
+      { "phase": "Lander & MAV Launch", "date": "~2031", "detail": "Launch of Mars Ascent Vehicle" },
+      { "phase": "Surface Rocket Launch", "date": "~2033", "detail": "First rocket liftoff from Martian soil into orbit" },
+      { "phase": "Orbit Rendezvous", "date": "~2033", "detail": "Autonomous sample transfer to Earth Return Orbiter" },
+      { "phase": "Earth Touchdown", "date": "~2035", "detail": "Pristine sample capsule recovery in Utah desert" }
+    ],
+    "externalUrl": "https://science.nasa.gov/mission/mars-sample-return/"
+  },
+  {
+    "id": "veritas",
+    "name": "VERITAS & DAVINCI",
+    "agency": "NASA",
+    "category": "future",
+    "target": "Venus (Atmosphere & Surface)",
+    "destinationType": "deep-space",
+    "launchDate": "2031",
+    "arrivalDate": "2031 — 2032",
+    "status": "Mission Formulation",
+    "statusBadge": "PLANNED TWIN PROBES",
+    "statusClass": "future",
+    "summary": "Returning to Earth's runaway greenhouse twin to map its volcanic continents and drop an atmospheric descent probe.",
+    "quote": "“Venus is Earth's sister world—learning why it turned into hell tells us how our own planet stays alive.”",
+    "cite": "— NASA Discovery Program",
+    "description": "VERITAS will orbit Venus with synthetic aperture radar to map global topography and identify active volcanism. DAVINCI will plunge a titanium descent sphere through Venus's crushing 90-atmosphere sulfuric acid skies, measuring atmospheric noble gases and photographing mountain tesserae before touching the scorching 460°C surface.",
+    "specs": {
+      "probes": "VERITAS Orbiter & DAVINCI Descent Probe",
+      "instruments": "VISAR Radar, VEM Emissivity Mapper, VMS Mass Spectrometer",
+      "temperatureTolerance": "Designed to survive 460°C (860°F) surface heat",
+      "focus": "Why did Venus lose its oceans and suffer runaway greenhouse warming?"
+    },
+    "timeline": [
+      { "phase": "System Design Review", "date": "2026", "detail": "Final hardware specifications" },
+      { "phase": "VERITAS Launch", "date": "2031", "detail": "Aerobraking entry into Venusian orbit" },
+      { "phase": "DAVINCI Descent Plunge", "date": "2031 — 2032", "detail": "63-minute parachute descent to Alpha Regio" },
+      { "phase": "Surface Radar Mapping", "date": "2032+", "detail": "Sub-kilometer global geological map of Venus" }
+    ],
+    "externalUrl": "https://science.nasa.gov/mission/veritas/"
+  },
+  {
+    "id": "psyche",
+    "name": "Psyche Mission",
+    "agency": "NASA",
+    "category": "ongoing",
+    "target": "Main Asteroid Belt / 16 Psyche",
+    "destinationType": "deep-space",
+    "launchDate": "October 13, 2023",
+    "arrivalDate": "August 2029",
+    "status": "Cruising with Ion Propulsion",
+    "statusBadge": "ONGOING IN TRANSIT",
+    "statusClass": "active",
+    "summary": "Exploring a metal-rich asteroid that may be the exposed iron-nickel core of an early planetary building block.",
+    "quote": "“We have visited worlds of rock, ice, and gas—now we visit a world of metal.”",
+    "cite": "— Dr. Lindy Elkins-Tanton, Psyche Principal Investigator",
+    "description": "Psyche is journeying 3.6 billion kilometers into the outer asteroid belt using advanced solar electric Hall-effect thrusters. Unlike rocky or icy bodies, asteroid 16 Psyche appears to consist largely of exposed metallic nickel and iron, giving scientists an unprecedented glimpse into the molten interior cores of terrestrial planets like Earth.",
+    "specs": {
+      "propulsion": "Hall-Effect Xenon Solar Electric Propulsion",
+      "laserCommunications": "DSOC Deep Space Optical Laser Transceiver (tested at 460M km)",
+      "targetSize": "226 km diameter metallic asteroid",
+      "arrival": "August 2029 (Capturing into 4 science orbits)"
+    },
+    "timeline": [
+      { "phase": "Launch", "date": "Oct 2023", "detail": "SpaceX Falcon Heavy liftoff" },
+      { "phase": "Deep Space Optical Laser Test", "date": "2023 — 2024", "detail": "Streamed 4K cat video & data from deep space via laser" },
+      { "phase": "Mars Gravity Assist", "date": "May 2026", "detail": "Orbital velocity boost" },
+      { "phase": "Psyche Arrival", "date": "Aug 2029", "detail": "Entering orbit around the metal world" }
+    ],
+    "externalUrl": "https://psyche.asu.edu/"
+  },
+  {
+    "id": "lucy",
+    "name": "Lucy",
+    "agency": "NASA",
+    "category": "ongoing",
+    "target": "Jupiter Trojan Asteroids",
+    "destinationType": "deep-space",
+    "launchDate": "October 16, 2021",
+    "arrivalDate": "2027 — 2033 Flybys",
+    "status": "In Transit to Jupiter Trojans",
+    "statusBadge": "ONGOING IN TRANSIT",
+    "statusClass": "active",
+    "summary": "First mission to explore Jupiter's Trojan asteroid swarms—ancient planetary fossils locked at the L4 and L5 Lagrange points.",
+    "quote": "“Looking back in time to the primordial material that assembled our planets.”",
+    "cite": "— NASA Goddard Space Flight Center",
+    "description": "Over a 12-year odyssey, Lucy will visit an unprecedented record of eight asteroids: two main-belt asteroids (including Dinkinesh and Donaldjohanson) and six Jupiter Trojans. These swarms of asteroids share Jupiter's orbit and are believed to be pristine remnants of the original primordial solar nebula.",
+    "specs": {
+      "solarArrays": "Twin 7.3-meter diameter circular solar arrays",
+      "distance": "Over 6.4 billion kilometers total mission path",
+      "targets": "Dinkinesh, Donaldjohanson, Eurybates, Polymele, Leucus, Orus, Patroclus-Menoetius",
+      "milestone": "Discovered satellite Selam orbiting Dinkinesh during 2023 test flyby"
+    },
+    "timeline": [
+      { "phase": "Launch", "date": "Oct 2021", "detail": "Atlas V liftoff from Cape Canaveral" },
+      { "phase": "Dinkinesh Flyby", "date": "Nov 2023", "detail": "Successful rehearsal flyby revealing contact binary moon" },
+      { "phase": "Earth Gravity Assist 2", "date": "Dec 2024", "detail": "Slingshot toward Jupiter's L4 Trojan swarm" },
+      { "phase": "Trojan Swarm Flybys", "date": "2027 — 2028", "detail": "Four consecutive close asteroid encounters" },
+      { "phase": "Patroclus Binary Flyby", "date": "2033", "detail": "Encounter with giant Trojan binary system" }
+    ],
+    "externalUrl": "https://lucy.swri.edu/"
+  }
+]
