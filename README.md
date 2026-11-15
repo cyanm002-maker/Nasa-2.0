@@ -97,12 +97,13 @@ extrapolates from Horizons' reported range rate between refreshed ephemerides.
 
 ## Explorer quiz and collectible card
 
-Open `http://localhost:3000/quiz.html` to play the 10-question space mission
-quiz. Scores and personal bests are saved only in the current browser's local
-storage. Each result creates a downloadable PNG Explorer Card; the share link
-opens a card preview for friends. Callsigns are optional and should be
-space-themed rather than real names. Questions and NASA sources are in
-`frontend/data/quiz.json`; no external API key or `.env` setting is required.
+Open `http://localhost:3000/quiz.html` to play a 10-question round drawn from a
+330-question space mission bank. Scores and personal bests are saved only in
+the current browser's local storage. Each result creates a downloadable PNG
+Explorer Card; the share link opens a card preview for friends. Callsigns are
+optional and should be space-themed rather than real names. Questions and NASA
+sources are in `frontend/data/quiz.json` and `frontend/data/quiz-bank.json`; no
+external API key or `.env` setting is required.
 
 ## Accessibility
 

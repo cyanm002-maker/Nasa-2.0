@@ -25,6 +25,7 @@ const sharedCardCanvas = document.querySelector("[data-shared-explorer-card]");
 const shareStatus = document.querySelector("[data-share-status]");
 
 let questions = [];
+let questionBank = [];
 let questionIndex = 0;
 let score = 0;
 let selectedCallsign = "STAR EXPLORER";
@@ -32,6 +33,80 @@ let currentCard = { score: 0, callsign: selectedCallsign, rank: ranks[0] };
 
 function getRank(value) {
   return [...ranks].reverse().find((rank) => value >= rank.minimum);
+}
+
+function shuffle(items) {
+  const shuffledItems = [...items];
+  for (let index = shuffledItems.length - 1; index > 0; index -= 1) {
+    const swapIndex = Math.floor(Math.random() * (index + 1));
+    [shuffledItems[index], shuffledItems[swapIndex]] = [
+      shuffledItems[swapIndex],
+      shuffledItems[index],
+    ];
+  }
+  return shuffledItems;
+}
+
+function createFactQuestions(fact, facts, groupId) {
+  const makeQuestion = (question, answer, choices) => {
+    const distractors = shuffle([...new Set(choices.filter((choice) => choice !== answer))]).slice(0, 3);
+    return {
+      groupId,
+      category: fact.category,
+      question,
+      answers: [answer, ...distractors],
+      correctIndex: 0,
+      explanation: fact.explanation,
+      source: fact.source,
+    };
+  };
+
+  return [
+    makeQuestion(
+      `Which mission ${fact.milestone}?`,
+      fact.mission,
+      facts.map((item) => item.mission),
+    ),
+    makeQuestion(
+      `What milestone is associated with ${fact.mission}?`,
+      fact.milestone,
+      facts.map((item) => item.milestone),
+    ),
+    makeQuestion(
+      `Where did ${fact.mission} achieve this milestone?`,
+      fact.place,
+      facts.map((item) => item.place),
+    ),
+    makeQuestion(
+      `In what year did ${fact.mission} achieve this milestone?`,
+      fact.year,
+      facts.map((item) => item.year),
+    ),
+  ];
+}
+
+function chooseRound(bank) {
+  const selectedQuestions = [];
+  const usedGroups = new Set();
+
+  for (const question of shuffle(bank)) {
+    if (usedGroups.has(question.groupId)) continue;
+    usedGroups.add(question.groupId);
+    const answers = shuffle(
+      question.answers.map((answer, index) => ({
+        answer,
+        isCorrect: index === question.correctIndex,
+      })),
+    );
+    selectedQuestions.push({
+      ...question,
+      answers: answers.map((item) => item.answer),
+      correctIndex: answers.findIndex((item) => item.isCorrect),
+    });
+    if (selectedQuestions.length === TOTAL_QUESTIONS) break;
+  }
+
+  return selectedQuestions;
 }
 
 function sanitizeCallsign(value) {
@@ -345,6 +420,7 @@ function showSharedCard() {
 async function start() {
   document.querySelector("[data-start-quiz]").addEventListener("click", () => {
     selectedCallsign = sanitizeCallsign(callsignInput.value);
+    questions = chooseRound(questionBank);
     questionIndex = 0;
     score = 0;
     welcomeSection.hidden = true;
@@ -403,23 +479,74 @@ async function start() {
   });
 
   try {
-    const response = await fetch("data/quiz.json");
-    if (!response.ok) throw new Error(`Could not load quiz questions (${response.status}).`);
-    questions = await response.json();
+    const [quizResponse, bankResponse] = await Promise.all([
+      fetch("data/quiz.json"),
+      fetch("data/quiz-bank.json"),
+    ]);
+    if (!quizResponse.ok) {
+      throw new Error(`Could not load quiz questions (${quizResponse.status}).`);
+    }
+    if (!bankResponse.ok) {
+      throw new Error(`Could not load the extended quiz bank (${bankResponse.status}).`);
+    }
+    const baseQuestions = await quizResponse.json();
+    const bankCategories = await bankResponse.json();
+    if (!Array.isArray(baseQuestions) || baseQuestions.length !== 10) {
+      throw new Error("The original Explorer Academy questions are incomplete.");
+    }
     if (
-      !Array.isArray(questions) ||
-      questions.length !== TOTAL_QUESTIONS ||
-      questions.some(
+      !Array.isArray(bankCategories) ||
+      bankCategories.some(
+        (category) =>
+          !category ||
+          typeof category.category !== "string" ||
+          !category.category ||
+          !category.source?.startsWith("https://") ||
+          !Array.isArray(category.facts),
+      )
+    ) {
+      throw new Error("The extended Explorer Academy question bank is incomplete.");
+    }
+    const facts = bankCategories.flatMap((category) =>
+      category.facts.map((fact) => ({
+        ...fact,
+        category: category.category,
+        source: category.source,
+      })),
+    );
+    if (facts.length !== 80) {
+      throw new Error("The extended Explorer Academy question bank is incomplete.");
+    }
+    questionBank = [
+      ...baseQuestions.map((question, index) => ({
+        ...question,
+        groupId: `base-${index}`,
+      })),
+      ...facts.flatMap((fact, index) =>
+        createFactQuestions(fact, facts, `fact-${index}`),
+      ),
+    ];
+    if (
+      questionBank.length !== 330 ||
+      questionBank.some(
         (question) =>
+          typeof question.category !== "string" ||
+          !question.category ||
+          typeof question.question !== "string" ||
+          !question.question ||
           !Array.isArray(question.answers) ||
           question.answers.length !== 4 ||
+          new Set(question.answers).size !== 4 ||
+          !question.answers.every((answer) => typeof answer === "string" && answer) ||
           !Number.isInteger(question.correctIndex) ||
           question.correctIndex < 0 ||
           question.correctIndex > 3 ||
+          typeof question.explanation !== "string" ||
+          !question.explanation ||
           !question.source?.startsWith("https://"),
       )
     ) {
-      throw new Error("The Explorer Academy quiz data is incomplete.");
+      throw new Error("The Explorer Academy question bank is incomplete.");
     }
 
     if (!showSharedCard()) showRecord();

@@ -1,0 +1,604 @@
+[
+  {
+    "category": "Crewed spaceflight",
+    "source": "https://www.nasa.gov/history/",
+    "facts": [
+      {
+        "mission": "Mercury-Atlas 6 (Friendship 7)",
+        "milestone": "carried the first American astronaut to orbit Earth",
+        "place": "low Earth orbit",
+        "year": "1962",
+        "explanation": "John Glenn completed three Earth orbits aboard Friendship 7, becoming the first American to orbit Earth."
+      },
+      {
+        "mission": "Gemini 4",
+        "milestone": "included the first American spacewalk",
+        "place": "low Earth orbit",
+        "year": "1965",
+        "explanation": "Astronaut Ed White left the Gemini capsule for a 23-minute spacewalk during Gemini 4."
+      },
+      {
+        "mission": "Gemini 8",
+        "milestone": "completed the first docking of two spacecraft in orbit",
+        "place": "Earth orbit",
+        "year": "1966",
+        "explanation": "Neil Armstrong and David Scott docked Gemini 8 with an Agena target vehicle, an important step toward lunar missions."
+      },
+      {
+        "mission": "Apollo 7",
+        "milestone": "completed the first crewed Apollo mission",
+        "place": "Earth orbit",
+        "year": "1968",
+        "explanation": "Apollo 7 tested the command and service module in Earth orbit with a crew aboard."
+      },
+      {
+        "mission": "Apollo 8",
+        "milestone": "carried the first crewed mission around the Moon",
+        "place": "lunar orbit",
+        "year": "1968",
+        "explanation": "Apollo 8 astronauts orbited the Moon before returning safely to Earth."
+      },
+      {
+        "mission": "Apollo 9",
+        "milestone": "tested the lunar module with a crew in space",
+        "place": "Earth orbit",
+        "year": "1969",
+        "explanation": "Apollo 9 tested the lunar module and its rendezvous systems in Earth orbit before a lunar landing attempt."
+      },
+      {
+        "mission": "Apollo 10",
+        "milestone": "rehearsed a lunar landing without touching down",
+        "place": "lunar orbit",
+        "year": "1969",
+        "explanation": "Apollo 10 tested the lunar module near the Moon, stopping about 15 kilometers above the surface."
+      },
+      {
+        "mission": "Apollo 12",
+        "milestone": "made the second crewed landing on the Moon",
+        "place": "Ocean of Storms on the Moon",
+        "year": "1969",
+        "explanation": "Apollo 12 landed near the Surveyor 3 spacecraft in the Ocean of Storms."
+      },
+      {
+        "mission": "Apollo 13",
+        "milestone": "returned its crew safely after an onboard oxygen-tank failure",
+        "place": "Earth, with recovery in the Pacific Ocean",
+        "year": "1970",
+        "explanation": "After an oxygen tank failed en route to the Moon, the crew used the lunar module as a lifeboat and returned to Earth."
+      },
+      {
+        "mission": "Apollo 14",
+        "milestone": "made the third crewed lunar landing",
+        "place": "Fra Mauro region of the Moon",
+        "year": "1971",
+        "explanation": "Apollo 14 astronauts explored the Fra Mauro highlands and returned lunar samples to Earth."
+      },
+      {
+        "mission": "Apollo 16",
+        "milestone": "made the first crewed landing in the lunar highlands",
+        "place": "Descartes Highlands on the Moon",
+        "year": "1972",
+        "explanation": "Apollo 16 explored the Moon's Descartes region, a highland area unlike the earlier landing sites."
+      },
+      {
+        "mission": "Apollo 17",
+        "milestone": "made the most recent crewed landing on the Moon",
+        "place": "Taurus-Littrow valley on the Moon",
+        "year": "1972",
+        "explanation": "Apollo 17 was the sixth and, so far, most recent crewed lunar landing."
+      },
+      {
+        "mission": "Skylab 1",
+        "milestone": "placed the first United States space station in orbit",
+        "place": "Earth orbit",
+        "year": "1973",
+        "explanation": "The Skylab orbital workshop was launched uncrewed and later hosted three astronaut crews."
+      },
+      {
+        "mission": "STS-1 (Space Shuttle Columbia)",
+        "milestone": "flew the first orbital test mission of the Space Shuttle",
+        "place": "Earth orbit",
+        "year": "1981",
+        "explanation": "Columbia's STS-1 flight tested the reusable shuttle system in orbit for the first time."
+      },
+      {
+        "mission": "STS-7 (Space Shuttle Challenger)",
+        "milestone": "carried Sally Ride, the first American woman in space",
+        "place": "Earth orbit",
+        "year": "1983",
+        "explanation": "Sally Ride became the first American woman to travel to space as a member of the STS-7 crew."
+      },
+      {
+        "mission": "STS-31 (Space Shuttle Discovery)",
+        "milestone": "deployed the Hubble Space Telescope",
+        "place": "low Earth orbit",
+        "year": "1990",
+        "explanation": "Discovery's STS-31 crew released Hubble into orbit, beginning the telescope's science mission."
+      },
+      {
+        "mission": "STS-61 (Space Shuttle Endeavour)",
+        "milestone": "completed the first Hubble Space Telescope servicing mission",
+        "place": "low Earth orbit",
+        "year": "1993",
+        "explanation": "Astronauts installed corrective optics and upgraded instruments during the first shuttle mission to service Hubble."
+      },
+      {
+        "mission": "International Space Station Expedition 1",
+        "milestone": "began the first long-duration crewed stay aboard the station",
+        "place": "the International Space Station in Earth orbit",
+        "year": "2000",
+        "explanation": "Expedition 1 arrived at the ISS in November 2000 and began continuous human habitation of the station."
+      }
+    ]
+  },
+  {
+    "category": "Mars missions",
+    "source": "https://science.nasa.gov/mars/",
+    "facts": [
+      {
+        "mission": "2001 Mars Odyssey",
+        "milestone": "began mapping Mars and detecting hydrogen-rich regions beneath its surface",
+        "place": "Mars orbit",
+        "year": "2002",
+        "explanation": "Odyssey's instruments found hydrogen-rich areas that provided evidence for water ice beneath the Martian surface."
+      },
+      {
+        "mission": "Mariner 4",
+        "milestone": "returned the first close-up images of Mars during a successful flyby",
+        "place": "Mars",
+        "year": "1965",
+        "explanation": "Mariner 4 sent back the first close-up photographs of another planet, revealing a cratered Martian surface."
+      },
+      {
+        "mission": "Viking 1",
+        "milestone": "completed the first successful United States landing on Mars",
+        "place": "Chryse Planitia on Mars",
+        "year": "1976",
+        "explanation": "Viking 1 became the first U.S. spacecraft to operate successfully on the Martian surface."
+      },
+      {
+        "mission": "Mars Pathfinder",
+        "milestone": "demonstrated an airbag-assisted landing on Mars",
+        "place": "Ares Vallis on Mars",
+        "year": "1997",
+        "explanation": "Pathfinder bounced to a stop inside airbags, then deployed the Sojourner rover."
+      },
+      {
+        "mission": "Sojourner",
+        "milestone": "became the first wheeled rover to operate on Mars",
+        "place": "Ares Vallis on Mars",
+        "year": "1997",
+        "explanation": "The small Sojourner rover analyzed nearby rocks and soil after arriving with the Mars Pathfinder lander."
+      },
+      {
+        "mission": "Mars Reconnaissance Orbiter",
+        "milestone": "began high-resolution orbital studies of the Martian surface",
+        "place": "Mars orbit",
+        "year": "2006",
+        "explanation": "MRO's cameras and instruments examine Mars, including sites considered for future landings."
+      },
+      {
+        "mission": "Phoenix Mars Lander",
+        "milestone": "exposed and examined water ice in Martian soil",
+        "place": "Vastitas Borealis in Mars's northern plains",
+        "year": "2008",
+        "explanation": "Phoenix dug into the soil near Mars's north pole and observed exposed water ice."
+      },
+      {
+        "mission": "Curiosity",
+        "milestone": "found evidence that ancient Gale Crater could once support microbial life",
+        "place": "Gale Crater on Mars",
+        "year": "2012",
+        "explanation": "Curiosity's analysis of ancient lakebed rocks showed that Gale Crater once had conditions suitable for microbial life."
+      },
+      {
+        "mission": "MAVEN",
+        "milestone": "began investigating how Mars lost much of its atmosphere",
+        "place": "Mars orbit",
+        "year": "2014",
+        "explanation": "MAVEN studies the upper atmosphere and how interactions with the solar wind drive atmospheric loss."
+      },
+      {
+        "mission": "InSight",
+        "milestone": "placed a seismometer on Mars to study its interior",
+        "place": "Elysium Planitia on Mars",
+        "year": "2018",
+        "explanation": "InSight recorded marsquakes and used seismic waves to investigate the planet's internal structure."
+      },
+      {
+        "mission": "Mars Express",
+        "milestone": "began a long-running European study of Mars from orbit",
+        "place": "Mars orbit",
+        "year": "2003",
+        "explanation": "The European Space Agency's Mars Express has studied the planet's surface, atmosphere, and subsurface."
+      },
+      {
+        "mission": "ExoMars Trace Gas Orbiter",
+        "milestone": "began measuring trace gases in the Martian atmosphere",
+        "place": "Mars orbit",
+        "year": "2016",
+        "explanation": "The orbiter's instruments search for trace gases and map water-related features on Mars."
+      }
+    ]
+  },
+  {
+    "category": "Lunar exploration",
+    "source": "https://science.nasa.gov/moon/",
+    "facts": [
+      {
+        "mission": "Luna 2",
+        "milestone": "became the first human-made object to reach the Moon",
+        "place": "the Moon",
+        "year": "1959",
+        "explanation": "The Soviet Luna 2 spacecraft impacted the Moon in September 1959."
+      },
+      {
+        "mission": "Ranger 7",
+        "milestone": "sent the first close-up television images of the Moon before impact",
+        "place": "the Moon",
+        "year": "1964",
+        "explanation": "Ranger 7 transmitted thousands of lunar images as it approached its impact site."
+      },
+      {
+        "mission": "Surveyor 1",
+        "milestone": "made the first successful soft landing by a United States spacecraft on the Moon",
+        "place": "the Moon",
+        "year": "1966",
+        "explanation": "Surveyor 1 returned images and surface data that helped prepare for crewed lunar landings."
+      },
+      {
+        "mission": "Lunar Orbiter 1",
+        "milestone": "captured the first image of Earth from near the Moon",
+        "place": "lunar orbit",
+        "year": "1966",
+        "explanation": "Lunar Orbiter 1 photographed Earth from lunar orbit while mapping potential Apollo landing sites."
+      },
+      {
+        "mission": "Clementine",
+        "milestone": "mapped much of the Moon in multiple wavelengths",
+        "place": "lunar orbit",
+        "year": "1994",
+        "explanation": "Clementine mapped the lunar surface and collected data used to study possible ice near the poles."
+      },
+      {
+        "mission": "Lunar Prospector",
+        "milestone": "mapped the Moon's composition and gravity field",
+        "place": "lunar orbit",
+        "year": "1998",
+        "explanation": "Lunar Prospector measured the Moon's gravity, magnetic field, and elemental composition."
+      },
+      {
+        "mission": "Lunar Reconnaissance Orbiter",
+        "milestone": "began detailed mapping to support lunar science and exploration",
+        "place": "lunar orbit",
+        "year": "2009",
+        "explanation": "LRO maps the Moon in detail and helps identify safe landing sites and useful resources."
+      },
+      {
+        "mission": "GRAIL",
+        "milestone": "created a detailed map of the Moon's gravity field",
+        "place": "lunar orbit",
+        "year": "2012",
+        "explanation": "The twin GRAIL spacecraft measured tiny changes in the Moon's gravity to reveal details of its interior."
+      }
+    ]
+  },
+  {
+    "category": "Solar system explorers",
+    "source": "https://science.nasa.gov/solar-system/",
+    "facts": [
+      {
+        "mission": "Mariner 2",
+        "milestone": "completed the first successful flyby of another planet",
+        "place": "Venus",
+        "year": "1962",
+        "explanation": "Mariner 2 flew past Venus and returned measurements of the planet and the solar wind."
+      },
+      {
+        "mission": "Mariner 10",
+        "milestone": "became the first spacecraft to visit Mercury",
+        "place": "Mercury",
+        "year": "1974",
+        "explanation": "Mariner 10 made three Mercury flybys and returned the first close-up images of the planet."
+      },
+      {
+        "mission": "Pioneer Venus Orbiter",
+        "milestone": "began studying Venus from orbit",
+        "place": "Venus orbit",
+        "year": "1978",
+        "explanation": "The orbiter studied Venus's atmosphere and surface for more than a decade."
+      },
+      {
+        "mission": "Magellan",
+        "milestone": "mapped the surface of Venus with radar",
+        "place": "Venus orbit",
+        "year": "1990",
+        "explanation": "Radar observations allowed Magellan to map most of Venus's surface through its thick clouds."
+      },
+      {
+        "mission": "Pioneer 10",
+        "milestone": "became the first spacecraft to fly past Jupiter",
+        "place": "Jupiter",
+        "year": "1973",
+        "explanation": "Pioneer 10 returned the first close-up images of Jupiter and its moons."
+      },
+      {
+        "mission": "Pioneer 11",
+        "milestone": "became the first spacecraft to fly past Saturn",
+        "place": "Saturn",
+        "year": "1979",
+        "explanation": "Pioneer 11 passed Saturn and sent back observations of the planet and its rings."
+      },
+      {
+        "mission": "Voyager 2",
+        "milestone": "became the first spacecraft to visit Uranus",
+        "place": "Uranus",
+        "year": "1986",
+        "explanation": "Voyager 2 remains the only spacecraft to have visited Uranus up close."
+      },
+      {
+        "mission": "Galileo",
+        "milestone": "began the first long-term study of Jupiter from orbit",
+        "place": "Jupiter orbit",
+        "year": "1995",
+        "explanation": "Galileo studied Jupiter and its moons for years after becoming the first spacecraft to orbit the planet."
+      },
+      {
+        "mission": "MESSENGER",
+        "milestone": "became the first spacecraft to orbit Mercury",
+        "place": "Mercury orbit",
+        "year": "2011",
+        "explanation": "MESSENGER mapped Mercury and studied its composition, magnetic field, and thin exosphere."
+      },
+      {
+        "mission": "Dawn",
+        "milestone": "became the first spacecraft to orbit a main-belt asteroid",
+        "place": "Vesta",
+        "year": "2011",
+        "explanation": "Dawn orbited Vesta before continuing to the dwarf planet Ceres."
+      },
+      {
+        "mission": "New Horizons",
+        "milestone": "completed the first close flyby of Pluto",
+        "place": "Pluto",
+        "year": "2015",
+        "explanation": "New Horizons revealed Pluto's varied surface and atmosphere during its historic flyby."
+      },
+      {
+        "mission": "Juno",
+        "milestone": "began a close-up investigation of Jupiter from orbit",
+        "place": "Jupiter orbit",
+        "year": "2016",
+        "explanation": "Juno measures Jupiter's gravity, magnetic field, atmosphere, and interior."
+      },
+      {
+        "mission": "Rosetta",
+        "milestone": "became the first spacecraft to orbit a comet",
+        "place": "Comet 67P/Churyumov-Gerasimenko",
+        "year": "2014",
+        "explanation": "Rosetta escorted Comet 67P around the Sun and released the Philae lander to its surface."
+      },
+      {
+        "mission": "OSIRIS-REx",
+        "milestone": "collected a sample from the asteroid Bennu",
+        "place": "Bennu",
+        "year": "2020",
+        "explanation": "OSIRIS-REx collected material from Bennu in 2020 and delivered the sample to Earth in 2023."
+      },
+      {
+        "mission": "Hayabusa2",
+        "milestone": "returned samples from the asteroid Ryugu to Earth",
+        "place": "Ryugu and Earth",
+        "year": "2020",
+        "explanation": "Japan's Hayabusa2 returned asteroid material to Earth in December 2020."
+      },
+      {
+        "mission": "Deep Impact",
+        "milestone": "sent an impactor into a comet to study its interior",
+        "place": "Comet Tempel 1",
+        "year": "2005",
+        "explanation": "The impact released material from beneath the comet's surface for the spacecraft to observe."
+      },
+      {
+        "mission": "NEAR Shoemaker",
+        "milestone": "became the first spacecraft to land on an asteroid",
+        "place": "Eros",
+        "year": "2001",
+        "explanation": "After orbiting asteroid Eros, NEAR Shoemaker made a controlled landing on its surface."
+      },
+      {
+        "mission": "DART",
+        "milestone": "changed the orbit of a small asteroid moon in a planetary-defense test",
+        "place": "Dimorphos in the Didymos system",
+        "year": "2022",
+        "explanation": "DART's intentional impact shortened Dimorphos's orbital period around Didymos."
+      }
+    ]
+  },
+  {
+    "category": "Space telescopes",
+    "source": "https://science.nasa.gov/universe/",
+    "facts": [
+      {
+        "mission": "Hubble Space Telescope",
+        "milestone": "began observing the universe from above Earth's atmosphere",
+        "place": "low Earth orbit",
+        "year": "1990",
+        "explanation": "Hubble's position above most of Earth's atmosphere gives it a clear view of the cosmos."
+      },
+      {
+        "mission": "Chandra X-ray Observatory",
+        "milestone": "began studying high-energy X-rays from cosmic objects",
+        "place": "a highly elliptical Earth orbit",
+        "year": "1999",
+        "explanation": "Chandra observes X-rays from phenomena such as hot gas, exploded stars, and black holes."
+      },
+      {
+        "mission": "Spitzer Space Telescope",
+        "milestone": "began exploring the universe in infrared light",
+        "place": "an Earth-trailing orbit around the Sun",
+        "year": "2003",
+        "explanation": "Spitzer's infrared observations helped reveal cool objects and dust hidden from visible-light telescopes."
+      },
+      {
+        "mission": "Kepler Space Telescope",
+        "milestone": "began searching for planets by measuring tiny dips in starlight",
+        "place": "an Earth-trailing heliocentric orbit",
+        "year": "2009",
+        "explanation": "Kepler detected planets when they passed in front of their stars and briefly dimmed the starlight."
+      },
+      {
+        "mission": "Fermi Gamma-ray Space Telescope",
+        "milestone": "began surveying the gamma-ray sky",
+        "place": "low Earth orbit",
+        "year": "2008",
+        "explanation": "Fermi studies the universe's highest-energy light, including gamma-ray bursts and pulsars."
+      },
+      {
+        "mission": "Wide-field Infrared Survey Explorer (WISE)",
+        "milestone": "completed an infrared survey of the entire sky",
+        "place": "Earth orbit",
+        "year": "2010",
+        "explanation": "WISE mapped the sky in infrared wavelengths and found many previously unseen astronomical objects."
+      },
+      {
+        "mission": "Transiting Exoplanet Survey Satellite (TESS)",
+        "milestone": "began searching nearly the whole sky for transiting exoplanets",
+        "place": "a highly elliptical orbit around Earth",
+        "year": "2018",
+        "explanation": "TESS monitors bright nearby stars for the small brightness dips caused by orbiting planets."
+      },
+      {
+        "mission": "James Webb Space Telescope",
+        "milestone": "began science observations near the Sun-Earth L2 point",
+        "place": "Sun-Earth L2, about 1.5 million kilometers from Earth",
+        "year": "2022",
+        "explanation": "Webb observes mostly infrared light from its orbit around the Sun-Earth L2 region."
+      },
+      {
+        "mission": "NuSTAR",
+        "milestone": "deployed the first focusing telescope for high-energy X-rays",
+        "place": "low Earth orbit",
+        "year": "2012",
+        "explanation": "NuSTAR focuses high-energy X-rays to study black holes, neutron stars, and supernova remnants."
+      },
+      {
+        "mission": "Neil Gehrels Swift Observatory",
+        "milestone": "began rapidly detecting and observing gamma-ray bursts",
+        "place": "low Earth orbit",
+        "year": "2004",
+        "explanation": "Swift can quickly point its telescopes toward gamma-ray bursts and observe their afterglows."
+      },
+      {
+        "mission": "Cosmic Background Explorer (COBE)",
+        "milestone": "measured variations in the cosmic microwave background",
+        "place": "Earth orbit",
+        "year": "1989",
+        "explanation": "COBE's measurements provided important evidence about the early universe and its evolution."
+      },
+      {
+        "mission": "NICER",
+        "milestone": "began measuring X-rays from neutron stars aboard the space station",
+        "place": "the International Space Station in Earth orbit",
+        "year": "2017",
+        "explanation": "NICER uses X-ray timing to study neutron stars and demonstrate space-based navigation techniques."
+      }
+    ]
+  },
+  {
+    "category": "Solar missions",
+    "source": "https://science.nasa.gov/sun/",
+    "facts": [
+      {
+        "mission": "Parker Solar Probe",
+        "milestone": "became the first spacecraft to fly through the Sun's corona",
+        "place": "the Sun's outer atmosphere, or corona",
+        "year": "2021",
+        "explanation": "Parker Solar Probe flew through the corona to directly sample the region around the Sun."
+      },
+      {
+        "mission": "Solar Dynamics Observatory",
+        "milestone": "began continuous high-resolution monitoring of the Sun",
+        "place": "geosynchronous orbit around Earth",
+        "year": "2010",
+        "explanation": "SDO observes the Sun in multiple wavelengths to study its activity and changing magnetic field."
+      },
+      {
+        "mission": "Solar and Heliospheric Observatory (SOHO)",
+        "milestone": "launched to observe the Sun from the Sun-Earth L1 region",
+        "place": "the Sun-Earth L1 region",
+        "year": "1995",
+        "explanation": "SOHO launched in 1995 and later began observing the Sun from a vantage point between Earth and the Sun."
+      }
+    ]
+  },
+  {
+    "category": "Earth-observing missions",
+    "source": "https://science.nasa.gov/earth/",
+    "facts": [
+      {
+        "mission": "Landsat 1",
+        "milestone": "began the continuous satellite record of Earth's land surfaces",
+        "place": "Earth orbit",
+        "year": "1972",
+        "explanation": "Landsat 1 launched a long-running program that records changes to Earth's land from space."
+      },
+      {
+        "mission": "Terra",
+        "milestone": "began a coordinated study of Earth's land, oceans, and atmosphere",
+        "place": "Earth orbit",
+        "year": "1999",
+        "explanation": "Terra carries instruments that observe Earth's interconnected environmental systems."
+      },
+      {
+        "mission": "Aqua",
+        "milestone": "began collecting global data about Earth's water cycle",
+        "place": "Earth orbit",
+        "year": "2002",
+        "explanation": "Aqua measures water in Earth's atmosphere, oceans, and land as part of NASA's Earth Observing System."
+      },
+      {
+        "mission": "Aura",
+        "milestone": "began studying the chemistry and composition of Earth's atmosphere",
+        "place": "Earth orbit",
+        "year": "2004",
+        "explanation": "Aura's instruments monitor ozone, air quality, and other atmospheric gases."
+      },
+      {
+        "mission": "GRACE",
+        "milestone": "used twin satellites to map changes in Earth's gravity",
+        "place": "Earth orbit",
+        "year": "2002",
+        "explanation": "The twin satellites measured changes in their separation to detect shifts in Earth's mass and gravity."
+      },
+      {
+        "mission": "ICESat",
+        "milestone": "used a laser altimeter to measure ice-sheet elevations",
+        "place": "Earth orbit",
+        "year": "2003",
+        "explanation": "ICESat measured changes in ice-sheet height and other features using laser pulses."
+      },
+      {
+        "mission": "Orbiting Carbon Observatory-2 (OCO-2)",
+        "milestone": "began measuring carbon dioxide across Earth's atmosphere",
+        "place": "Earth orbit",
+        "year": "2014",
+        "explanation": "OCO-2 maps atmospheric carbon dioxide to help scientists study its sources and sinks."
+      },
+      {
+        "mission": "Advanced Composition Explorer (ACE)",
+        "milestone": "began monitoring solar wind and energetic particles near Earth",
+        "place": "the Sun-Earth L1 region",
+        "year": "1997",
+        "explanation": "ACE measures particles from the Sun and beyond to provide space-weather information."
+      },
+      {
+        "mission": "Deep Space Climate Observatory (DSCOVR)",
+        "milestone": "began providing continuous observations of Earth and solar wind",
+        "place": "the Sun-Earth L1 region",
+        "year": "2015",
+        "explanation": "DSCOVR monitors incoming solar wind and captures a continuous view of Earth's sunlit side."
+      }
+    ]
+  }
+]

@@ -32,6 +32,7 @@ const PRECACHE_URLS = [
   "/data/stories.json",
   "/data/sites.json",
   "/data/quiz.json",
+  "/data/quiz-bank.json",
   "/assets/icon-192.svg",
   "/assets/icon-512.svg",
   "/manifest.webmanifest"
