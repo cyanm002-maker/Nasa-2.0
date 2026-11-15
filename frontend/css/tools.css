@@ -1200,3 +1200,459 @@
     break-inside: avoid;
   }
 }
+
+/* ============================================================
+   7. 3D ORBITAL GRAVEYARD & SOLAR SYSTEM MAP
+   ============================================================ */
+.graveyard-page-wrap {
+  width: min(100% - 2rem, 1400px);
+  margin: 0 auto;
+  padding: 1.5rem 0 4rem;
+}
+
+.graveyard-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.graveyard-title-area h1 {
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  font-weight: 850;
+  letter-spacing: -0.035em;
+  margin: 0.2rem 0 0.5rem;
+}
+
+.graveyard-title-area p {
+  color: var(--muted);
+  font-size: 0.95rem;
+  max-width: 650px;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.graveyard-stats-strip {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.graveyard-stat-box {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 0.75rem 1.15rem;
+  min-width: 140px;
+}
+
+.stat-box-val {
+  font-size: 1.45rem;
+  font-weight: 850;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.stat-box-val.monuments {
+  color: var(--status-ended);
+}
+
+.stat-box-val.active {
+  color: var(--accent);
+}
+
+.stat-box-lbl {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 0.25rem;
+}
+
+.graveyard-main-stage {
+  position: relative;
+  width: 100%;
+  height: clamp(540px, 72vh, 800px);
+  border-radius: var(--radius-card);
+  border: 1px solid var(--line);
+  background: radial-gradient(circle at 50% 50%, #060d1a 0%, #020409 100%);
+  overflow: hidden;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.7);
+}
+
+#graveyardCanvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Floating Controls Over Canvas */
+.graveyard-floating-top {
+  position: absolute;
+  top: 1.25rem;
+  left: 1.25rem;
+  right: 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.graveyard-floating-top > * {
+  pointer-events: auto;
+}
+
+.graveyard-filter-group {
+  display: inline-flex;
+  gap: 0.35rem;
+  background: rgba(5, 8, 17, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  padding: 0.35rem;
+}
+
+.gy-filter-btn {
+  padding: 0.45rem 1.1rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: transparent;
+  border: 1px solid transparent;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.gy-filter-btn:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.gy-filter-btn.is-active {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.gy-filter-btn.is-active[data-filter="monuments"] {
+  background: rgba(248, 113, 113, 0.16);
+  color: #fca5a5;
+  border-color: rgba(248, 113, 113, 0.4);
+}
+
+.gy-filter-btn.is-active[data-filter="active"] {
+  background: rgba(210, 248, 67, 0.16);
+  color: var(--accent);
+  border-color: var(--line-accent);
+}
+
+.graveyard-top-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.gy-action-btn {
+  background: rgba(5, 8, 17, 0.88);
+  backdrop-filter: blur(14px);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  font-size: 0.78rem;
+  font-weight: 750;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.gy-action-btn:hover {
+  border-color: var(--line-accent);
+  background: rgba(16, 26, 46, 0.9);
+}
+
+.gy-action-btn.active-audio {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* Floating Bottom Left Telemetry HUD */
+.graveyard-hud-telemetry {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 1.25rem;
+  background: rgba(5, 8, 17, 0.88);
+  backdrop-filter: blur(14px);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  padding: 1rem 1.25rem;
+  z-index: 10;
+  max-width: 310px;
+}
+
+.hud-title {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.35rem;
+}
+
+.hud-target-name {
+  font-size: 1.15rem;
+  font-weight: 850;
+  color: #ffffff;
+  margin: 0 0 0.25rem;
+}
+
+.hud-target-sub {
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.45;
+  margin: 0;
+}
+
+.hud-speed-ctrl {
+  margin-top: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+
+.speed-chip {
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--line);
+  color: var(--muted);
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.speed-chip.is-active {
+  background: var(--accent);
+  color: var(--accent-dark);
+  border-color: var(--accent);
+}
+
+/* Floating Right Side Quick Roster */
+.graveyard-roster-drawer {
+  position: absolute;
+  top: 5rem;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  width: 280px;
+  background: rgba(7, 12, 23, 0.9);
+  backdrop-filter: blur(18px);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  padding: 1.15rem;
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.roster-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.85rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.roster-head h3 {
+  margin: 0;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.roster-list {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding-right: 0.25rem;
+}
+
+.roster-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.55rem 0.75rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-align: left;
+}
+
+.roster-item:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.1);
+  transform: translateX(-2px);
+}
+
+.roster-item.is-selected {
+  background: rgba(210, 248, 67, 0.1);
+  border-color: var(--line-accent);
+}
+
+.roster-name {
+  font-size: 0.82rem;
+  font-weight: 750;
+  color: #ffffff;
+  display: block;
+}
+
+.roster-dest {
+  font-size: 0.68rem;
+  color: var(--muted);
+}
+
+.roster-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.dot-monument {
+  background: var(--status-ended);
+  box-shadow: 0 0 6px var(--status-ended);
+}
+
+.dot-active {
+  background: var(--status-active);
+  box-shadow: 0 0 6px var(--status-active);
+}
+
+/* Modal Dossier when Spacecraft is Selected */
+.spacecraft-dossier-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.95);
+  width: min(90%, 480px);
+  background: var(--panel);
+  border: 1px solid var(--line-accent);
+  border-radius: var(--radius-card);
+  padding: 1.75rem;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.85);
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.spacecraft-dossier-card.is-open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.dossier-close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1.25rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 0;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  color: #ffffff;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  font-size: 1rem;
+  transition: background 0.15s;
+}
+
+.dossier-close-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.dossier-quote-block {
+  margin: 1.15rem 0;
+  padding: 0.6rem 0 0.6rem 1rem;
+  border-left: 2px solid var(--accent);
+  background: rgba(210, 248, 67, 0.04);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+
+.dossier-quote {
+  font-style: italic;
+  font-size: 0.95rem;
+  color: #ffffff;
+  margin: 0 0 0.25rem;
+  line-height: 1.45;
+}
+
+.dossier-cite {
+  font-size: 0.74rem;
+  font-style: normal;
+  color: var(--muted);
+}
+
+.dossier-specs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.spec-cell {
+  background: rgba(5, 8, 17, 0.6);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 0.65rem 0.85rem;
+}
+
+.spec-lbl {
+  font-size: 0.66rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+.spec-val {
+  font-size: 0.88rem;
+  font-weight: 750;
+  color: #ffffff;
+  margin-top: 0.2rem;
+}
+
+@media (max-width: 900px) {
+  .graveyard-roster-drawer {
+    display: none;
+  }
+}
+

@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Interactive 3D Orbital Graveyard: Explore humanity's silent space monuments drifting forever across the solar system, alongside active sentinels."
+    />
+    <title>3D Orbital Graveyard | MISSION ATLAS</title>
+    <link rel="stylesheet" href="css/auth.css" />
+    <link rel="stylesheet" href="css/tools.css" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <!-- Three.js & OrbitControls from reliable CDNs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script defer src="js/i18n.js"></script>
+    <script defer src="js/pwa.js"></script>
+    <script defer src="js/graveyard.js"></script>
+  </head>
+  <body data-page="graveyard">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <!-- Top Navigation Header -->
+    <header class="site-header">
+      <a class="brand" href="index.html">
+        <svg class="brand-star" width="22" height="22" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="3.5" fill="#D2F843" />
+          <path
+            d="M12 2v4M12 18v4M2 12h4M18 12h4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"
+            stroke="#D2F843"
+            stroke-width="2.2"
+            stroke-linecap="round"
+          />
+        </svg>
+        <span>MISSION ATLAS</span>
+      </a>
+
+      <nav class="header-actions" aria-label="Main Navigation">
+        <div class="header-nav-links">
+          <a class="nav-link" href="mission.html" data-i18n="nav_stories">MISSIONS</a>
+          <a class="nav-link is-active" href="graveyard.html">ORBITAL GRAVEYARD</a>
+          <a class="nav-link" href="signal.html" data-i18n="nav_signal">LIVE TRACKER</a>
+          <a class="nav-link" href="quiz.html" data-i18n="nav_quiz">CHALLENGE</a>
+          <a class="nav-link" href="explore.html" data-i18n="nav_explore">MAP</a>
+          <a class="nav-link" href="ask.html" data-i18n="nav_ask">ASK AI</a>
+        </div>
+        <a class="button button-primary" href="explore.html">START EXPLORING ↗</a>
+        <button class="button button-quiet" type="button" data-pwa-install hidden data-i18n="nav_install">📱 App</button>
+      </nav>
+    </header>
+
+    <main class="graveyard-page-wrap" id="main-content" tabindex="-1">
+      <!-- Title & Live Fleet Stats -->
+      <div class="graveyard-header-row">
+        <div class="graveyard-title-area">
+          <p class="eyebrow">HELIOCENTRIC & INTERSTELLAR TRAJECTORIES</p>
+          <h1>The Orbital <span>Graveyard</span></h1>
+          <p>
+            When space missions conclude, human machines never return home. Explore our interactive 3D solar system canvas
+            mapping humanity's silent drifting monuments against active deep space sentinels.
+          </p>
+        </div>
+
+        <div class="graveyard-stats-strip">
+          <div class="graveyard-stat-box">
+            <div class="stat-box-val monuments" id="countMonuments">09</div>
+            <div class="stat-box-lbl">Silent Monuments</div>
+          </div>
+          <div class="graveyard-stat-box">
+            <div class="stat-box-val active" id="countActive">06</div>
+            <div class="stat-box-lbl">Active Sentinels</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Interactive 3D Canvas Stage -->
+      <div class="graveyard-main-stage" id="graveyardContainer">
+        <!-- Floating Filter Bar Top -->
+        <div class="graveyard-floating-top">
+          <div class="graveyard-filter-group" role="tablist" aria-label="Spacecraft Fleet Filters">
+            <button class="gy-filter-btn is-active" data-filter="all" type="button">
+              <span>●</span> ALL FLEET (15)
+            </button>
+            <button class="gy-filter-btn" data-filter="monuments" type="button">
+              <span style="color: #f87171;">■</span> SILENT MONUMENTS (09)
+            </button>
+            <button class="gy-filter-btn" data-filter="active" type="button">
+              <span style="color: var(--accent);">■</span> ACTIVE SENTINELS (06)
+            </button>
+          </div>
+
+          <div class="graveyard-top-actions">
+            <button class="gy-action-btn" id="audioToggleBtn" type="button" title="Toggle real-time celestial sonification drone">
+              <span>🔇</span> <span>Sonification: OFF</span>
+            </button>
+            <button class="gy-action-btn" id="resetCamBtn" type="button" title="Reset camera to center on the Sun">
+              <span>🎯</span> <span>Reset View</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Floating Telemetry HUD Bottom-Left -->
+        <div class="graveyard-hud-telemetry" id="graveyardHud">
+          <div class="hud-title">REAL-TIME TRAJECTORY HUD</div>
+          <h2 class="hud-target-name" id="hudTargetName">Solar System (Sun Centered)</h2>
+          <p class="hud-target-sub" id="hudTargetSub">Viewing 15 landmark probes & silent monuments across 163 AU</p>
+          <div class="hud-speed-ctrl">
+            <span>Simulation:</span>
+            <button class="speed-chip is-active" data-speed="1" type="button">1x</button>
+            <button class="speed-chip" data-speed="10" type="button">10x</button>
+            <button class="speed-chip" data-speed="50" type="button">50x</button>
+          </div>
+        </div>
+
+        <!-- Floating Roster Drawer Right -->
+        <div class="graveyard-roster-drawer" aria-label="Spacecraft Roster">
+          <div class="roster-head">
+            <h3>FLEET ROSTER</h3>
+            <span style="font-size: 0.68rem; color: var(--accent); font-weight: 800;">CLICK TO FOCUS</span>
+          </div>
+          <div class="roster-list" id="rosterList">
+            <!-- Dynamically populated by graveyard.js -->
+          </div>
+        </div>
+
+        <!-- Spacecraft Dossier Modal Card (Pops when clicked) -->
+        <div class="spacecraft-dossier-card" id="spacecraftDossier" role="dialog" aria-modal="true" aria-labelledby="dossierTitle">
+          <button class="dossier-close-btn" id="dossierCloseBtn" type="button" aria-label="Close dossier">✕</button>
+          <div class="card-head" style="margin-bottom: 0.5rem;">
+            <span class="card-eyebrow" id="dossierEyebrow">HELIOCENTRIC MONUMENT</span>
+            <span class="badge-pill" id="dossierBadge">SILENT MONUMENT</span>
+          </div>
+          <h2 class="mission-file-title" id="dossierTitle" style="margin: 0.25rem 0 0.6rem; font-size: 1.6rem;">Kepler Space Telescope</h2>
+          <p class="mission-file-desc" id="dossierDesc" style="margin-bottom: 1rem; font-size: 0.88rem;">
+            Discovered over 2,600 exoplanets. Ran out of hydrazine fuel in October 2018 and drifts forever behind Earth.
+          </p>
+
+          <div class="dossier-quote-block">
+            <p class="dossier-quote" id="dossierQuote">“Goodnight, planet hunter.”</p>
+            <cite class="dossier-cite" id="dossierCite">— NASA Astrophysics</cite>
+          </div>
+
+          <div class="dossier-specs-grid">
+            <div class="spec-cell">
+              <span class="spec-lbl">Distance from Sun</span>
+              <div class="spec-val" id="specDistanceAu">1.05 AU</div>
+            </div>
+            <div class="spec-cell">
+              <span class="spec-lbl">Kilometers</span>
+              <div class="spec-val" id="specDistanceKm">157 million km</div>
+            </div>
+            <div class="spec-cell">
+              <span class="spec-lbl">Orbit Configuration</span>
+              <div class="spec-val" id="specOrbitType">Earth-Trailing Solar</div>
+            </div>
+            <div class="spec-cell">
+              <span class="spec-lbl">Last Contact / Status</span>
+              <div class="spec-val" id="specLastContact">Oct 30, 2018</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Educational Guidance Note -->
+      <section style="margin-top: 3.5rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem;">
+        <div class="atlas-card">
+          <div class="card-eyebrow">THE SCIENCE OF DISPOSAL</div>
+          <h3 style="font-size: 1.25rem; margin: 0 0 0.65rem;">Planetary Protection Protocols</h3>
+          <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.6; margin: 0;">
+            Under COSPAR international treaties, spacecraft that might harbor Earth microbes must not contaminate habitable worlds like Europa or Enceladus. This is why Galileo and Cassini were commanded into suicidal plunges into Jupiter and Saturn.
+          </p>
+        </div>
+
+        <div class="atlas-card">
+          <div class="card-eyebrow">INTERSTELLAR AMBASSADORS</div>
+          <h3 style="font-size: 1.25rem; margin: 0 0 0.65rem;">The Five Escape Probes</h3>
+          <p style="color: var(--muted); line-height: 1.6; margin: 0;">
+            Only five human objects possess enough hyperbolic excess velocity to escape the Sun’s gravity well forever: <strong>Voyager 1, Voyager 2, Pioneer 10, Pioneer 11, and New Horizons</strong>. They will outlast the Earth and Moon.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <!-- Site Footer -->
+    <footer class="site-footer">
+      <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
+        <a href="index.html">Home</a>
+        <a href="mission.html">Missions</a>
+        <a href="graveyard.html">Orbital Graveyard</a>
+        <a href="explore.html">Planetary Map</a>
+        <a href="signal.html">Signal Delay</a>
+        <a href="quiz.html">Challenge</a>
+      </div>
+      <div>
+        <span>MISSION ATLAS · Human stories of deep space exploration</span>
+      </div>
+    </footer>
+  </body>
+</html>
