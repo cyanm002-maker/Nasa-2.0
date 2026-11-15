@@ -2,6 +2,7 @@
 (function () {
   let tributes = [];
   let activeFilter = "all";
+  let tributesUnavailable = false;
 
   const grid = document.getElementById("tributesGrid");
   const filterBtns = document.querySelectorAll("[data-filter]");
@@ -16,31 +17,12 @@
       const resp = await fetch(`/api/tributes?probe=${activeFilter}`, { cache: "no-store" });
       if (!resp.ok) throw new Error("Could not load tributes");
       tributes = await resp.json();
+      tributesUnavailable = false;
       renderTributes();
-    } catch {
-      // Local fallback tributes
-      tributes = [
-        {
-          id: "local-1",
-          author: "Mission Control Fan",
-          callsign: "OppyForever",
-          probe: "opportunity",
-          probeName: "Opportunity (MER-B)",
-          message: "You outlived your 90-sol warranty by 5,000 sols. You will forever be humanity's bravest little rover.",
-          date: "2026-11-14",
-          hearts: 142
-        },
-        {
-          id: "local-2",
-          author: "Cosmic Wanderer",
-          callsign: "PaleBlueDot",
-          probe: "voyager1",
-          probeName: "Voyager 1",
-          message: "Keep singing our song to the stars. 24 billion kilometers away, but right in our hearts.",
-          date: "2026-11-13",
-          hearts: 98
-        }
-      ];
+    } catch (error) {
+      console.error("Could not load tributes:", error);
+      tributes = [];
+      tributesUnavailable = true;
       renderTributes();
     }
   }
@@ -54,7 +36,12 @@
       : tributes.filter((t) => t.probe === activeFilter);
 
     if (filtered.length === 0) {
-      grid.innerHTML = `<div style="grid-column: 1 / -1; text-align: center; color: var(--muted); padding: 3rem;">No tribute notes found for this spacecraft yet. Be the first to leave one!</div>`;
+      const emptyState = document.createElement("div");
+      emptyState.style.cssText = "grid-column: 1 / -1; text-align: center; color: var(--muted); padding: 3rem;";
+      emptyState.textContent = tributesUnavailable
+        ? "Tributes are temporarily unavailable. Please try again shortly."
+        : "No tribute notes found for this spacecraft yet. Be the first to leave one!";
+      grid.replaceChildren(emptyState);
       return;
     }
 
@@ -65,21 +52,31 @@
       const heartedKey = `hearted_${t.id}`;
       const isHearted = localStorage.getItem(heartedKey) === "true";
 
-      card.innerHTML = `
-        <div>
-          <span class="tribute-probe-tag">${t.probeName || t.probe}</span>
-          <p class="tribute-text">"${t.message}"</p>
-        </div>
-        <div class="tribute-author">
-          <span><strong>${t.author}</strong> (${t.callsign || "Explorer"}) · ${t.date}</span>
-          <button class="heart-btn" type="button" aria-label="Heart this tribute" data-id="${t.id}">
-            <span>${isHearted ? "❤️" : "🤍"}</span>
-            <span class="heart-count">${t.hearts || 0}</span>
-          </button>
-        </div>
-      `;
+      const content = document.createElement("div");
+      const probeTag = document.createElement("span");
+      probeTag.className = "tribute-probe-tag";
+      probeTag.textContent = t.probeName || t.probe;
+      const message = document.createElement("p");
+      message.className = "tribute-text";
+      message.textContent = `"${t.message}"`;
+      content.append(probeTag, message);
 
-      const heartBtn = card.querySelector(".heart-btn");
+      const authorSection = document.createElement("div");
+      authorSection.className = "tribute-author";
+      const author = document.createElement("span");
+      const authorName = document.createElement("strong");
+      authorName.textContent = t.author;
+      author.append(authorName, ` (${t.callsign || "Explorer"}) · ${t.date}`);
+
+      const heartBtn = document.createElement("button");
+      heartBtn.className = "heart-btn";
+      heartBtn.type = "button";
+      heartBtn.setAttribute("aria-label", "Heart this tribute");
+      heartBtn.dataset.id = t.id;
+      heartBtn.innerHTML = `<span>${isHearted ? "❤️" : "🤍"}</span><span class="heart-count">${t.hearts || 0}</span>`;
+      authorSection.append(author, heartBtn);
+      card.append(content, authorSection);
+
       heartBtn.addEventListener("click", () => {
         const currentlyHearted = localStorage.getItem(heartedKey) === "true";
         const countSpan = heartBtn.querySelector(".heart-count");
@@ -152,14 +149,8 @@
 
           tributeForm.reset();
           if (modal) modal.hidden = true;
-        } catch (err) {
-          if (formStatus) formStatus.textContent = "Could not save tribute. Saved locally.";
-          payload.id = `local-${Date.now()}`;
-          payload.date = new Date().toISOString().split("T")[0];
-          payload.hearts = 1;
-          tributes.unshift(payload);
-          renderTributes();
-          setTimeout(() => { if (modal) modal.hidden = true; }, 1000);
+        } catch {
+          if (formStatus) formStatus.textContent = "Could not save tribute. Please try again.";
         } finally {
           if (submitBtn) submitBtn.disabled = false;
         }

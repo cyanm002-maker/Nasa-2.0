@@ -1,118 +1,130 @@
-// Farewell Wall - Memorial Tributes API for retired & lost spacecraft
+const PROBE_NAMES = {
+ opportunity: "Opportunity (MER-B)",
+ voyager1: "Voyager 1",
+ spirit: "Spirit (MER-A)",
+ cassini: "Cassini-Huygens",
+ apollo15: "Apollo 15 Lunar Rover",
+};
 
-const DEFAULT_TRIBUTES = [
-  {
-    id: "trib-1",
-    author: "Elena Rostova",
-    callsign: "Stargazer-9",
-    probe: "opportunity",
-    probeName: "Opportunity (MER-B)",
-    message: "You taught an entire generation that a machine built of aluminum and silicon could have a soul. 5,111 sols under a foreign sky. Rest easy, Oppy.",
-    date: "2026-11-01",
-    hearts: 142
-  },
-  {
-    id: "trib-2",
-    author: "Kavita Rao",
-    callsign: "ISRO-Fellow",
-    probe: "voyager1",
-    probeName: "Voyager 1",
-    message: "Whenever I feel small on this Earth, I look out at night and remember: our song, our laughter, and our heartbeat are sailing through the interstellar dark.",
-    date: "2026-11-04",
-    hearts: 98
-  },
-  {
-    id: "trib-3",
-    author: "Marcus Chen",
-    callsign: "Titan-Survey",
-    probe: "cassini",
-    probeName: "Cassini-Huygens",
-    message: "You plunged into Saturn so Enceladus could dream in peace. The most noble death in the history of science.",
-    date: "2026-11-06",
-    hearts: 115
-  },
-  {
-    id: "trib-4",
-    author: "Sarah Lindqvist",
-    callsign: "Polaris-4",
-    probe: "spirit",
-    probeName: "Spirit (MER-A)",
-    message: "Climbing Husband Hill with a seized wheel. You never gave up, not even when the sand at Troy claimed your tracks. Thank you for showing us what grit means.",
-    date: "2026-11-08",
-    hearts: 76
-  },
-  {
-    id: "trib-5",
-    author: "David Miller",
-    callsign: "Apollo-Kids",
-    probe: "apollo15",
-    probeName: "Apollo 15 Lunar Rover",
-    message: "Still parked by Hadley Rille, waiting under the unchanging stars. The fastest set of wheels on the Moon.",
-    date: "2026-11-10",
-    hearts: 54
-  },
-  {
-    id: "trib-6",
-    author: "Dr. Amara Thorne",
-    callsign: "DeepSpace-Echo",
-    probe: "opportunity",
-    probeName: "Opportunity (MER-B)",
-    message: "I was ten years old when you bounced onto Eagle Crater, and I had finished my astrophysics doctorate by the time your final storm arrived. You guided my whole life.",
-    date: "2026-11-12",
-    hearts: 89
+const TRIBUTE_COLUMNS = "id,author,callsign,probe,message,created_at,hearts";
+
+function getQuery(req, name) {
+  return req.query?.[name] || new URL(req.url, "http://localhost").searchParams.get(name);
+}
+
+function getSupabaseConfig() {
+  const supabaseUrl = (process.env.SUPABASE_URL || "").trim().replace(/\/+$/, "");
+  const supabaseAnonKey = (process.env.SUPABASE_ANON_KEY || "").trim();
+  if (
+    !supabaseUrl ||
+    !supabaseAnonKey ||
+    supabaseUrl.includes("YOUR_") ||
+    supabaseAnonKey.includes("YOUR_")
+  ) {
+    throw new Error("SUPABASE_URL and SUPABASE_ANON_KEY are required.");
   }
-];
 
-let inMemoryTributes = [...DEFAULT_TRIBUTES];
+  const parsedUrl = new URL(supabaseUrl);
+  if (
+    parsedUrl.protocol !== "https:" &&
+    !(parsedUrl.protocol === "http:" && parsedUrl.hostname === "localhost")
+  ) {
+    throw new Error("SUPABASE_URL must use HTTPS.");
+  }
+
+  return { supabaseUrl, supabaseAnonKey };
+}
+
+function toTribute(row) {
+  return {
+    id: row.id,
+    author: row.author,
+    callsign: row.callsign,
+    probe: row.probe,
+    probeName: PROBE_NAMES[row.probe],
+    message: row.message,
+    date: row.created_at.slice(0, 10),
+    hearts: row.hearts,
+  };
+}
+
+async function requestSupabase(req, path, body) {
+  const { supabaseUrl, supabaseAnonKey } = getSupabaseConfig();
+  const response = await fetch(`${supabaseUrl}/rest/v1/${path}`, {
+    method: req.method,
+    headers: {
+      apikey: supabaseAnonKey,
+      Authorization: `Bearer ${supabaseAnonKey}`,
+      ...(body && {
+        "Content-Type": "application/json",
+        Prefer: "return=representation",
+      }),
+    },
+    ...(body && { body: JSON.stringify(body) }),
+  });
+
+  if (!response.ok) {
+    const details = await response.text();
+    throw new Error(`Supabase returned HTTP ${response.status}: ${details}`);
+  }
+  return response.json();
+}
 
 function handler(req, res) {
   res.setHeader("Cache-Control", "no-store");
 
   if (req.method === "GET") {
-    const probe = req.query?.probe || (new URL(req.url, "http://localhost").searchParams.get("probe"));
-    if (probe && probe !== "all") {
-      const filtered = inMemoryTributes.filter((t) => t.probe === probe.toLowerCase());
-      return res.status(200).json(filtered);
+    const probe = getQuery(req, "probe");
+    if (probe && probe !== "all" && !PROBE_NAMES[probe]) {
+      return res.status(400).json({ error: "Unknown spacecraft filter." });
     }
-    return res.status(200).json(inMemoryTributes);
+    const query = new URLSearchParams({
+      select: TRIBUTE_COLUMNS,
+      order: "created_at.desc",
+    });
+    if (probe && probe !== "all") query.set("probe", `eq.${probe}`);
+    return requestSupabase(req, `tributes?${query}`, undefined)
+      .then((rows) => res.status(200).json(rows.map(toTribute)))
+      .catch((error) => {
+        console.error("Could not load tributes:", error);
+        return res.status(502).json({ error: "Tributes are temporarily unavailable." });
+      });
   }
 
   if (req.method === "POST") {
-    try {
-      const body = req.body || {};
-      const author = (body.author || "Anonymous Explorer").trim().slice(0, 50);
-      const callsign = (body.callsign || "Observer").trim().slice(0, 30);
-      const probe = (body.probe || "opportunity").toLowerCase();
-      const message = (body.message || "").trim().slice(0, 500);
+    const body = req.body && typeof req.body === "object" && !Array.isArray(req.body)
+      ? req.body
+      : {};
+    const probe = typeof body.probe === "string" ? body.probe.toLowerCase() : "";
+    const message = typeof body.message === "string" ? body.message.trim() : "";
 
-      if (!message) {
-        return res.status(400).json({ error: "Tribute message is required." });
-      }
-
-      const probeNames = {
-        opportunity: "Opportunity (MER-B)",
-        voyager1: "Voyager 1",
-        spirit: "Spirit (MER-A)",
-        cassini: "Cassini-Huygens",
-        apollo15: "Apollo 15 Lunar Rover"
-      };
-
-      const newTribute = {
-        id: `trib-${Date.now()}`,
-        author: author || "Anonymous Explorer",
-        callsign: callsign || "Explorer",
-        probe,
-        probeName: probeNames[probe] || "Spacecraft",
-        message,
-        date: new Date().toISOString().split("T")[0],
-        hearts: 1
-      };
-
-      inMemoryTributes.unshift(newTribute);
-      return res.status(201).json(newTribute);
-    } catch (err) {
-      return res.status(500).json({ error: "Could not save tribute note." });
+    if (!message || message.length > 500) {
+      return res.status(400).json({ error: "Tribute message must be between 1 and 500 characters." });
     }
+    if (!PROBE_NAMES[probe]) {
+      return res.status(400).json({ error: "Choose a supported spacecraft." });
+    }
+
+    const textValue = (value, fallback, maxLength) =>
+      typeof value === "string" ? value.trim().slice(0, maxLength) || fallback : fallback;
+    const tribute = {
+      author: textValue(body.author, "Anonymous Explorer", 50),
+      callsign: textValue(body.callsign, "Observer", 30),
+      probe,
+      message,
+    };
+
+    return requestSupabase(req, "tributes", tribute)
+      .then((rows) => {
+        if (!Array.isArray(rows) || !rows[0]) {
+          throw new Error("Supabase did not return the saved tribute.");
+        }
+        return res.status(201).json(toTribute(rows[0]));
+      })
+      .catch((error) => {
+        console.error("Could not save tribute:", error);
+        return res.status(502).json({ error: "Could not save tribute. Please try again." });
+      });
   }
 
   res.setHeader("Allow", "GET, POST");

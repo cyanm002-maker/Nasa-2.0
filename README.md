@@ -17,12 +17,13 @@ It uses Supabase Auth for accounts and a `profiles` table for display names.
    PORT=3000
    SUPABASE_URL=https://YOUR_PROJECT_ID.supabase.co
    SUPABASE_ANON_KEY=YOUR_SUPABASE_PUBLISHABLE_OR_ANON_KEY
+   GEMINI_API_KEY=
    ```
 
 3. In the Supabase **SQL Editor**, run the contents of
    [`backend/supabase/schema.sql`](backend/supabase/schema.sql). This creates the
-   `profiles` table, row-level security policies, and a profile row for each new
-   Auth user.
+   `profiles` table and account policies, and the persistent `tributes` table
+   with public read/insert-only policies for the Farewell Wall.
 4. In **Authentication → URL Configuration**, set the site URL to
    `http://localhost:3000` and add `http://localhost:3000/dashboard.html` to the
    allowed redirect URLs. Keep email confirmation enabled if you want users to
@@ -44,22 +45,27 @@ service-role key in it for this frontend authentication flow.
 ### Deploy to Vercel
 
 Import the repository into Vercel with the repository root as the project root.
-The included `vercel.json` publishes `frontend/` as the static site and deploys
-`api/config.js` and `api/voyager.js` as serverless functions. Do not set
-`backend/` as the Vercel project root.
+The included `vercel.json` publishes `frontend/` as the static site; each
+`api/*.js` file is deployed as a serverless function. Do not set `backend/` as
+the Vercel project root.
 
 In the Vercel project’s **Settings → Environment Variables**, set
 `SUPABASE_URL` and `SUPABASE_ANON_KEY` for the environments you deploy
 (Production, and Preview if needed). These are the Supabase project URL and
-public publishable/anon key; never use the service-role secret. Vercel does not
-read your local `backend/.env`, and `NASA_API_KEY` is not used by this app.
-Redeploy after changing environment variables.
+public publishable/anon key; never use the service-role secret. Set
+`GEMINI_API_KEY` only if you want live Gemini responses; without it, Ask the
+Machine uses its built-in simulated replies. Vercel does not read your local
+`backend/.env`. Redeploy after changing environment variables.
 
 In Supabase **Authentication → URL Configuration**, set the Site URL to your
 production Vercel URL and add that URL with `/dashboard.html` to the allowed
 redirect URLs. Add your Vercel Preview URL patterns there too if you test
 authentication on preview deployments. Keep the existing localhost URLs for
 local development.
+
+The Farewell Wall stores posts in Supabase, so run the SQL schema before
+deploying. The public `anon` role can only read and insert tributes; database
+constraints restrict the allowed spacecraft and field lengths.
 
 ## Planetary map
 

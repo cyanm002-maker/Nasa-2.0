@@ -135,7 +135,7 @@ function pickFallbackReply(probeKey, userMessage) {
 
 async function callGeminiAPI(apiKey, systemPrompt, userMessage) {
   // Supports both query key and modern x-goog-api-key header (required for AQ. auth keys)
-  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent`;
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent`;
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), 12000);
 
