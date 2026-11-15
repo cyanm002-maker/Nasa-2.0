@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Interactive before-and-after comparisons of pioneering NASA spacecraft and landing sites." />
-    <title>Then and Now | MISSION ATLAS</title>
+    <meta name="description" content="Interactive time-scrubbing decay visualizer and before-and-after comparisons of pioneering NASA spacecraft across decades of deep space exposure." />
+    <title>Then & Now: Decay Visualizer | MISSION ATLAS</title>
     <link rel="stylesheet" href="css/auth.css" />
     <link rel="stylesheet" href="css/tools.css" />
     <link rel="manifest" href="manifest.webmanifest" />
@@ -30,6 +30,9 @@
       <nav class="header-actions" aria-label="Main Navigation">
         <div class="header-nav-links">
           <a class="nav-link" href="mission.html" data-i18n="nav_stories">MISSIONS</a>
+          <a class="nav-link" href="future.html">HORIZON</a>
+          <a class="nav-link" href="graveyard.html">ORBITAL GRAVEYARD</a>
+          <a class="nav-link" href="iss.html">ISS 3D</a>
           <a class="nav-link" href="signal.html" data-i18n="nav_signal">LIVE TRACKER</a>
           <a class="nav-link" href="quiz.html" data-i18n="nav_quiz">CHALLENGE</a>
           <a class="nav-link" href="explore.html" data-i18n="nav_explore">MAP</a>
@@ -44,6 +47,9 @@
       <nav class="tool-subnav" aria-label="Tool Navigation">
         <a class="tool-subnav-link" href="signal.html" data-i18n="nav_signal">📡 Signal Delay</a>
         <a class="tool-subnav-link is-active" href="then-now.html" data-i18n="nav_then_now">⏱️ Then & Now</a>
+        <a class="tool-subnav-link" href="graveyard.html">🌌 Graveyard (3D)</a>
+        <a class="tool-subnav-link" href="iss.html">🛸 ISS 3D</a>
+        <a class="tool-subnav-link" href="future.html">🔭 Horizon</a>
         <a class="tool-subnav-link" href="ask.html" data-i18n="nav_ask">🤖 Ask the Machine</a>
         <a class="tool-subnav-link" href="lander.html" data-i18n="nav_lander">🚀 Lander Game</a>
         <a class="tool-subnav-link" href="farewell.html" data-i18n="nav_farewell">💌 Farewell Wall</a>
@@ -52,14 +58,155 @@
       </nav>
 
       <div class="tool-header">
-        <p class="eyebrow" data-i18n="hero_eyebrow">HISTORICAL VISUAL ARCHIVE</p>
+        <p class="eyebrow" data-i18n="hero_eyebrow">COSMIC HARDWARE CHRONICLE</p>
         <h1 data-i18n="then_now_title">Then and <span>Now</span></h1>
         <p data-i18n="then_now_subtitle">
-          Drag the slider to compare pristine launch milestones with the weathered reality of deep space and planetary surfaces over decades of cosmic exposure.
+          Scrub through decades of cosmic exposure to witness how planetary dust, micrometeorites, solar radiation, and the interstellar void gradually transform human exploratory monuments.
         </p>
       </div>
 
-      <div class="then-now-container">
+      <!-- Mode Switcher Tabs -->
+      <div class="decay-view-switcher">
+        <div class="decay-tabs-wrap" role="tablist">
+          <button class="decay-tab-btn is-active" id="tabViewDecay" type="button" role="tab" aria-selected="true">
+            ⏱️ Time-Scrubbing Physics Simulation
+          </button>
+          <button class="decay-tab-btn" id="tabViewPhotos" type="button" role="tab" aria-selected="false">
+            📷 Archival Photo Comparison
+          </button>
+        </div>
+      </div>
+
+      <!-- 1. TIME-SCRUBBING DECAY VISUALIZER SECTION -->
+      <section id="decayVisualizerSection" class="decay-visualizer-container" aria-label="Decay Physics Visualizer">
+        <!-- Environment Selector Pills -->
+        <div class="decay-env-pills" role="radiogroup" aria-label="Select celestial environment">
+          <button class="env-pill-btn is-active" type="button" data-env="mars">
+            🔴 Mars: Opportunity Rover (2004–2026)
+          </button>
+          <button class="env-pill-btn" type="button" data-env="moon">
+            ⚪ The Moon: Apollo 11 &amp; 15 (1969–2026)
+          </button>
+          <button class="env-pill-btn" type="button" data-env="voyager">
+            🌌 Interstellar: Voyager 1 (1977–2026)
+          </button>
+        </div>
+
+        <!-- Viewport Canvas Card -->
+        <div class="decay-viewport-card">
+          <div class="decay-canvas-wrap">
+            <canvas id="decaySimulationCanvas" width="1200" height="460"></canvas>
+            <div class="decay-canvas-overlay">
+              <div class="decay-stage-tag">
+                <div class="decay-badge-title">ENVIRONMENT MODEL</div>
+                <div class="decay-badge-name" id="decayBadgeName">Mars: Opportunity Rover (MER-B)</div>
+              </div>
+              <div class="decay-storm-alert" id="decayStormAlert" style="display: none;">
+                ⚠️ HISTORIC GLOBAL DUST STORM (TAU 10.8) — SKY BLOTTED OUT
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Master Scrubber Card -->
+        <div class="decay-scrubber-card">
+          <div class="scrubber-top-row">
+            <div class="scrubber-clock-block">
+              <span class="scrubber-year-text" id="scrubberYear">2018.1</span>
+              <span class="scrubber-sol-text" id="scrubberSol">Sol 5,111</span>
+            </div>
+            <div class="scrubber-playback-controls">
+              <button class="play-timelapse-btn" id="playTimelapseBtn" type="button">
+                ▶ Play Timelapse
+              </button>
+            </div>
+          </div>
+
+          <div class="slider-track-wrapper">
+            <input
+              type="range"
+              class="master-decay-range"
+              id="masterDecayRange"
+              min="0"
+              max="100"
+              step="0.1"
+              value="64"
+              aria-label="Master Time Scrubber"
+            />
+          </div>
+
+          <!-- Dynamic Key Milestones Track -->
+          <div class="milestones-track" id="milestonesTrack"></div>
+        </div>
+
+        <!-- Real-Time Physics Telemetry HUD -->
+        <div class="decay-telemetry-hud">
+          <div class="decay-telemetry-box">
+            <div class="dt-label" id="dt1Label">Atmospheric Tau (Opacity)</div>
+            <div class="dt-value">
+              <span id="dt1Val">0.8</span>
+              <span class="dt-unit" id="dt1Unit">τ</span>
+            </div>
+            <div class="dt-bar-track">
+              <div class="dt-bar-fill" id="dt1Fill" style="width: 10%;"></div>
+            </div>
+          </div>
+
+          <div class="decay-telemetry-box">
+            <div class="dt-label" id="dt2Label">Solar Power Generation</div>
+            <div class="dt-value">
+              <span id="dt2Val">650</span>
+              <span class="dt-unit" id="dt2Unit">Wh/sol</span>
+            </div>
+            <div class="dt-bar-track">
+              <div class="dt-bar-fill" id="dt2Fill" style="width: 70%;"></div>
+            </div>
+          </div>
+
+          <div class="decay-telemetry-box">
+            <div class="dt-label" id="dt3Label">Array Dust Accumulation</div>
+            <div class="dt-value">
+              <span id="dt3Val">64</span>
+              <span class="dt-unit" id="dt3Unit">%</span>
+            </div>
+            <div class="dt-bar-track">
+              <div class="dt-bar-fill" id="dt3Fill" style="width: 64%;"></div>
+            </div>
+          </div>
+
+          <div class="decay-telemetry-box">
+            <div class="dt-label" id="dt4Label">Thermal Core Temp</div>
+            <div class="dt-value">
+              <span id="dt4Val">-42</span>
+              <span class="dt-unit" id="dt4Unit">°C</span>
+            </div>
+            <div class="dt-bar-track">
+              <div class="dt-bar-fill" id="dt4Fill" style="width: 55%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Real-Time Degradation Curve Graph Card -->
+        <div class="decay-graph-card">
+          <div class="graph-head">
+            <h3 class="graph-title">Environmental Degradation &amp; Telemetry Curves</h3>
+            <div class="graph-legend">
+              <span class="graph-legend-item">
+                <span style="display:inline-block; width:10px; height:10px; background:#D2F843; border-radius:2px;"></span>
+                Primary Power / Structural Integrity
+              </span>
+              <span class="graph-legend-item">
+                <span style="display:inline-block; width:10px; height:10px; background:#f87171; border-radius:2px;"></span>
+                Atmospheric / Cosmic Stress
+              </span>
+            </div>
+          </div>
+          <canvas id="decayCurveCanvas" width="1000" height="140"></canvas>
+        </div>
+      </section>
+
+      <!-- 2. ARCHIVAL PHOTO COMPARISON SECTION -->
+      <section id="photoComparisonSection" style="display: none;" class="then-now-container" aria-label="Archival Photo Comparison">
         <!-- Comparison Category Selector -->
         <div class="comparison-selector" role="group" aria-label="Choose a comparison">
           <button class="comp-pill is-active" type="button" data-comp="oppy">🤖 Opportunity: Sol 1 vs Sol 5,000</button>
@@ -85,13 +232,15 @@
           <p id="sliderStorySubtitle" style="color: var(--accent); font-weight: 600; margin-bottom: 0.75rem;"></p>
           <p id="sliderStoryText"></p>
         </div>
-      </div>
+      </section>
     </main>
 
     <footer class="site-footer">
       <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
         <a href="index.html">Home</a>
         <a href="mission.html">Missions</a>
+        <a href="future.html">Horizon</a>
+        <a href="graveyard.html">Orbital Graveyard</a>
         <a href="explore.html">Planetary Map</a>
         <a href="signal.html">Signal Delay</a>
         <a href="quiz.html">Challenge</a>

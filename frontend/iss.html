@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Interactive 3D International Space Station (ISS) Explorer: Inspect laboratory modules, solar arrays, Earth observations from Cupola, and breakthrough microgravity science."
+    />
+    <title>3D International Space Station (ISS) Explorer | MISSION ATLAS</title>
+    <link rel="stylesheet" href="css/auth.css" />
+    <link rel="stylesheet" href="css/tools.css" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <!-- Three.js & OrbitControls from reliable CDNs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script defer src="js/i18n.js"></script>
+    <script defer src="js/pwa.js"></script>
+    <script defer src="js/iss.js"></script>
+  </head>
+  <body data-page="iss">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <!-- Top Navigation Header -->
+    <header class="site-header">
+      <a class="brand" href="index.html">
+        <svg class="brand-star" width="22" height="22" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="3.5" fill="#D2F843" />
+          <path
+            d="M12 2v4M12 18v4M2 12h4M18 12h4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"
+            stroke="#D2F843"
+            stroke-width="2.2"
+            stroke-linecap="round"
+          />
+        </svg>
+        <span>MISSION ATLAS</span>
+      </a>
+
+      <nav class="header-actions" aria-label="Main Navigation">
+        <div class="header-nav-links">
+          <a class="nav-link" href="mission.html" data-i18n="nav_stories">MISSIONS</a>
+          <a class="nav-link" href="future.html">HORIZON</a>
+          <a class="nav-link" href="graveyard.html">ORBITAL GRAVEYARD</a>
+          <a class="nav-link is-active" href="iss.html">ISS 3D</a>
+          <a class="nav-link" href="signal.html" data-i18n="nav_signal">LIVE TRACKER</a>
+          <a class="nav-link" href="quiz.html" data-i18n="nav_quiz">CHALLENGE</a>
+          <a class="nav-link" href="explore.html" data-i18n="nav_explore">MAP</a>
+          <a class="nav-link" href="ask.html" data-i18n="nav_ask">ASK AI</a>
+        </div>
+        <a class="button button-primary" href="explore.html">START EXPLORING ↗</a>
+        <button class="button button-quiet" type="button" data-pwa-install hidden data-i18n="nav_install">📱 App</button>
+      </nav>
+    </header>
+
+    <main class="tool-page-container" id="main-content" tabindex="-1">
+      <!-- Tool Sub-Navigation -->
+      <nav class="tool-subnav" aria-label="Tool Navigation">
+        <a class="tool-subnav-link" href="signal.html" data-i18n="nav_signal">📡 Signal Delay</a>
+        <a class="tool-subnav-link" href="then-now.html" data-i18n="nav_then_now">⏱️ Then & Now</a>
+        <a class="tool-subnav-link" href="graveyard.html">🌌 Graveyard (3D)</a>
+        <a class="tool-subnav-link is-active" href="iss.html">🛸 ISS 3D</a>
+        <a class="tool-subnav-link" href="future.html">🔭 Horizon</a>
+        <a class="tool-subnav-link" href="ask.html" data-i18n="nav_ask">🤖 Ask the Machine</a>
+        <a class="tool-subnav-link" href="lander.html" data-i18n="nav_lander">🚀 Lander Game</a>
+        <a class="tool-subnav-link" href="farewell.html" data-i18n="nav_farewell">💌 Farewell Wall</a>
+        <a class="tool-subnav-link" href="ar.html" data-i18n="nav_ar">🛰️ AR Hologram</a>
+        <a class="tool-subnav-link" href="teachers.html" data-i18n="nav_teachers">📚 Teacher Pack</a>
+      </nav>
+
+      <!-- Tool Header -->
+      <div class="tool-header">
+        <p class="eyebrow">HUMANITY'S PERMANENT MICROGRAVITY OUTPOST</p>
+        <h1>3D International Space Station <span>(ISS)</span></h1>
+        <p>
+          Interact with a full 3D orbital simulation of humanity's football-field-sized laboratory orbiting Earth at 27,600 km/h (17,500 mph). Click on any module to uncover what scientific experiments happen inside, how life support recycles 98% of water, and how astronauts observe Earth.
+        </p>
+      </div>
+
+      <!-- Main 3D ISS Viewport Card -->
+      <div class="iss-viewport-card" aria-label="Interactive 3D ISS Canvas">
+        <div class="iss-3d-canvas-wrap">
+          <canvas id="issThreeCanvas"></canvas>
+
+          <!-- Top View Modes & Audio Controls -->
+          <div class="iss-top-controls">
+            <div class="iss-view-modes" role="group" aria-label="Camera Perspectives">
+              <button class="iss-mode-btn is-active" type="button" data-mode="orbit">
+                🔬 Free Orbit
+              </button>
+              <button class="iss-mode-btn" type="button" data-mode="cupola">
+                🌍 Cupola Earth View
+              </button>
+              <button class="iss-mode-btn" type="button" data-mode="solar">
+                ☀️ Solar Array Tracking
+              </button>
+              <button class="iss-mode-btn" type="button" data-mode="eva">
+                👨‍🚀 EVA Spacewalk POV
+              </button>
+            </div>
+
+            <button class="iss-audio-btn" id="issAudioToggle" type="button" aria-label="Toggle Station Audio">
+              🔇 Audio: Muted
+            </button>
+          </div>
+
+          <!-- Live Floating Telemetry HUD -->
+          <div class="iss-telemetry-hud" aria-live="polite">
+            <div class="iss-hud-title">
+              <span style="display:inline-block; width:8px; height:8px; background:#D2F843; border-radius:50%; box-shadow:0 0 8px #D2F843;"></span>
+              LIVE ORBITAL TELEMETRY
+            </div>
+            <div class="iss-hud-row">
+              <span class="iss-hud-label">Velocity</span>
+              <span class="iss-hud-val" id="issHudSpeed">27,570 km/h</span>
+            </div>
+            <div class="iss-hud-row">
+              <span class="iss-hud-label">Altitude</span>
+              <span class="iss-hud-val" id="issHudAlt">418.4 km</span>
+            </div>
+            <div class="iss-hud-row">
+              <span class="iss-hud-label">Latitude</span>
+              <span class="iss-hud-val" id="issHudLat">28.5° N</span>
+            </div>
+            <div class="iss-hud-row">
+              <span class="iss-hud-label">Longitude</span>
+              <span class="iss-hud-val" id="issHudLon">80.6° W</span>
+            </div>
+            <div class="iss-hud-row">
+              <span class="iss-hud-label">Cycle Status</span>
+              <span class="iss-hud-val" id="issHudDayNight" style="color: #D2F843;">☀️ Daylight Pass</span>
+            </div>
+            <div class="iss-hud-row">
+              <span class="iss-hud-label">Orbit Period</span>
+              <span class="iss-hud-val">92.9 min (16 Sunrises/Day)</span>
+            </div>
+            <div class="iss-hud-row">
+              <span class="iss-hud-label">Active Crew</span>
+              <span class="iss-hud-val">Expedition 72 (7 Aboard)</span>
+            </div>
+          </div>
+
+          <!-- Bottom Module Quick-Jump Bar -->
+          <div class="iss-bottom-bar">
+            <div class="iss-module-jump-wrap" role="group" aria-label="Quick Select Module">
+              <button class="iss-module-pill" type="button" data-mod="destiny">🔬 Destiny Lab (NASA)</button>
+              <button class="iss-module-pill" type="button" data-mod="kibo">🇯🇵 Kibo Lab (JAXA)</button>
+              <button class="iss-module-pill" type="button" data-mod="columbus">🇪🇺 Columbus Lab (ESA)</button>
+              <button class="iss-module-pill" type="button" data-mod="cupola">🪟 Cupola Observatory</button>
+              <button class="iss-module-pill" type="button" data-mod="canadarm">🦾 Canadarm2 (CSA)</button>
+              <button class="iss-module-pill" type="button" data-mod="zvezda">🇷🇺 Zvezda Service Core</button>
+              <button class="iss-module-pill" type="button" data-mod="zarya">🧱 Zarya FGB (1998)</button>
+              <button class="iss-module-pill" type="button" data-mod="quest_airlock">🚪 Quest Airlock</button>
+              <button class="iss-module-pill" type="button" data-mod="solar_arrays">⚡ Solar Array Wings</button>
+            </div>
+          </div>
+
+          <!-- Module Science Inspector Flyout / Dossier -->
+          <div class="iss-dossier-card" id="issDossierCard" role="dialog" aria-modal="true" aria-labelledby="issDossierTitle">
+            <button class="iss-dossier-close" id="issDossierClose" type="button" aria-label="Close Inspector">✕</button>
+            <div class="iss-agency-tag" id="issDossierAgency">NASA · United States</div>
+            <h2 class="iss-dossier-title" id="issDossierTitle">Destiny Laboratory</h2>
+            <div style="font-size: 0.8rem; font-weight: 750; color: var(--accent); margin-bottom: 0.75rem;" id="issDossierRole">
+              Primary US Microgravity Research Laboratory
+            </div>
+            <p class="iss-dossier-desc" id="issDossierDesc">
+              The scientific centerpiece of the US segment. Inside Destiny, microgravity removes the masking effects of Earth's gravity, enabling researchers to study fluid dynamics, combustion physics, and materials science.
+            </p>
+
+            <div class="iss-science-box">
+              <div class="iss-science-heading">Breakthrough Science Conducted</div>
+              <p class="iss-science-text" id="issScienceText">
+                Houses the Cold Atom Lab (CAL), chilling atoms to a billionth of a degree above absolute zero to create exotic fifth states of matter (Bose-Einstein condensates). Also home to protein crystal growth experiments accelerating cancer drug discovery.
+              </p>
+            </div>
+
+            <div class="iss-specs-grid" id="issSpecsGrid">
+              <!-- Injected by JavaScript -->
+            </div>
+
+            <div class="iss-dossier-actions">
+              <button class="iss-btn-action iss-btn-secondary" id="issReturnOrbitBtn" type="button">
+                ↺ Return to Orbit
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4-Card Deep Dive: How the ISS Works & What It Does -->
+      <section style="margin-top: 1.5rem;" aria-label="How the ISS Operates">
+        <div style="margin-bottom: 1.75rem;">
+          <p class="eyebrow">MICROGRAVITY SCIENCE &amp; ENGINEERING SYSTEMS</p>
+          <h2 style="font-size: clamp(1.6rem, 3.2vw, 2.2rem); margin: 0 0 0.5rem; font-weight: 800;">
+            How the Space Station <span>Operates</span>
+          </h2>
+          <p style="color: var(--muted); font-size: 0.95rem; max-width: 720px; margin: 0;">
+            The ISS is not merely an orbital habitat; it is the most complex engineering achievement in human history—combining closed-loop ecosystems, quantum physics laboratories, and 120-kilowatt power networks.
+          </p>
+        </div>
+
+        <div class="iss-deep-dive-grid">
+          <!-- Card 1 -->
+          <div class="iss-dive-card">
+            <div class="iss-dive-icon">🔬</div>
+            <h3 class="iss-dive-title">Microgravity Physics & Quantum Wonders</h3>
+            <p class="iss-dive-desc">
+              On Earth, gravity causes sedimentation, convection, and buoyancy that mask subtle atomic physics. Inside the ISS, researchers grow pure macromolecular protein crystals for pharmaceutical breakthroughs, study flame behavior without buoyant convection, and produce Bose-Einstein condensates in the <strong>Cold Atom Lab</strong> at temperatures colder than the depths of space.
+            </p>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="iss-dive-card">
+            <div class="iss-dive-icon">💧</div>
+            <h3 class="iss-dive-title">98% Closed-Loop Life Support (ECLSS)</h3>
+            <p class="iss-dive-desc">
+              Because launching water into orbit costs thousands of dollars per kilogram, the Environmental Control and Life Support System recycles <strong>98% of all moisture</strong> aboard the station. The Water Recovery System purifies astronaut sweat, breath condensation, and urine through catalytic oxidizers and vacuum distillation, delivering water cleaner than municipal taps on Earth.
+            </p>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="iss-dive-card">
+            <div class="iss-dive-icon">🧬</div>
+            <h3 class="iss-dive-title">Human Biology & The Proving Ground for Mars</h3>
+            <p class="iss-dive-desc">
+              Long-duration spaceflight causes astronauts to lose 1% to 1.5% of bone mineral density per month without rigorous exercise. Through the NASA Twin Study and daily 2.5-hour workouts using the ARED resistive exercise machine, the ISS serves as humanity’s living medical laboratory, proving the protocols needed to keep crews alive on multi-year journeys to Mars.
+            </p>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="iss-dive-card">
+            <div class="iss-dive-icon">⚡</div>
+            <h3 class="iss-dive-title">120 kW Solar Grid & Ammonia Cooling</h3>
+            <p class="iss-dive-desc">
+              Over one acre of photovoltaic arrays track the sun continuously across 16 orbital sunrises every 24 hours. Because the vacuum of space has no air to absorb heat, the station cannot use fans to cool down. Instead, giant accordion ammonia radiators circulate heat away from high-powered electronics and crew quarters, dumping excess thermal energy into the void via infrared radiation.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
+        <a href="index.html">Home</a>
+        <a href="mission.html">Missions</a>
+        <a href="future.html">Horizon</a>
+        <a href="graveyard.html">Orbital Graveyard</a>
+        <a href="iss.html">ISS 3D</a>
+        <a href="explore.html">Planetary Map</a>
+        <a href="signal.html">Signal Delay</a>
+        <a href="quiz.html">Challenge</a>
+      </div>
+      <div>
+        <span>MISSION ATLAS · Human stories of deep space exploration</span>
+      </div>
+    </footer>
+  </body>
+</html>
